@@ -1,175 +1,103 @@
-document.querySelector('#add_user_btn').addEventListener('click',()=>{
-  document.querySelector('#add_name').value = '';
-  document.querySelector('#add_website').value = '';
-  document.querySelector('#add_city').value = '';
-  document.querySelector('#add_company').value = '';
-  document.querySelector('#add_email').value = '';
-  document.querySelector('#info').textContent = '';
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-class Request {
-  constructor(baseUrl) {
-    this.baseUrl = baseUrl;
-  }
-
-  async get(endpoint) {
-    return this._fetch(endpoint, {
-      method: 'GET'
-    });
-  }
-
-  async post(endpoint, data) {
-    return this._fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-  }
-
-  async _fetch(endpoint, options) {
-    try {
-      const response = await fetch(`${this.baseUrl}${endpoint}`, options);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error('Fetch error:', error);
-      throw error;
-    }
-  }
-}
-
-
-const request = new Request('https://jsonplaceholder.typicode.com');
-
-(async () => {
-  try {
-      const responseGet = await request.get('/users');
-    console.log(responseGet);
-    getUserList(responseGet)
-  } catch (error) {
-    console.error('Request error:', error);
-  }
-})();
-
-document.querySelector('.btn_add').addEventListener('click', async () => {
+  const listEl = document.querySelector('.list');
+  function renderMovieCard({
+      title = '',
+      overview = '',
+      release_date = '',
+      poster_path = '',
+      
+      
+      
+  }) 
+      {
+      const card = document.createElement('div');
+      const titleEl = document.createElement('h3');
+      const overviewEl = document.createElement('p');
+      const release_date_nameEl = document.createElement('middle');
+      const poster_pathEl = document.createElement('img');
+      
+    
   
-  if (
-    document.querySelector('#add_name').value !== '' &&
-    document.querySelector('#add_website').value !== '' &&
-    document.querySelector('#add_city').value !== '' &&
-    document.querySelector('#add_company').value !== '' &&
-    document.querySelector('#add_email').value !== '' 
-   
-    
-  ) {
-    try {
-      const postData = {
-        name: document.querySelector('#add_name').value,
-        website: document.querySelector('#add_website').value,
-        email: document.querySelector('#add_email').value,
-        address: { city: document.querySelector('#add_city').value },
-        company: { name: document.querySelector('#add_company').value },
-      };
-
+      card.className = 'user__card'
+      titleEl.className = 'user__name'
+      overviewEl.className ='city_name'
+      release_date_nameEl.className ='company_name'
+      poster_pathEl.className ='poster'
       
-      const responsePost = await request.post('/users', postData);
-      console.log('POST response:', responsePost);
-     
-      addUserToList(postData)
+  
+  
+      titleEl.textContent = title;
+      poster_pathEl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${poster_path}`);
+      overviewEl.textContent = overview;
+      release_date_nameEl.textContent = release_date;
       
-      document.querySelector('#info').setAttribute('style', 'color:green')
-      document.querySelector('#info').textContent = 'Успешно добавлено';
       
-    } catch (error) {
-      console.error('Request error:', error);
-      document.querySelector('#info').setAttribute('style', 'color:red')
-      document.querySelector('#info').textContent = 'Ошибка данные не добавлены';;
+      
+      
+      card.appendChild(titleEl)
+      card.appendChild(overviewEl)
+      card.appendChild(release_date_nameEl)
+      card.appendChild(poster_pathEl)
+      
+      return card;
+  
+      
     }
-  } else {
-    
-    document.querySelector('#info').setAttribute('style', 'color:#ec942c')
-    document.querySelector('#info').textContent = 'Заполните все поля';
-    
+
+
+  let page = 1;
+
+
+  
+
+document.querySelector('.btn').addEventListener('click', () => {
+
+  page++
+
+
+
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZThmMTU3ZTYwMjNmODdlYTdiNWU3MGQ5MjNmOTBmOCIsIm5iZiI6MTczMzQ1NDI3NC40NDYsInN1YiI6IjY3NTI2OWMyZmExMDdkYzRlZDQwNDgxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FN8b3fNjIHpryFON3ztkvAbJXGz_ag1L79WefRFAXOU'
   }
-});
+};
 
 
-const listEl = document.querySelector('.list');
-function renderUserCard({
-    name = '',
-    website = '',
-    email	 = '',
-    address = '',
-    company = '',
-    
-    
-}) 
-    {
-    const card = document.createElement('div');
-    const nameEl = document.createElement('h3');
-    const cityEl = document.createElement('p');
-    const company_nameEl = document.createElement('middle');
-    const emailEl = document.createElement('a');
-    const siteEl = document.createElement('a');
-    const idEl = document.createElement('p');
-
-    card.className = 'user__card'
-    nameEl.className = 'user__name'
-    cityEl.className ='city_name'
-    company_nameEl.className ='company_name'
-    emailEl.className ='p_small'
-    siteEl.className ='p_small'
-
-    nameEl.textContent = name;
-    siteEl.setAttribute('href',`www.`+ website);
-    siteEl.setAttribute('target', '_blank');
-    siteEl.textContent = `Visit website: ${website}`;
-    emailEl.setAttribute('href',`mailto:`+email);
-    emailEl.textContent = `Mail to: ${email}`;
-    cityEl.textContent = `From ${JSON.stringify(address.city)}`;
-    company_nameEl.textContent = `Works in: ${JSON.stringify(company.name)} company`;
-    
-    
-    card.appendChild(nameEl)
-    card.appendChild(cityEl)
-    card.appendChild(company_nameEl)
-    card.appendChild(emailEl)
-    card.appendChild(siteEl)
-
-    return card;
-  }
+fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, options)
+  .then(res => res.json())
+   .then(res => {
+    console.log(res);  
+    getMovieList(res.results);  
+   })
+  .catch(err => console.error(err));
 
 
-
-  function getUserList(list) {
+  function getMovieList(list) {
     listEl.innerHTML = ''; 
     list.forEach(item => {
-      const card = renderUserCard(item); 
+      const card = renderMovieCard(item); 
       listEl.appendChild(card);
     });
   }
 
-  function addUserToList(newUser) {
-    const card = renderUserCard(newUser);
-    listEl.appendChild(card);
-  }
-
-   const myModal = new HystModal({
-    linkAttributeName: 'data-hystmodal',
-    catchFocus: true,
-    waitTransitions: true,
-    closeOnEsc: false,
-   
 });
 
 
 
+
+
+
+
+
+  
+
+
+
+});
 
 
 
