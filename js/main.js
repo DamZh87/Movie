@@ -48,18 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
     }
 
-    
+ 
+
+ let page = 1;
 
 
 
-
-  
-
-let page = 1;
-
-
-
-main()
+ main()
 
   document.querySelector('.btn').addEventListener('click', () => {
 
@@ -70,10 +65,10 @@ main()
   
 
 
-})
+ })
 
 
-function main() {
+ function main() {
 
   document.querySelector('.btn').textContent = page;
   
@@ -104,12 +99,21 @@ function main() {
     }
   }
 
-  document.querySelector('#search').addEventListener('click', () => {
+
+
+  const input = document.querySelector("#find");
+  input.addEventListener("input", updateValue);
+  function updateValue(e) {
+  let find = e.target.value;
+  console.log(find);
+  
+
+  // document.querySelector('#search').addEventListener('click', () => {
 
     
-    let find = document.querySelector('#find').value;
+  // let find = document.querySelector('#find').value;
 
-  console.log(find);
+  
   
     
     const options = {
@@ -139,12 +143,12 @@ function main() {
       }
     }
   
+  
+  // )
 
-  )
+}
 
 
 
-
-
-});
+);
 
