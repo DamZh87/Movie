@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  
+
+
+
   const listEl = document.querySelector('.list');
   function renderMovieCard({
       title = '',
@@ -41,66 +45,67 @@ document.addEventListener('DOMContentLoaded', () => {
       card.appendChild(poster_pathEl)
       
       return card;
-  
-      
+        
     }
 
-
-  let page = 1;
-
-
-  
-
-document.querySelector('.btn').addEventListener('click', () => {
-
-  page++
-
-
-
-
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZThmMTU3ZTYwMjNmODdlYTdiNWU3MGQ5MjNmOTBmOCIsIm5iZiI6MTczMzQ1NDI3NC40NDYsInN1YiI6IjY3NTI2OWMyZmExMDdkYzRlZDQwNDgxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FN8b3fNjIHpryFON3ztkvAbJXGz_ag1L79WefRFAXOU'
-  }
-};
-
-
-fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, options)
-  .then(res => res.json())
-   .then(res => {
-    console.log(res);  
-    getMovieList(res.results);  
-   })
-  .catch(err => console.error(err));
-
-
-  function getMovieList(list) {
-    listEl.innerHTML = ''; 
-    list.forEach(item => {
-      const card = renderMovieCard(item); 
-      listEl.appendChild(card);
-    });
-  }
-
-});
-
-
-
-
+    
 
 
 
 
   
 
+let page = 1;
 
+
+
+main()
+
+  document.querySelector('.btn').addEventListener('click', () => {
+
+    page++
+
+    console.log(page);
+    main()
+  
+
+
+})
+
+
+function main() {
+
+  document.querySelector('.btn').textContent = page;
+  
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZThmMTU3ZTYwMjNmODdlYTdiNWU3MGQ5MjNmOTBmOCIsIm5iZiI6MTczMzQ1NDI3NC40NDYsInN1YiI6IjY3NTI2OWMyZmExMDdkYzRlZDQwNDgxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FN8b3fNjIHpryFON3ztkvAbJXGz_ag1L79WefRFAXOU'
+    }
+  };
+  
+  
+  fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, options)
+    .then(res => res.json())
+     .then(res => {
+      console.log(res);  
+      getMovieList(res.results);  
+     })
+    .catch(err => console.error(err));
+  
+  
+    function getMovieList(list) {
+      listEl.innerHTML = ''; 
+      list.forEach(item => {
+        const card = renderMovieCard(item); 
+        listEl.appendChild(card);
+      });
+    }
+  }
+
+
+  
 
 });
-
-
-
-
-
 
