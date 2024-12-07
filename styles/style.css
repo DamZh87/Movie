@@ -98,7 +98,9 @@
 
 
 .btn{
-  width: 2rem;
+  width: 5rem;
+  height: 5rem;
+  font-size: large;
 }
 
 
