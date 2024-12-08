@@ -1,9 +1,15 @@
+@import url('./swiper.css');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
     
+}
+
+body{
+    background-color: black;
 }
 
 .container{
@@ -33,7 +39,7 @@
     position: absolute;
     bottom: 0;
     z-index: 1;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0) 80%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 2) 10%, rgba(0, 0, 0, 0) 80%);
   }
 .header::before {
     content: '';
@@ -134,6 +140,16 @@
         font-family: inherit;
     }
 
+    .header__hero-descr{
+        margin-top: 1rem;
+        font-size: 14px;
+        line-height: 22px;
+        color: grey;
+        font-family: inherit;
+        max-width: 20rem;
+        overflow: hidden;
+    }
+
     .buttons-container{
         display: flex;
         justify-content: space-between;
@@ -220,4 +236,12 @@
 main{
     height: 500vh;
     background-color: black;
+}
+
+h3{
+    font-size: 25px;
+        font-weight: 600;
+        font-family: inherit;
+        color: white;
+        margin: 1.5rem 0;
 }
