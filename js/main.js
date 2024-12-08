@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       overview = '',
       release_date = '',
       poster_path = '',
-      
+      id ='',
       
       
   }) 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const overviewEl = document.createElement('p');
       const release_date_nameEl = document.createElement('middle');
       const poster_pathEl = document.createElement('img');
-      
+      const idEl = document.createElement('p');
     
   
       card.className = 'user__card'
@@ -28,13 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
       overviewEl.className ='city_name'
       release_date_nameEl.className ='company_name'
       poster_pathEl.className ='poster'
-      
-  
+      idEl.className = 'film_id'
+       
   
       titleEl.textContent = title;
       poster_pathEl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${poster_path}`);
       overviewEl.textContent = overview;
       release_date_nameEl.textContent = release_date;
+      card.setAttribute('data-id', id)
       
       
       
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.appendChild(overviewEl)
       card.appendChild(release_date_nameEl)
       card.appendChild(poster_pathEl)
-      
+      card.appendChild(idEl)
       return card;
         
     }
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
 
  let page = 1;
-
+ 
 
 
  main()
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   
   
-  fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, options)
+  fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false?language=en-US&page=${page}`, options)
     .then(res => res.json())
      .then(res => {
       console.log(res);  
@@ -95,11 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
       list.forEach(item => {
         const card = renderMovieCard(item); 
         listEl.appendChild(card);
+
+       
+      
+
       });
     }
   }
 
 
+  
 
   const input = document.querySelector("#find");
   input.addEventListener("input", updateValue);
@@ -132,13 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
         getMovieList(res.results);  
        })
       .catch(err => console.error(err));
-    
+      
     
       function getMovieList(list) {
         listEl.innerHTML = ''; 
         list.forEach(item => {
           const card = renderMovieCard(item); 
           listEl.appendChild(card);
+          
         });
       }
     }
@@ -146,9 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // )
 
-}
 
 
-
-);
-
+})
