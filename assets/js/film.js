@@ -1,7 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+
+  
+
+
+
+
+
 const movie_id = 912649;
-                
+              
+          
+          
+
+
+
+
+
+
         const options = {
           method: 'GET',
           headers: {
@@ -17,7 +32,8 @@ const movie_id = 912649;
             let info = res
             console.log(info);
 
-           
+
+          
 
             const backdrop_pathEl = document.createElement('img');
             backdrop_pathEl.setAttribute('src',  `https://image.tmdb.org/t/p/w500/${info.backdrop_path}`);
@@ -34,14 +50,26 @@ const movie_id = 912649;
             const release_dateEl = document.createElement('p');
             release_dateEl.textContent = ('Дата выхода: '+ info.release_date);
 
+
+            const vote_averageEl = document.createElement('p');
+            vote_averageEl.textContent = ('Оценка: '+ info.vote_average);
+
+
+
+           
            
             const genreEl = document.createElement('p');
-          let genre = info.genres;
-          genre.forEach((element) =>
 
-            console.log(element.name));
+          let genre = JSON.stringify(info.genres);
+
             
-            //genreEl.textContent = (element.name));
+    
+
+
+  
+          console.log(info.genre)
+            
+            genreEl.textContent = (genre);
             
             
 
@@ -51,17 +79,95 @@ const movie_id = 912649;
             document.body.append(overviewEl)
             document.body.append(release_dateEl)
             document.body.append(genreEl)
+            document.body.append(vote_averageEl)
 
 
         })
           .catch(err => console.error(err));
         
         
-     
-      
-     
 
+          const testEl = document.querySelector('.test');
+          function renderActorsCard({
+              name = '',
+              character ='',
+              profile_path ='',           
+          }) 
+              {
+              const card = document.createElement('div');
+
+              
+         
+              const profile_pathEl = document.createElement('img');
+              
+              const nameEl = document.createElement('h3');
+              const characterEl = document.createElement('h4');
+              card.className = 'user__card'
+              nameEl.className = 'user__name'
+              profile_pathEl.className = 'profile'
+
+              characterEl.className = 'p_small'        
+          
+              nameEl.textContent = name;
+        
+              characterEl.textContent = character;
+              profile_pathEl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${profile_path}`);
+
+              
+              card.appendChild(nameEl)
+        
+              card.appendChild(characterEl)
+              card.appendChild(profile_pathEl)
+              return card;
+                
+            }
+            
+
+          fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits`, options)
+          .then(res1 => res1.json())
+          .then(res1 => {
+           getActorList(res1.cast)
+         
+           console.log(res1.cast);
+           
+           
+          })
+          .catch(err => console.error(err));
        
-       
+                 
+
+
+
+
+            function getActorList(list) {
+              let slider = document.querySelector("#myRange");
+              let output = document.querySelector("#demo");
+              output.innerHTML = slider.value; 
+               
+              
+              let col = 7; 
+            
+              slider.oninput = function () {
+                  output.innerHTML = this.value;  
+                  col = this.value;  
+              
+              
+              console.log(col); 
+
+
+              testEl.innerHTML = ''; 
+              const tenActors = list.slice(0, col);
+
+
+              tenActors.forEach(item => {
+                const card = renderActorsCard(item); 
+                testEl.appendChild(card);
+        
+              });
+            };
+
+
+            }
+            
 
 });
