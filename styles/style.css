@@ -51,10 +51,12 @@
     min-height: 20vh;
     box-shadow: 0 0 10px 3px #1111114f;
     transition: transform 0.3s ease;
+    
       }
 
 .user__card:hover{
   transform: scale(1.05);
+  
 }
  
  .user__name {
@@ -93,6 +95,7 @@
 .poster{
   width: 100%;
   align-self: center;
+  cursor: pointer;
   
 }
 

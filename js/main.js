@@ -124,6 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
                   list.forEach(item => {
                     const card = renderMovieCard(item); 
                     listEl.appendChild(card);
+                    card.addEventListener('click', () => {
+                      const filmId = card.getAttribute('data-id');
+                      location.href='film.html';
+                      localStorage.setItem('filmId', filmId) ;
+                    });
                   });
                 }
   }
