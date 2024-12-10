@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(filmById => filmById.json())
           .then(filmById => {
             let mainFilmInfo = filmById
-            //console.log(mainFilmInfo);
-            let genres = filmById.genres;
-            //console.log(genres);
+            console.log(mainFilmInfo);
+            let genres = JSON.stringify(filmById.genres);
+            console.log(genres);
           
             const backdrop_pathEl = document.createElement('img');
             backdrop_pathEl.setAttribute('src',  `https://image.tmdb.org/t/p/w500/${mainFilmInfo.backdrop_path}`);
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(FilmActors => FilmActors.json())
           .then(FilmActors => {
            getActorList(FilmActors.cast)
-          //console.log(FilmActors.cast);
+          /console.log(FilmActors.cast);
           })
           .catch(err => console.error(err));
        
