@@ -19,7 +19,6 @@ swiper-container {
 
   .swiper_rating-genre{
     margin: 1.5rem 2rem 2rem 0;
-    /* margin-bottom: 1.5rem; */
     position: absolute;
     justify-content: space-between;
     bottom: 0;
@@ -28,28 +27,26 @@ swiper-container {
     font-size: .8rem;
     display: flex;
     width: 100%;
-    /* align-items: center; */
+    align-items: center;
   }
 
   .swiper_movie-name{
     position: absolute;
     font-family: inherit;
-    font-size: 1.1rem;
+    font-size: .9rem;
     bottom: 3.5rem;
-    margin-left: 1rem;
+    margin-left: .5rem;
     left: 0;
     z-index: 3;
     color: rgba(255, 255, 255, 0.692);
   }
 
   .swiper_movie-rating {
-    /* position: absolute; */
+    display: flex;
     font-family: inherit;
     font-size: .9rem;
-    align-self: center;
-    /* bottom: 1.5rem; */
-    /* margin-left: 1rem; */
-    /* left: 0; */
+    align-items: center;
+    margin-left: .4rem;
     z-index: 3;
     color: rgb(255, 255, 255);
   }
@@ -60,12 +57,7 @@ swiper-container {
 
 
   .swiper_movie-genre {
-    /* position: absolute; */
     font-family: inherit;
-    /* font-size: .8rem; */
-    /* bottom: 1.5rem; */
-    /* margin-left: 4rem; */
-    /* left: 0; */
     z-index: 3;
     color: #ffffffb0;
   }
