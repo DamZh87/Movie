@@ -21,45 +21,7 @@
         
       <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false" space-between="20" centered-slides="false" autoplay-delay="222500" autoplay-disable-on-interaction="true" >
 
-
-
-
-
-
-      <swiper-slide>
-        <div class="header_swiper" style="background-image: url(./assets/img/header/imgswiper/1.jpg);"></div>
-
-        <div class="header__hero">
-
-        <div class="header__hero-name"><p class="movie_name"></p></div>
-
-        <div class="header__hero-genre">
-            <p class="movie_year"></p>, <p class="movie_genre"></p>
-        </div>
-
-        <div class="header__hero-descr"><p class="movie_descript"></p></div>
-
-        <div class="buttons-container">
-
-        <div class="header__hero-buttons" >
-            <a class="header__hero-buttons-continue" href="#" data-hystmodal="#swiper_movie">Watch Trailer</a>
-            <a class="header__hero-buttons-watchlist" href="#">Add Watchlist</a>
-        </div>
-
-        </div>
-
-    </div>
-</swiper-slide>
-
-
-
-
-
-
-
-</swiper-container>
-
-
+        </swiper-container>
 
         <div class="container">
             <div class="header__menu">
@@ -79,66 +41,37 @@
                         </ul>
                     </div>
             </div>
-            
-
-
-
         </div>
     </header>
 
     <main class="main">
         <div class="container">
             <h3>Just released</h3>
-        <swiper-container class="mySwiper" pagination="true" pagination-clickable="false" slides-per-view="6"
-    centered-slides="false" space-between="30" grab-cursor="true" navigation="true" >
-    <swiper-slide><p class="swiper_movie-name">Movie_name1</p>
-        <div class="swiper_rating-genre">
+        <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30" grab-cursor="true" navigation="true" >
+
+
+
+
+    <swiper-slide class="slide_JR">
+        
+        <p class="swiper_movie-name">Movie_name1</p>
+
+     <div class="swiper_rating-genre">
+
         <p class="swiper_movie-rating">4.8</p>
+
         <p class="swiper_movie-genre">Movie | Thriller</p>
+
     </div>
-        <img src="./assets/img/main/swiper/4rBObJFpiWJOG7aIlRrOUniAkBs.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name2</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/aosm8NMQ3UyoBVpSxyimorCQykC.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name3</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/cNtAslrDhk1i3IOZ16vF7df6lMy.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name4</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/f8H9sLin46B7ka4DEqjemGuiCOB.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name5</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/ht8Uv9QPv9y7K0RvUyJIaXOZTfd.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name6</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/lqoMzCcZYEFK729d6qzt349fB4o.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name7</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg" alt="slide"></swiper-slide>
-    <swiper-slide><p class="swiper_movie-name">Movie_name8</p>
-        <div class="swiper_rating-genre">
-        <p class="swiper_movie-rating">4.8</p>
-        <p class="swiper_movie-genre">Action | Thriller</p>
-    </div>
-        <img src="./assets/img/main/swiper/yh64qw9mgXBvlaWDi7Q9tpUBAvH.jpg" alt="slide"></swiper-slide>
+
+
+        <img class="img_JR" src="./assets/img/main/swiper/4rBObJFpiWJOG7aIlRrOUniAkBs.jpg" alt="slide">
+    
+    </swiper-slide>
+
+
+
+    
     
   </swiper-container>
 </div>
@@ -160,7 +93,7 @@
         </div>
     </div>
     <script type="module" src="./assets/js/main.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/lib/swiper-element-bundle.min.js"></script>
     <script src="./assets/lib/hystmodal.min.js"></script>
 </body>

@@ -256,3 +256,75 @@ h3{
     color: white;
     margin: 3.5rem 0 1.5rem 0;
 }
+
+.story__line{
+    font-size: 14px;
+    line-height: 22px;
+    color: grey;
+    font-family: inherit;
+    text-align: justify;
+
+}
+
+
+/* ACTORS SWIPER */
+
+
+.swiper-wrapper{
+    height: 12rem;
+    
+    
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+
+  .swiper-slide img {
+    border-radius: 50%;
+    display: block;
+    width: 25%;
+    height: 25%;
+    object-fit: cover;
+    
+  }
+
+  .swiper__actor-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+
+  }
+
+  .swiper__actor-photo{
+    
+  }
+
+  .swiper__actor-name{
+    color: white;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: inherit;
+    
+  }
+
+  .swiper__hero-name{
+    font-size: 14px;
+    line-height: 22px;
+    color: grey;
+    font-family: inherit;
+  }
