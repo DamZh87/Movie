@@ -19,7 +19,7 @@
 
     <header class="header">
         
-      <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false" space-between="20" centered-slides="false" autoplay-delay="222500" autoplay-disable-on-interaction="true" >
+      <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false" space-between="20" centered-slides="false" autoplay-delay="5000" autoplay-disable-on-interaction="true" >
 
         </swiper-container>
 
@@ -35,10 +35,25 @@
                     </div>
                     <div class="header__menu-user">
                         <ul>
-                            <li><svg width="23px" height="23px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z" fill="#fff"></path></g></svg></li>
+                            <li class="search__btn"><svg width="23px" height="23px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z" fill="#fff"></path></g></svg></li>
                             <li><svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.0009 5C13.4331 5 14.8066 5.50571 15.8193 6.40589C16.832 7.30606 17.4009 8.52696 17.4009 9.8C17.4009 11.7691 17.846 13.2436 18.4232 14.3279C19.1606 15.7133 19.5293 16.406 19.5088 16.5642C19.4849 16.7489 19.4544 16.7997 19.3026 16.9075C19.1725 17 18.5254 17 17.2311 17H6.77066C5.47638 17 4.82925 17 4.69916 16.9075C4.54741 16.7997 4.51692 16.7489 4.493 16.5642C4.47249 16.406 4.8412 15.7133 5.57863 14.3279C6.1558 13.2436 6.60089 11.7691 6.60089 9.8C6.60089 8.52696 7.16982 7.30606 8.18251 6.40589C9.19521 5.50571 10.5687 5 12.0009 5ZM12.0009 5V3M9.35489 20C10.0611 20.6233 10.9888 21.0016 12.0049 21.0016C13.0209 21.0016 13.9486 20.6233 14.6549 20" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></li>
                             <li><div class="user__avatar"></div></li>
                         </ul>
+
+                               <!-- SEARCHING FORM -->
+
+                               <div class="search-container-hide">
+                                <a href="#" class="search-button-close">X</a>
+                                <form action="/search" method="get">
+                                    <input type="text" placeholder="Search..." class="search-input">
+                                    
+                                    <button type="submit" class="search-button">Search</button>
+                                </form>
+                            </div>
+
+
+
+                        
                     </div>
             </div>
         </div>
@@ -47,33 +62,9 @@
     <main class="main">
         <div class="container">
             <h3>Just released</h3>
-        <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30" grab-cursor="true" navigation="true" >
-
-
-
-
-    <swiper-slide class="slide_JR">
-        
-        <p class="swiper_movie-name">Movie_name1</p>
-
-     <div class="swiper_rating-genre">
-
-        <p class="swiper_movie-rating">4.8</p>
-
-        <p class="swiper_movie-genre">Movie | Thriller</p>
-
-    </div>
-
-
-        <img class="img_JR" src="./assets/img/main/swiper/4rBObJFpiWJOG7aIlRrOUniAkBs.jpg" alt="slide">
+        <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-dynamic-bullets="true" pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30" grab-cursor="true" navigation="true" >
     
-    </swiper-slide>
-
-
-
-    
-    
-  </swiper-container>
+        </swiper-container>
 </div>
     </main>
 

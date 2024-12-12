@@ -143,7 +143,7 @@ fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=e
              img_JREl.className = 'img_JR'
 
                 swiperMovieNameEl.innerText = title
-                swiperMovieRatingEl.innerText = vote_average
+                swiperMovieRatingEl.innerText = vote_average.toString().slice(0 , 3);
                 swiperNovieGenre.innerText = 'Пока нет'
                 img_JREl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${poster_path}`);
                 swiperMovieNameEl.setAttribute('data-id', id)
@@ -167,25 +167,27 @@ fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=e
 
 
 
-           // ACTORS SWIPER
-           
+            // SEARCH FORM
+      const searchBtn = document.querySelector('.search__btn');
+      const searchForm = document.querySelector('.search-container-hide');
+      const searchClose = document.querySelector('.search-button-close');
+      
+      
+      if (searchBtn && searchForm && searchClose) {
+        searchBtn.addEventListener('click', () => {
+          searchForm.classList.remove('search-container-hide');
+          searchForm.classList.add('search-container-show');
+        });
+      
+        searchClose.addEventListener('click', () => {
+          searchForm.classList.remove('search-container-show');
+          searchForm.classList.add('search-container-hide');
+        });
+      } else {
+        
+      }
 
-var swiper = new Swiper(".swiperActors", {
-  slidesPerView: 7,
-  spaceBetween: 30,
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-    clickable: true,
-  },
-});
 
-          // ACTORS SWIPER
  
   const swiperMain = document.querySelector("swiper-container");
   
