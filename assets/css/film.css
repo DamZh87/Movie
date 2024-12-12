@@ -331,7 +331,7 @@ h3{
   .screenshots__block img{
     align-self: center;
     justify-self: center;
-    height: 15rem;
+    max-width: 19.6vw;
     border-radius: 20px;
     
 }

@@ -166,6 +166,26 @@ fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=e
       }
 
 
+      // SEARCH FORM
+      const searchBtn = document.querySelector('.search__btn');
+      const searchForm = document.querySelector('.search-container-hide');
+      const searchClose = document.querySelector('.search-button-close');
+      
+      
+      if (searchBtn && searchForm && searchClose) {
+        searchBtn.addEventListener('click', () => {
+          searchForm.classList.remove('search-container-hide');
+          searchForm.classList.add('search-container-show');
+        });
+      
+        searchClose.addEventListener('click', () => {
+          searchForm.classList.remove('search-container-show');
+          searchForm.classList.add('search-container-hide');
+        });
+      } else {
+        
+      }
+
 
            // ACTORS SWIPER
            
