@@ -1,6 +1,5 @@
 
 
-let page = 1;
 
         
 const options = {
@@ -11,7 +10,7 @@ headers: {
 }
 };
 
-fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=en-US&page=${page}`, options)
+fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=en-US&page=1`, options)
 .then(movieList => movieList.json())
 .then(movieList => {
   console.log(movieList);  
@@ -19,35 +18,37 @@ fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=e
 })
 .catch(err => console.error(err));
 
-
-fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
-  .then(resGenres => resGenres.json())
-  .then(resGenres => console.log(resGenres))
-  .catch(err => console.error(err))
-
  function getMovieList(list) {
-  listEl.innerHTML = ''; 
+  swiperHeaderEl.innerHTML = ''; 
   let headerQunatity = list.slice(0, 5);
   headerQunatity.forEach(item => {
-    const card = renderMovieCard(item); 
-    listEl.appendChild(card);
-    card.addEventListener('click', () => {
-      const filmId = card.getAttribute('data-id');
-      location.href='film.html';
-      localStorage.setItem('filmId', filmId) ;
-    });
-  });
+    const swiperSlide = renderMovieswiperSlide(item); 
+    swiperHeaderEl.appendChild(swiperSlide);
+   });
 }
 
 
+        fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=en-US&page=2`, options)
+        .then(JustRealeasedList => JustRealeasedList.json())
+        .then(JustRealeasedList => {
+          console.log(JustRealeasedList);  
+          getJustRealeased(JustRealeasedList.results);  
+        })
+        .catch(err => console.error(err));
+
+        function getJustRealeased(list) {
+          swipeJustReleasedEl.innerHTML = ''; 
+                list.forEach(item => {
+            const swiperSlideJustReleasedEl = renderJustRealeased(item); 
+            swipeJustReleasedEl.appendChild(swiperSlideJustReleasedEl);
+          
+          });
+        }
+       
 
 
-
-
-
-
-  const listEl = document.querySelector('.swiper-two');
-  function renderMovieCard({
+  const swiperHeaderEl = document.querySelector('.swiper-two');
+  function renderMovieswiperSlide({
     backdrop_path = '',
     title = ''  ,
     release_date ='' ,
@@ -55,7 +56,7 @@ fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
     id = '',
   }) 
       {
-      const card = document.createElement('swiper-slide');
+      const swiperSlide = document.createElement('swiper-slide');
       const slideEl = document.createElement('div');
       const headerHeroEl = document.createElement('div');
       const headerHeroNameEl = document.createElement('div');
@@ -68,7 +69,7 @@ fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
       const buttonsContainerEl = document.createElement('div');
       const headerHeroButtonsEl = document.createElement('div');
       const headerHeroButtonsContinueEl = document.createElement('a');
-      const headerHeroButtonsWatchlistEl = document.createElement('a');
+      const headerHeroButtonsWatchswiperHeaderEl = document.createElement('a');
 
             slideEl.className ='header_swiper'
             headerHeroEl.className = 'header__hero'
@@ -82,7 +83,7 @@ fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
             buttonsContainerEl.className = 'buttons-container'
             headerHeroButtonsEl.className = 'header__hero-buttons'
             headerHeroButtonsContinueEl.className = 'header__hero-buttons-continue'
-            headerHeroButtonsWatchlistEl.className = 'header__hero-buttons-watchlist'  
+            headerHeroButtonsWatchswiperHeaderEl.className = 'header__hero-buttons-watchlist'  
            
                   slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
                   movieNameEl.textContent = title
@@ -90,11 +91,11 @@ fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
                   movieGenreEl.textContent = 'Жанр'
                   headerHeroButtonsContinueEl.textContent = 'Watch Trailer'
                   headerHeroButtonsContinueEl.setAttribute('data-hystmodal',"#swiper_movie")
-                  headerHeroButtonsWatchlistEl.textContent = 'Add Watchlist'
+                  headerHeroButtonsWatchswiperHeaderEl.textContent = 'Add Watchlist'
                   movieDescriptEl.textContent = overview
-                  card.setAttribute('data-id', id)
+                  movieNameEl.setAttribute('data-id', id)
 
-                          card.appendChild(headerHeroEl)
+                          swiperSlide.appendChild(headerHeroEl)
                           headerHeroEl.appendChild(headerHeroNameEl)
                           headerHeroEl.appendChild(headerHeroGenreEl)
                           headerHeroGenreEl.appendChild(movieYearEl)
@@ -105,11 +106,64 @@ fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
                           headerHeroEl.appendChild(buttonsContainerEl) 
                           buttonsContainerEl.appendChild(headerHeroButtonsEl)
                           headerHeroButtonsEl.appendChild(headerHeroButtonsContinueEl)
-                          headerHeroButtonsEl.appendChild(headerHeroButtonsWatchlistEl)
-                          card.appendChild(slideEl)
+                          headerHeroButtonsEl.appendChild(headerHeroButtonsWatchswiperHeaderEl)
+                          swiperSlide.appendChild(slideEl)
    
-      return card;
+                          
+                          movieNameEl.addEventListener('click', () => {
+                            const filmId1 = movieNameEl.getAttribute('data-id');
+                            location.href='film.html';
+                            localStorage.setItem('filmId', filmId1) ;
+                          });
+      return swiperSlide;
     }
+
+
+
+    const swipeJustReleasedEl = document.querySelector('.swiper-JR');
+    function renderJustRealeased({
+      poster_path = '',
+      title = ''  ,
+      vote_average ='' ,
+      id = '',
+    }) 
+        {
+        const swiperSlideJustReleasedEl = document.createElement('swiper-slide');
+        const swiperMovieNameEl = document.createElement('p');
+        const swiperRatingGenreEl = document.createElement('div');
+        const swiperMovieRatingEl = document.createElement('p');
+        const swiperNovieGenre = document.createElement('p');
+        const img_JREl = document.createElement ('img')
+       
+             swiperSlideJustReleasedEl.className = 'slide_JR'
+             swiperMovieNameEl.className = 'swiper_movie-name'
+             swiperRatingGenreEl.className = 'swiper_rating-genre'
+             swiperMovieRatingEl.className = 'swiper_movie-rating'
+             swiperNovieGenre.className = 'swiper_movie-genre'
+             img_JREl.className = 'img_JR'
+
+                swiperMovieNameEl.innerText = title
+                swiperMovieRatingEl.innerText = vote_average.toString().slice(0 , 3);
+                swiperNovieGenre.innerText = 'Пока нет'
+                img_JREl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${poster_path}`);
+                swiperMovieNameEl.setAttribute('data-id', id)
+  
+                swipeJustReleasedEl.appendChild(swiperSlideJustReleasedEl)
+                swiperSlideJustReleasedEl.appendChild(swiperMovieNameEl)
+                swiperSlideJustReleasedEl.appendChild(swiperRatingGenreEl)
+                swiperRatingGenreEl.appendChild(swiperMovieRatingEl) 
+                swiperRatingGenreEl.appendChild(swiperNovieGenre) 
+                swiperSlideJustReleasedEl.appendChild(img_JREl)
+     
+
+                swiperMovieNameEl.addEventListener('click', () => {
+                  const filmId = swiperMovieNameEl.getAttribute('data-id');
+                  location.href='film.html';
+                  localStorage.setItem('filmId', filmId) ;
+                });
+
+        return swiperSlideJustReleasedEl;
+      }
 
 
 
@@ -130,7 +184,21 @@ var swiper = new Swiper(".swiperActors", {
     clickable: true,
   },
 });
-          // ACTORS SWIPER
+
+          // SIMILAR SWIPER
+
+          var swiper = new Swiper(".swiperSimilar", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              clickable: true,
+            },
+          });
+
+
+
  
   const swiperMain = document.querySelector("swiper-container");
   

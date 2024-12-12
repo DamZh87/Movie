@@ -52,7 +52,7 @@ swiper-slide {
 }
 .swiper_movie-rating::before {
  content: url(../img/main/swiper/star.svg);
- 
+ margin-right: .2rem; 
 }
 
 

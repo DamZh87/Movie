@@ -271,9 +271,7 @@ h3{
 
 
 .swiper-wrapper{
-    height: 12rem;
-    
-    
+        
 }
 
 .swiper {
@@ -284,12 +282,9 @@ h3{
   .swiper-slide {
     margin: 0;
     text-align: center;
-    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 25%;
     flex-wrap: wrap;
     align-content: flex-start;
   }
@@ -297,6 +292,7 @@ h3{
   .swiper-slide img {
     border-radius: 50%;
     display: block;
+    aspect-ratio: 1/1;
     width: 25%;
     height: 25%;
     object-fit: cover;
@@ -327,4 +323,45 @@ h3{
     line-height: 22px;
     color: grey;
     font-family: inherit;
+  }
+
+
+  /* SCREENTSHOTS_BLOCK */
+  
+  .screenshots__block img{
+    align-self: center;
+    justify-self: center;
+    height: 15rem;
+    border-radius: 20px;
+    
+}
+
+  .screenshots__block{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+    
+
+/* SIMILAR SWIPER */
+
+.swiper similar{
+    width: 100%;
+    height: 20%;
+  }
+
+  .swiper-slide similar {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide similar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
