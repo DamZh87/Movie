@@ -12,7 +12,7 @@
         };
         
 
-        fetch(`https://api.themoviedb.org/3/movie/${movie_id}`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
           .then(filmById => filmById.json())
           .then(filmById => {
             let mainFilmInfo = filmById
@@ -33,7 +33,7 @@
 
 
 
-            fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits`, options)
+            fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits?language=ru-RU`, options)
             .then(FilmActors => FilmActors.json())
             .then(FilmActors => {
              getActorList(FilmActors.cast.slice(0, 10))

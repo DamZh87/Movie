@@ -25,10 +25,12 @@ body{
     top: 2rem;
     right: 7rem;
     background-color: rgba(0, 0, 0, 0.699);
-    padding: 30px 40px;
+    padding: 2rem ;
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    width: 30rem; 
+    width: 30rem;
+    height: auto;
+    
     text-align: center;
 }
 
@@ -55,6 +57,11 @@ body{
 .search-input:focus {
     border-color: gray;
     box-shadow: 0 0 8px gray(76, 175, 80, 0.7);
+}
+
+.search__results{
+    margin: 1.2rem;
+    
 }
 
 .search-button {
@@ -96,7 +103,18 @@ body{
 }
 
 
-
+#find_cont{
+    text-align: left;
+    padding-left: 1rem;
+    }
+    
+.s_result{
+        padding-top:  1rem ;
+        cursor: pointer;
+        &:hover{
+            color: #b8b8b8;
+        }
+    }
 
 
 
@@ -326,3 +344,5 @@ h3{
 .movie_name, .swiper_movie-name{
     cursor: pointer;
 }
+
+
