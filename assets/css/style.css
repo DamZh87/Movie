@@ -28,7 +28,9 @@ body{
     padding: 30px 40px;
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    width: 30rem; 
+    width: 30rem;
+    
+    max-height: 15rem;
     text-align: center;
 }
 
@@ -55,6 +57,11 @@ body{
 .search-input:focus {
     border-color: gray;
     box-shadow: 0 0 8px gray(76, 175, 80, 0.7);
+}
+
+.search__results{
+    margin: 1.2rem;
+    
 }
 
 .search-button {
@@ -96,6 +103,16 @@ body{
 }
 
 
+
+
+
+
+
+
+
+
+
+
 /* HEADER */
 
 .header {
@@ -119,15 +136,6 @@ body{
     color: white;
 }
 
-.header__menu-logo{
-
-}
-
-@media screen and (max-width: 800px) {
-    .header__menu-logo{
-display: none;
-    }
-}
 
 .header__menu-item a {
     padding-right: 1rem;
@@ -148,10 +156,6 @@ display: none;
 .header__menu-item a:last-child {
     padding-right: 0;
   }
-
-.header__menu-user{
-    position: relative;
-}
 
 .header__menu-user ul{
     display: flex;

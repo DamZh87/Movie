@@ -22,7 +22,7 @@ body{
 /* HEADER */
 
 .header {
-    background-image: url(../img/header/header-background.jpg);
+    
     width: 100%;
     height: 85vh;
     background-color: rgb(59, 56, 56);
@@ -331,7 +331,7 @@ h3{
   .screenshots__block img{
     align-self: center;
     justify-self: center;
-    max-width: 19.6vw;
+    height: 15rem;
     border-radius: 20px;
     
 }
@@ -365,3 +365,5 @@ h3{
     height: 100%;
     object-fit: cover;
   }
+
+

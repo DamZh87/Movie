@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+
         
         
         const movie_id = JSON.parse(localStorage.getItem("filmId"));
@@ -17,104 +17,147 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(filmById => {
             let mainFilmInfo = filmById
             console.log(mainFilmInfo);
-            let genres = JSON.stringify(filmById.genres);
-            console.log(genres);
-          
-            const backdrop_pathEl = document.createElement('img');
-            backdrop_pathEl.setAttribute('src',  `https://image.tmdb.org/t/p/w500/${mainFilmInfo.backdrop_path}`);
 
-            const poster_pathEl = document.createElement('img');
-            poster_pathEl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${mainFilmInfo.poster_path}`);
-
-            const titleEl = document.createElement('p');
-            titleEl.textContent = ('Название: '+ mainFilmInfo.title);
-
-            const overviewEl = document.createElement('p');
-            overviewEl.textContent = ('Описание: '+ mainFilmInfo.overview);
-
-            const release_dateEl = document.createElement('p');
-            release_dateEl.textContent = ('Дата выхода: '+ mainFilmInfo.release_date);
-
-            const vote_averageEl = document.createElement('p');
-            vote_averageEl.textContent = ('Оценка: '+ mainFilmInfo.vote_average);
-
-            const genreEl = document.createElement('p');
-            genreEl.textContent = genres;
+            filmById.genres.forEach(({name}) =>{
+            document.querySelector('.hero-genre').textContent += ` ${name}  ` 
+            })
             
+            document.querySelector('.hero-year').textContent = mainFilmInfo.release_date.slice(0, 4);
+            document.querySelector('.hero-name').textContent = mainFilmInfo.title
+            document.querySelector('.header').style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
+            
+            let storyEl = document.querySelector('.story__line');
+            storyEl.textContent = mainFilmInfo.overview + ' ' + storyEl.textContent;
 
-            document.body.append(backdrop_pathEl)
-            document.body.append(poster_pathEl)
-            document.body.append(titleEl)
-            document.body.append(overviewEl)
-            document.body.append(release_dateEl)
-            document.body.append(genreEl)
-            document.body.append(vote_averageEl)
-        })
-          
+
+
+
+
+            fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits`, options)
+            .then(FilmActors => FilmActors.json())
+            .then(FilmActors => {
+             getActorList(FilmActors.cast.slice(0, 10))
+            /console.log(FilmActors.cast);
+
+
+         
+            })
             .catch(err => console.error(err));
+         
+            function getActorList(list) {
+                actorsEl.innerHTML = ''; 
+                list.forEach(item => {
+                const actorsSlideEl = renderActors(item); 
+                actorsEl.appendChild(actorsSlideEl);
+              })
+            }
 
-          const actorsEl = document.querySelector('.actors');
-          function renderActorsCard({
+const actorsEl = document.querySelector('.swiper-wrapper');
+          function renderActors({
               name = '',
               character ='',
               profile_path ='',           
           }) 
               {
-              const card = document.createElement('div');
-                      
+              const actorsSlideEl = document.createElement('div');
+                
               const profile_pathEl = document.createElement('img');
               profile_pathEl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${profile_path}`);
+  
+              const swiperActorContainerEl = document.createElement('div');
+              const swiperActorNameEl = document.createElement('p');
+              const swiperHeroNameEl = document.createElement('p');
 
-              const nameEl = document.createElement('h3');
-              nameEl.textContent = name;
-
-              const characterEl = document.createElement('h4');
-              characterEl.textContent = character;
-
-              card.className = 'user__card'
-              nameEl.className = 'user__name'
-              profile_pathEl.className = 'profile'
-              characterEl.className = 'p_small'        
+              swiperActorNameEl.innerText = name
+              swiperHeroNameEl.innerText = character
           
-              card.appendChild(nameEl)
-              card.appendChild(characterEl)
-              card.appendChild(profile_pathEl)
-              return card;
+
+
+              actorsSlideEl.className = 'swiper-slide'  
+              swiperActorContainerEl.className = 'swiper__actor-container'
+              swiperActorNameEl.className = 'swiper__actor-name'
+              swiperHeroNameEl.className = 'swiper__hero-name'
+
+
+              actorsSlideEl.appendChild(profile_pathEl)
+              actorsSlideEl.appendChild(swiperActorContainerEl)
+              swiperActorContainerEl.appendChild(swiperActorNameEl)
+              swiperActorContainerEl.appendChild(swiperHeroNameEl)
+              return actorsSlideEl;
               }
             
 
-          fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits`, options)
-          .then(FilmActors => FilmActors.json())
-          .then(FilmActors => {
-           getActorList(FilmActors.cast)
-          /console.log(FilmActors.cast);
-          })
-          .catch(err => console.error(err));
-       
-          function getActorList(list) {
-              let slider = document.querySelector("#myRange");
-              let output = document.querySelector("#demo");
-              output.innerHTML = slider.value; 
-                             
-              let actorsQuantity = 1; 
-              actorsEl.innerHTML = ''; 
-              let actorsList = list.slice(0, actorsQuantity);
-              actorsList.forEach(item => {
-              const card = renderActorsCard(item); 
-              actorsEl.appendChild(card);
-            });
 
-              slider.oninput = function () {
-                  output.innerHTML = this.value;  
-                  actorsQuantity = this.value;  
-                  actorsEl.innerHTML = ''; 
-                  let actorsList = list.slice(0, actorsQuantity);
-                  actorsList.forEach(item => {
-                  const card = renderActorsCard(item); 
-                  actorsEl.appendChild(card);
-              });
-            };
+
+
+           // ACTORS SWIPER
+           
+
+           var swiper = new Swiper(".swiperActors", {
+            slidesPerView: 6,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              clickable: true,
+            },
+          });
+
+
+            // SIMILAR SWIPER
+
+            // var swiper = new Swiper(".swiperSimilar", {
+            //   slidesPerView: 5,
+            //   spaceBetween: 30,
+            //   navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev",
+            //     clickable: true,
+            //   },
+            // });
+  
+  
+  
+   
+    const swiperMain = document.querySelector("swiper-container");
+    
+    const params = {
+      injectStyles: [
+        `
+          .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            text-align: right;
+            line-height: 20px;
+            font-size: 12px;
+            color: #000;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.2);
           }
-            
-
-});
+    
+          .swiper-pagination-bullet-active {
+            color: #fff;
+            background: #007aff;
+          }
+          `,
+      ],
+      pagination: {
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + "</span>";
+        },
+      },
+    };
+    
+    Object.assign(swiperMain, params);
+    
+    swiperMain.initialize();
+    
+    
+        
+})
