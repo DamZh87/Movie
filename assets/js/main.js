@@ -28,7 +28,7 @@ const options = {
   }
   
   
-          fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=2`, options)
+          fetch(` https://api.themoviedb.org/3/trending/movie/week?language=ru-RU`, options) //Трендовые за неделю
           .then(JustRealeasedList => JustRealeasedList.json())
           .then(JustRealeasedList => {
           //  console.log(JustRealeasedList);  
@@ -45,7 +45,9 @@ const options = {
             });
           }
          
-  
+
+                       
+         
   
     const swiperHeaderEl = document.querySelector('.swiper-two');
     function renderMovieswiperSlide({
@@ -87,13 +89,15 @@ const options = {
              
                     slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
                     movieNameEl.textContent = title
-                    movieYearEl.textContent = release_date
+                    movieYearEl.textContent = release_date.slice(0, 4)
                     movieGenreEl.textContent = 'Жанр'
                     headerHeroButtonsContinueEl.textContent = 'Трейлер'
                     headerHeroButtonsContinueEl.setAttribute('data-hystmodal',"#swiper_movie")
                     headerHeroButtonsWatchswiperHeaderEl.textContent = 'Add Watchlist'
                     movieDescriptEl.textContent = overview
                     movieNameEl.setAttribute('data-id', id)
+
+                   
   
                             swiperSlide.appendChild(headerHeroEl)
                             headerHeroEl.appendChild(headerHeroNameEl)
@@ -115,6 +119,32 @@ const options = {
                               location.href='film.html';
                               localStorage.setItem('filmId', filmId1) ;
                             });
+
+
+                            headerHeroButtonsContinueEl.addEventListener('click', () => {
+
+                              const movie_id = movieNameEl.getAttribute('data-id');
+                              const filmId1 = 
+
+
+                              fetch(` https://api.themoviedb.org/3/movie/${movie_id}/videos?language=ru-RU`, options) // Трейлер
+                              .then(trailerID => trailerID.json())
+                              .then(trailerID => {
+        
+        
+                               console.log(trailerID.results[0].key);  
+                                let trailer = trailerID.results[0].key
+
+                                document.querySelector('.trailer').setAttribute('src', `https://www.youtube.com/embed/${trailer}`)
+
+                                console.log(trailer); 
+                              })
+                              .catch(err => console.error(err));
+                      
+   
+                            });  
+
+
         return swiperSlide;
       }
   
@@ -255,12 +285,40 @@ const options = {
         
        
   
-  
-  
-  
+  // ПОГОДА ))
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=53.28245&lon=69.39692&&APPID=ac459d485ea690678b31c37c02d67868&units=metric&lang=ru')
+        .then(weather => weather.json())
+        .then(weather => {
 
 
+          document.querySelector('.temp').textContent +=  weather.main.temp + '°'
+          document.querySelector('.humidity').textContent +=  + weather.main.humidity +' %'
+          document.querySelector('.description').textContent += weather.weather[0].description
+          document.querySelector('.weather_icon').setAttribute('src', 'http://openweathermap.org/img/w/'+weather.weather[0].icon+'.png')
+          document.querySelector('.wind_speed').textContent +=  weather.wind.speed +' м/с'
         
+           console.log(weather);
+        
+           
+        })
+        .catch(err => console.error(err));
+  
+        
+
+  //КУРС ВАЛЮТ
+  
+  fetch('https://v6.exchangerate-api.com/v6/5dbb5a87ff1222752698a259/pair/USD/KZT')
+  .then(currency => currency.json())
+  .then(currency => {
+
+    let cur = currency.conversion_rate.toString()
+
+  document.querySelector('.currency').textContent += cur.slice(0, 5)+' тенге' + '😮'
+     
+  
+     
+  })
+  .catch(err => console.error(err));
   
   
   
@@ -306,6 +364,9 @@ const options = {
     
     swiperMain.initialize();
     
+
+
+
     const myModal = new HystModal({
       linkAttributeName: "data-hystmodal",
       catchFocus: true,
@@ -314,6 +375,7 @@ const options = {
       beforeOpen: function (modal) {
        },
       afterClose: function (modal) {
+        document.querySelector('.trailer').setAttribute('src', '')
       },
     });
     

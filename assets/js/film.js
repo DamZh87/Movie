@@ -87,8 +87,31 @@ const actorsEl = document.querySelector('.swiper-wrapper');
               }
             
 
+              document.querySelector('.header__hero-buttons-continue').addEventListener('click', () => {
+
+                
 
 
+                fetch(` https://api.themoviedb.org/3/movie/${movie_id}/videos?language=ru-RU`, options) // Трейлер
+                .then(trailerID => trailerID.json())
+                .then(trailerID => {
+
+
+                 console.log(trailerID.results[0].key);  
+                  let trailer = trailerID.results[0].key
+
+                  document.querySelector('.trailer').setAttribute('src', `https://www.youtube.com/embed/${trailer}`)
+
+                  console.log(trailer); 
+                })
+                .catch(err => console.error(err));
+        
+
+              });  
+
+
+
+              
 
            // ACTORS SWIPER
            
@@ -109,18 +132,9 @@ const actorsEl = document.querySelector('.swiper-wrapper');
           });
 
 
-            // SIMILAR SWIPER
 
-            // var swiper = new Swiper(".swiperSimilar", {
-            //   slidesPerView: 5,
-            //   spaceBetween: 30,
-            //   navigation: {
-            //     nextEl: ".swiper-button-next",
-            //     prevEl: ".swiper-button-prev",
-            //     clickable: true,
-            //   },
-            // });
-  
+
+
   
   
    
@@ -158,6 +172,16 @@ const actorsEl = document.querySelector('.swiper-wrapper');
     
     swiperMain.initialize();
     
-    
+    const myModal = new HystModal({
+      linkAttributeName: "data-hystmodal2",
+      catchFocus: true,
+      waitTransitions: true,
+      closeOnEsc: false,
+      beforeOpen: function (modal) {
+       },
+      afterClose: function (modal) {
+        document.querySelector('.trailer').setAttribute('src', '')
+      },
+    });
         
 })

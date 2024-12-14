@@ -105,7 +105,7 @@
                      <a
                         class="header__hero-buttons-continue"
                         href="#"
-                        data-hystmodal="#swiper_movie"
+                        data-hystmodal2="#film_trailer"
                         >Трейлер</a
                      >
                      <a class="header__hero-buttons-watchlist" href="#"
@@ -119,6 +119,33 @@
 
       <main class="main">
          <div class="container">
+            <div class="hystmodal" id="film_trailer" aria-hidden="true">
+               <div class="hystmodal__wrap">
+                  <div
+                     class="hystmodal__window"
+                     role="dialog"
+                     aria-modal="true"
+                  >
+                     <button data-hystclose class="hystmodal__close">
+                        Закрыть
+                     </button>
+
+                     <iframe
+                        class="trailer"
+                        width="560"
+                        height="315"
+                        src=""
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscrene
+                     ></iframe>
+
+                     <!-- <video controls="controls" src="./assets/JS.mp4" autoplay></video> -->
+                  </div>
+               </div>
+            </div>
             <!-- STORY LINE BLOCK -->
 
             <h3>Story line</h3>
@@ -173,23 +200,17 @@
             <!-- SIMILAR FOR YOU BLOCK -->
 
             <h3>Similar for you</h3>
-            <!-- 
-              <div class="swiper swiperSimilar">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                  <div class="swiper-slide similar"><img src="./assets/img/film/similar/1.jpg" alt="similar"></div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                
-              </div> -->
+
+            <swiper-container
+               class="mySwiper swiperSimilar"
+               pagination="true"
+               pagination-clickable="true"
+               slides-per-view="5"
+               space-between="30"
+               free-mode="true"
+            >
+            </swiper-container>
+            
          </div>
       </main>
 
