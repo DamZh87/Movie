@@ -10,7 +10,7 @@ const options = {
   }
   };
   
-  fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=en-US&page=1`, options)
+  fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
   .then(movieList => movieList.json())
   .then(movieList => {
     //console.log(movieList);  
@@ -28,7 +28,7 @@ const options = {
   }
   
   
-          fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=en-US&page=2`, options)
+          fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=2`, options)
           .then(JustRealeasedList => JustRealeasedList.json())
           .then(JustRealeasedList => {
           //  console.log(JustRealeasedList);  
@@ -41,6 +41,24 @@ const options = {
                   list.forEach(item => {
               const swiperSlideJustReleasedEl = renderJustRealeased(item); 
               swipeJustReleasedEl.appendChild(swiperSlideJustReleasedEl);
+            
+            });
+          }
+
+
+          fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=2`, options)
+          .then(SimilarList => SimilarList.json())
+          .then(SimilarList => {
+          //  console.log(SimilarList);  
+            getSimilar(SimilarList.results);  
+          })
+          .catch(err => console.error(err));
+  
+          function getSimilar(list) {
+            swipeSimilarEl.innerHTML = ''; 
+                  list.forEach(item => {
+              const swiperSlideSimilarEl = renderSimilar(item); 
+              swipeSimilarEl.appendChild(swiperSlideSimilarEl);
             
             });
           }
@@ -89,7 +107,7 @@ const options = {
                     movieNameEl.textContent = title
                     movieYearEl.textContent = release_date
                     movieGenreEl.textContent = 'Жанр'
-                    headerHeroButtonsContinueEl.textContent = 'Watch Trailer'
+                    headerHeroButtonsContinueEl.textContent = 'Трейлер'
                     headerHeroButtonsContinueEl.setAttribute('data-hystmodal',"#swiper_movie")
                     headerHeroButtonsWatchswiperHeaderEl.textContent = 'Add Watchlist'
                     movieDescriptEl.textContent = overview
@@ -164,6 +182,54 @@ const options = {
   
           return swiperSlideJustReleasedEl;
         }
+
+// SWIPER SIMILAR MOVIES
+
+
+      const swipeSimilarEl = document.querySelector('.swiperSimilar');
+      function renderSimilar({
+        poster_path = '',
+        title = ''  ,
+        vote_average ='' ,
+        id = '',
+      }) 
+          {
+          const swiperSlideSimilarEl = document.createElement('swiper-slide');
+          const swiperMovieNameEl = document.createElement('p');
+          const swiperRatingGenreEl = document.createElement('div');
+          const swiperMovieRatingEl = document.createElement('p');
+          const swiperNovieGenre = document.createElement('p');
+          const img_JREl = document.createElement ('img')
+         
+          swiperSlideSimilarEl.className = 'slide_JR'
+               swiperMovieNameEl.className = 'swiper_movie-name'
+               swiperRatingGenreEl.className = 'swiper_rating-genre'
+               swiperMovieRatingEl.className = 'swiper_movie-rating'
+               swiperNovieGenre.className = 'swiper_movie-genre'
+               img_JREl.className = 'img_JR'
+  
+                  swiperMovieNameEl.innerText = title
+                  swiperMovieRatingEl.innerText = vote_average.toString().slice(0 , 3);
+                  swiperNovieGenre.innerText = 'Пока нет'
+                  img_JREl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${poster_path}`);
+                  swiperMovieNameEl.setAttribute('data-id', id)
+    
+                  swipeJustReleasedEl.appendChild(swiperSlideSimilarEl)
+                  swiperSlideSimilarEl.appendChild(swiperMovieNameEl)
+                  swiperSlideSimilarEl.appendChild(swiperRatingGenreEl)
+                  swiperRatingGenreEl.appendChild(swiperMovieRatingEl) 
+                  swiperRatingGenreEl.appendChild(swiperNovieGenre) 
+                  swiperSlideSimilarEl.appendChild(img_JREl)
+       
+  
+                  swiperMovieNameEl.addEventListener('click', () => {
+                    const filmId = swiperMovieNameEl.getAttribute('data-id');
+                    location.href='film.html';
+                    localStorage.setItem('filmId', filmId) ;
+                  });
+  
+          return swiperSlideSimilarEl;
+        }
   
   
   
@@ -190,6 +256,28 @@ const options = {
   
   
         // SEARCH CODE
+
+
+        const searchEl = document.querySelector('#find_cont');
+        function renderSearch({
+               title = ''  ,
+              id = ' ' ,
+        }) 
+            {
+              const sItem = document.createElement('div')
+             const sResultEl = document.createElement('p');
+           
+           
+             sResultEl.className = 's_result'
+              sResultEl.innerText = title
+                    
+              sItem.appendChild(sResultEl)
+         
+              sItem.setAttribute('data-id', id) 
+                    
+            return sItem;
+            
+          }
     
         const input = document.querySelector("#find");
         input.addEventListener("input", updateValue);
@@ -197,8 +285,7 @@ const options = {
                   let find = e.target.value;
                   console.log(find);
                   
-                  // document.querySelector('#search').addEventListener('click', () => {  
-                  // let find = document.querySelector('#find').value;
+
                   const options = {
                       method: 'GET',
                       headers: {
@@ -207,11 +294,11 @@ const options = {
                       }
                     };
                     
-                        fetch(`https://api.themoviedb.org/3/search/movie?query=${find}`, options)
+                        fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&language=ru-RU&query=${find}`, options)
                       .then(searchList => searchList.json())
                       .then(searchList => {
                         console.log(searchList);  
-                        sMovieList(searchList.results); 
+                        sMovieList(searchList.results.slice(0, 5)); 
                         console.log(searchList.results);   
                       })
                       .catch(err => console.error(err));
@@ -232,30 +319,14 @@ const options = {
                       }
         }
         
-        const searchEl = document.querySelector('#find_cont');
-        function renderSearch({
-               title = ''  ,
-              
-        }) 
-            {
-              const sItem = document.createElement('div')
-             const sResultEl = document.createElement('p');
-           
-           
-           
-              sResultEl.innerText = title
-                    
-              sItem.appendChild(sResultEl)
-         
-    
-                    
-            return sItem;
-            
-          }
+       
   
   
   
   
+
+
+        
   
   
   
@@ -307,12 +378,8 @@ const options = {
       waitTransitions: true,
       closeOnEsc: false,
       beforeOpen: function (modal) {
-       // console.log("Message before opening the modal");
-        //console.log(modal); //modal window object
-      },
+       },
       afterClose: function (modal) {
-        //console.log("Message after modal has closed");
-       //console.log(modal); //modal window object
       },
     });
     

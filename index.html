@@ -25,7 +25,7 @@
 
         <div class="container">
             <div class="header__menu">
-                <div class="header__menu-logo"><img src="./assets/img/header/logo.png" alt="logo"></div>
+                <a href="./index.html"><div class="header__menu-logo"><img src="./assets/img/header/logo.png" alt="logo"></div></a>
                 <div class="header__menu-item">
                         <a href="#main">Home</a>
                         <a href="#top-movies">Discover</a>
@@ -42,12 +42,12 @@
 
                                <!-- SEARCHING FORM -->
 
-                               <div class="search-container-hide" id="find_cont">
+                               <div class="search-container-hide" >
                                 <a href="#" class="search-button-close">X</a>
                                 <form action="/search" method="get">
-                                    <input type="text" placeholder="Search..." class="search-input" id="find">
+                                    <input type="text" placeholder="Поиск..." class="search-input" id="find">
                                     
-                                    
+                                    <div  id="find_cont"></div>
                                     <!-- <button type="submit" class="search-button">Search</button> -->
                                 </form>
                             </div>
@@ -61,8 +61,13 @@
     </header>
 
     <main class="main">
+
+
+
+
+
         <div class="container">
-            <h3>Just released</h3>
+            <h3>Недавно вышедшие</h3>
         <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-dynamic-bullets="true" pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30" grab-cursor="true" navigation="true" >
     
         </swiper-container>
@@ -76,7 +81,7 @@
 
                 
                     
-                    <video controls="controls" src="./assets/JS.mp4" autoplay>Lorem ipsum dolor sit amet.</video>
+                    <video controls="controls" src="./assets/JS.mp4" autoplay></video>
                     
                        
                 </div>
