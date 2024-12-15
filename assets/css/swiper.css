@@ -39,6 +39,7 @@ swiper-slide {
  left: 0;
  z-index: 3;
  color: rgba(255, 255, 255, 0.692);
+ cursor: pointer;
 }
 
 .swiper_movie-rating {
