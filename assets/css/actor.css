@@ -19,6 +19,38 @@ body{
 }
 
 
+.container_about-actor{
+   display: flex;
+   flex-direction: row-reverse;
+   justify-content: space-around;
+   max-width: 80vw;
+}
+
+.about-actor{
+    max-width: 50vw;
+    padding-top: 1rem;
+}
+
+.actor_img_container{
+    max-width: 30vw;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    
+}
+
+.actor_img {
+    width: 100%;           
+    height: auto;          
+    aspect-ratio: 3 / 4;   
+    object-fit: cover;  
+    border-radius: 5px;    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
 /* HEADER */
 
 .header {
@@ -26,9 +58,8 @@ body{
     width: 100%;
     height: 85vh;
     background-color: rgb(59, 56, 56);
-    background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
+    background-image: url(../img/actor/back.jpg);
                 
     }
 
@@ -59,12 +90,13 @@ body{
     margin-top: 15px;
     top: 0;
     width: 80vw;
-    z-index: 2;
+    z-index: 10;
     position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
+
 }
 
 
@@ -122,7 +154,7 @@ body{
     }
 
     .header__hero{
-    position: absolute;
+    position: relative;
     display: flex;
     z-index: 5;
     color: white;
@@ -134,6 +166,7 @@ body{
     }
 
     .header__hero-name{
+        margin-top: 5rem;
         font-size: 32px;
         font-weight: 600;
         font-family: inherit;
@@ -257,114 +290,16 @@ h3{
     margin: 3.5rem 0 1.5rem 0;
 }
 
-.story__line{
+.biography{
     font-size: 14px;
     line-height: 22px;
     color: grey;
     font-family: inherit;
     text-align: justify;
+    padding-right: 1rem;
 
 }
 
-
-/* ACTORS SWIPER */
-
-
-.swiper-wrapper{
-        
+.actor-name{
+    padding-left: 1rem;
 }
-
-.swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    margin: 0;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: flex-start;
-  }
-
-  .swiper-slide img {
-    border-radius: 50%;
-    display: block;
-    aspect-ratio: 1/1;
-    width: 25%;
-    height: 25%;
-    object-fit: cover;
-    
-  }
-
-  .swiper__actor-container{
-    display: flex;
-    flex-direction: column;
-    margin-left: 0.5rem;
-
-  }
-
-  .swiper__actor-photo{
-    
-  }
-
-  .swiper__actor-name{
-    color: white;
-    font-size: 14px;
-    line-height: 22px;
-    font-family: inherit;
-    cursor: pointer;
-    
-  }
-
-  .swiper__hero-name{
-    font-size: 14px;
-    line-height: 22px;
-    color: grey;
-    font-family: inherit;
-  }
-
-
-  /* SCREENTSHOTS_BLOCK */
-  
-  .screenshots__block img{
-    align-self: center;
-    justify-self: center;
-    width: 20vw;
-    border-radius: 20px;
-    
-}
-
-  .screenshots__block{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-}
-    
-
-/* SIMILAR SWIPER */
-
-.swiper similar{
-    width: 100%;
-    height: 20%;
-  }
-
-  .swiper-slide similar {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide similar img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-

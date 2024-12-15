@@ -56,7 +56,8 @@ const actorsEl = document.querySelector('.swiper-wrapper');
           function renderActors({
               name = '',
               character ='',
-              profile_path ='',           
+              profile_path ='',  
+              id = '',         
           }) 
               {
               const actorsSlideEl = document.createElement('div');
@@ -71,21 +72,39 @@ const actorsEl = document.querySelector('.swiper-wrapper');
               swiperActorNameEl.innerText = name
               swiperHeroNameEl.innerText = character
           
-
-
               actorsSlideEl.className = 'swiper-slide'  
               swiperActorContainerEl.className = 'swiper__actor-container'
               swiperActorNameEl.className = 'swiper__actor-name'
               swiperHeroNameEl.className = 'swiper__hero-name'
+              swiperActorNameEl.setAttribute('data-actor', id)
 
 
               actorsSlideEl.appendChild(profile_pathEl)
               actorsSlideEl.appendChild(swiperActorContainerEl)
               swiperActorContainerEl.appendChild(swiperActorNameEl)
               swiperActorContainerEl.appendChild(swiperHeroNameEl)
-              return actorsSlideEl;
+
+              swiperActorNameEl.addEventListener('click', () => {
+                const actorId = swiperActorNameEl.getAttribute('data-actor');
+                      location.href='actor.html';
+                      localStorage.setItem('actorId', actorId) ;
+               })
+
+
+         return actorsSlideEl;
+
+
+
+
+
               }
             
+         
+
+
+        
+  
+
 
               document.querySelector('.header__hero-buttons-continue').addEventListener('click', () => {
 
