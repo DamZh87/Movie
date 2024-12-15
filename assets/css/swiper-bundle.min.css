@@ -82,6 +82,9 @@
 
 .swiper-backface-hidden .swiper-slide {
     transform: translateZ(0);
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden
 }
