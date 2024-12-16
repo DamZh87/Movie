@@ -306,4 +306,24 @@ const options = {
     
   
   
+  // RANDOM SWIPER
+
+  var swiper = new Swiper(".randomSwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+
+  // footer
+  var currentYear = new Date().getFullYear();
+
+  document.getElementById('copyright').innerHTML = ' &copy; ' + new Date().getFullYear() + ' FrontDead';
   
