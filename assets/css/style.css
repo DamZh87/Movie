@@ -13,6 +13,7 @@ body{
 }
 
 .container{
+    overflow: hidden;
     max-width: 80vw;
     margin: 0 auto;
 }
@@ -141,7 +142,7 @@ margin: 10rem;
     }
 
 .header__menu {
-    margin-top: 15px;
+    padding: 1rem 0 .5px 0;
     top: 0;
     width: 80vw;
     z-index: 2;
@@ -150,6 +151,7 @@ margin: 10rem;
     justify-content: space-between;
     align-items: center;
     color: white;
+    backdrop-filter: blur(2px);
 }
 
 
@@ -335,7 +337,8 @@ margin: 10rem;
     }
 
 main{
-    height: 500vh;
+    
+    height: 1vh;
     background-color: black;
 }
 
@@ -513,3 +516,119 @@ padding-top: 10rem;
     content: url(../img/main/swiper/star.svg);
     margin-right: .2rem;
 }
+
+
+
+
+/* carusel */
+@keyframes moveSlideshow {
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .element {
+    transform: translate3d(0, 0, 0); /* Hey browser, please use my GPU */
+    position: relative;
+    overflow: hidden;
+    animation-name: moveSlideshow;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 20s;
+    animation-direction: normal;
+    animation-delay: 0s;
+    display: flex;
+    width: max-content;
+    min-width: 200%;
+    flex-shrink: 0;
+  }
+  .bar {
+    width: 50%;
+    flex-shrink: 0;
+    opacity: 1;
+  }
+  
+  .items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .item {
+    height: 120px;
+    min-width: 220px;
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+  }
+
+  /* footer */
+
+
+  .footer__all{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    border-radius: 10px;
+    margin: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    border-top: 3px solid #4a4f52;
+  
+    
+  }
+  
+.weather{
+    margin-left: 1rem;
+    margin-right: 3rem;
+    font-size: 15px;
+    width: 550px;
+    display: flex;
+    font-family: "Inter", sans-serif;
+}
+  
+.currency{
+    margin-left: 2rem;
+    margin-right: 0;
+}   
+   .tele__img, .inst__img, .wts__img{
+    width: 2rem;
+    margin-right: 5px;
+    
+}
+
+ .teleg, .inst, .wts{
+    color: #fff;
+ }  
+
+ .wts{
+    margin-right: 1rem;
+ }
+   .soc{
+    
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 250px;
+    align-items: center;
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+}    
+
+   .temp_img{
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    margin-right: 0;
+
+   } 
+  
+   .cop{
+    display: flex;
+    width: 200px;
+   }

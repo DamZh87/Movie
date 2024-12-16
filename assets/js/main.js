@@ -320,3 +320,19 @@ const options = {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  var swiper = new Swiper(".swiper-JR", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+
+
+  // footer
+  var currentYear = new Date().getFullYear();
+
+  document.getElementById('copyright').innerHTML = ' &copy; ' + new Date().getFullYear() + ' FrontDead';
+  

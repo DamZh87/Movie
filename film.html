@@ -30,10 +30,10 @@
                ></a>
                <div class="header__menu-item">
                   <a href="./index.html">Главная</a>
-                        <a href="#top-movies">Недавно вышедшие</a>
-                        <a href="#about">Случайный фильм</a>
-                        <a href="#about">Форум</a>
-                        <a href="./about.html">О нас</a>
+                  <a href="#story-line">Сюжет</a>
+                  <a href="#actors">Актеры</a>
+                  <a href="#screens">Кадры не из фильма</a>
+                  <a href="#similar">Похожие</a>
                </div>
                <div class="header__menu-user">
                   <ul>
@@ -148,7 +148,7 @@
             </div>
             <!-- STORY LINE BLOCK -->
 
-            <h3>Story line</h3>
+            <h3 id="story-line">Сюжет</h3>
             <p class="story__line">
                Фильм — это искусство, которое позволяет зрителям погрузиться в
                мир воображаемых историй. С помощью уникальных визуальных
@@ -165,7 +165,7 @@
 
             <!-- TOP CAST BLOCK -->
 
-            <h3>Актеры</h3>
+            <h3 id="actors">Актеры</h3>
 
             <div class="swiper swiperActors">
                <div class="swiper-wrapper"></div>
@@ -176,7 +176,7 @@
 
             <!-- SCREENSHOTS BLOCK -->
 
-            <h3>Screenshots</h3>
+            <h3 id="screens">Screenshots</h3>
 
             <div class="screenshots__block">
                <img
@@ -197,18 +197,77 @@
                />
             </div>
 
+            <!-- SIMILAR FOR YOU BLOCK -->
 
-        <!-- SIMILAR FOR YOU BLOCK -->
+            <h3 id="similar">Похожие</h3>
 
-        <h3>Похожие</h3>
-            
-        <swiper-container class="mySwiper swiperSimilar" pagination-dynamic-bullets="true" pagination="true" pagination-clickable="true" slides-per-view="5" space-between="30"
-  free-mode="true">
-  
-</swiper-container>
+            <swiper-container
+               class="mySwiper swiperSimilar"
+               pagination-dynamic-bullets="true"
+               pagination="true"
+               pagination-clickable="true"
+               slides-per-view="5"
+               space-between="30"
+               free-mode="true"
+            >
+            </swiper-container>
          </div>
       </main>
-     
+
+      <footer class="footer">
+         
+            <div class="footer__all" id="footer__all">
+               <!-- <div class="cop">
+                         &copy; 2024 <pre>  FrondDead</pre>
+                     </div> -->
+               <div class="weather">
+                  <p>
+                     Погода в Кокшетау:
+                     <img src="" class="weather_icon" alt="" />
+                  </p>
+                  <img
+                     src="./assets/img/footer/temp1.png"
+                     alt=""
+                     class="temp_img"
+                  />
+                  <p class="temp"></p>
+                  <!-- <p class="humidity">Влажность воздуха: </p> -->
+                  <p class="description"></p>
+                  <!-- <p class="wind_speed" >Скорость ветра: </p> -->
+
+                  <p class="currency">Один доллар равен </p>
+               </div>
+               <p class="cop" id="copyright">Copyright &copy; FrontDead</p>
+               <div class="soc">
+                  <img
+                     class="tele__img"
+                     src="./assets/img/footer/github.svg"
+                     alt=""
+                  />
+                  <a
+                     class="teleg"
+                     href="https://github.com/DamZh87"
+                     target="_blank"
+                  >
+                     DamZh87</a
+                  >
+                  <a
+                     class="inst"
+                     href="https://github.com/22i01"
+                     target="_blank"
+                     >22i01</a
+                  >
+                  <a
+                     class="wts"
+                     href="https://github.com/AlexVah02"
+                     target="_blank"
+                     >Alex</a
+                  >
+               </div>
+            </div>
+         
+      </footer>
+
       <script src="./assets/lib/swiper-bundle.min.js"></script>
       <script src="./assets/lib/swiper-element-bundle.min.js"></script>
       <script src="./assets/lib/hystmodal.min.js"></script>
