@@ -52,7 +52,9 @@ body{
 }
 
 /* HEADER */
-
+.logo_png{
+    width: 150px;
+}
 .header {
     
     width: 100%;

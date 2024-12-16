@@ -1,17 +1,38 @@
 @import url('./swiper.css');
 
 
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
     
 }
 
 body{
     background-color: black;
+    
 }
+
+.main{
+  height: 100%;
+  background-image: url(../img/actor/back.jpg);
+  position: relative;
+  background-repeat:repeat
+  
+  }
+  .main::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    /* z-index: 2; */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0) 50%);
+  }
 
 .container{
   overflow: hidden;
@@ -21,6 +42,11 @@ body{
 
 
 /* HEADER */
+
+.logo_png{
+  width: 150px;
+}
+
 
 .header {
     
@@ -36,28 +62,28 @@ body{
 
 .header::after {
     content: '';
-    width: 100vw;
+    width: 100%;
     height: 100%;
     display: block;
     position: absolute;
     bottom: 0;
     z-index: 1;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0) 80%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 2%, rgba(0, 0, 0, 0) 20%);
   }
 
 .header::before {
     content: '';
-    width: 100vw;
+    width: 100%;
     height: 100%;
     display: block;
     position: absolute;
     top: 0;
     z-index: 2;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 2%, rgba(0, 0, 0, 0) 20%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 80%);
   } 
 
 .header__menu {
-    margin-top: 15px;
+    padding: 1rem 0 .5px 0;
     top: 0;
     width: 80vw;
     z-index: 2;
@@ -66,6 +92,7 @@ body{
     justify-content: space-between;
     align-items: center;
     color: white;
+    backdrop-filter: blur(2px);
 }
 
 
@@ -254,6 +281,8 @@ main{
 h3{
     font-size: 25px;
     font-weight: 600;
+    position: relative;
+    z-index: 2;
     font-family: inherit;
     color: white;
     margin: 3.5rem 0 1.5rem 0;
@@ -261,6 +290,8 @@ h3{
 
 .story__line{
     font-size: 14px;
+    position: relative;
+    z-index: 2;
     line-height: 22px;
     color: grey;
     font-family: inherit;
@@ -420,11 +451,12 @@ h3{
   .footer__all{
     display: flex;
     align-items: center;
+    padding: 0 2rem;
     justify-content: space-between;
-    height: 4rem;
+    height: 7rem;
+    width: 100%;
     border-radius: 10px;
-    margin: 8px;
-    margin-bottom: 1rem;
+    margin-top: 15rem;
     overflow: hidden;
     color: #fff;
     font-family: "Inter", sans-serif;
@@ -434,10 +466,8 @@ h3{
   }
   
 .weather{
-    margin-left: 1rem;
-    margin-right: 3rem;
     font-size: 15px;
-    width: 550px;
+    width: 40%;
     display: flex;
     font-family: "Inter", sans-serif;
 }
@@ -458,26 +488,23 @@ h3{
  }  
 
  .wts{
-    margin-right: 1rem;
+   
  }
+ 
    .soc{
     
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 100%;
-    width: 250px;
+    width: 40%;
     align-items: center;
     background-color: #000;
     font-family: "Inter", sans-serif;
+}   
 
-   
-  
-    
-
-}    
-
-
-
+.soc a{
+  margin-left: 1rem;
+}
 
    .temp_img{
     display: flex;
@@ -489,5 +516,5 @@ h3{
   
    .cop{
     display: flex;
-    width: 200px;
+    
    }

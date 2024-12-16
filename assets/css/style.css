@@ -283,6 +283,30 @@ margin: 10rem;
         bottom: 20%;
         
     }
+
+
+    .random_film_trailer_btn{
+        color: white;
+        cursor: pointer;
+        margin-right: 1.5rem;
+        text-decoration: none;
+        background-color: #00925D;
+        padding: .8rem 1.5rem;
+        padding-left: 2.5rem;
+        font-size: 14px;
+        border-radius: 10px;
+        position: relative;
+    }
+    .random_film_trailer_btn::before{
+        content: url('../img/header/continue-icon.png');
+        position: absolute;
+        left: 8%;
+        bottom: 20%;
+        
+    }
+
+
+
     .header__hero-buttons-watchlist{
         color: white;
         text-decoration: none;
@@ -352,7 +376,9 @@ h3{
 .movie_name, .swiper_movie-name{
     cursor: pointer;
 }
-
+.logo_png{
+    width: 150px;
+}
 
 /* RANDOM BLOCK */
 
@@ -569,11 +595,12 @@ padding-top: 10rem;
   .footer__all{
     display: flex;
     align-items: center;
+    padding: 0 2rem;
     justify-content: space-between;
-    height: 4rem;
+    height: 7rem;
+    width: 100%;
     border-radius: 10px;
-    margin: 8px;
-    margin-bottom: 1rem;
+    margin-top: 15rem;
     overflow: hidden;
     color: #fff;
     font-family: "Inter", sans-serif;
@@ -583,10 +610,8 @@ padding-top: 10rem;
   }
   
 .weather{
-    margin-left: 1rem;
-    margin-right: 3rem;
     font-size: 15px;
-    width: 550px;
+    width: 40%;
     display: flex;
     font-family: "Inter", sans-serif;
 }
@@ -607,26 +632,23 @@ padding-top: 10rem;
  }  
 
  .wts{
-    margin-right: 1rem;
+   
  }
+ 
    .soc{
     
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 100%;
-    width: 250px;
+    width: 40%;
     align-items: center;
     background-color: #000;
     font-family: "Inter", sans-serif;
+}   
 
-   
-  
-    
-
-}    
-
-
-
+.soc a{
+  margin-left: 1rem;
+}
 
    .temp_img{
     display: flex;
@@ -638,5 +660,5 @@ padding-top: 10rem;
   
    .cop{
     display: flex;
-    width: 200px;
+    
    }

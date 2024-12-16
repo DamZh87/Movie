@@ -1,5 +1,3 @@
-
-//   КОД ДЛЯ API   
 const options = {
   method: 'GET',
   headers: {
@@ -7,6 +5,52 @@ const options = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZThmMTU3ZTYwMjNmODdlYTdiNWU3MGQ5MjNmOTBmOCIsIm5iZiI6MTczMzQ1NDI3NC40NDYsInN1YiI6IjY3NTI2OWMyZmExMDdkYzRlZDQwNDgxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FN8b3fNjIHpryFON3ztkvAbJXGz_ag1L79WefRFAXOU'
   }
   };
+
+
+ //RandomFilm
+
+ let randomFilmId = Math.floor(Math.random() * 1000);
+//  console.log(randomFilmId);
+
+ fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by=popularity.asc`, options)
+          .then(randomFilmRes => randomFilmRes.json())
+          .then(randomFilmRes => {
+            let randomFilm = randomFilmRes
+            console.log(randomFilm    );
+
+            randomFilm.genres.forEach(({name}) =>{
+            document.querySelector('.random__genre').textContent += ` ${name}  ` 
+             })
+            
+            document.querySelector('.random__block').style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${randomFilm.backdrop_path})`;
+            document.querySelector('.random__hero-name').textContent = randomFilm.title
+            document.querySelector('.random__descript').textContent = randomFilm.overview
+            document.querySelector('.random__year').textContent = randomFilm.release_date.slice(0, 4)
+            document.querySelector('.random__year').textContent = randomFilm.release_date.slice(0, 4)
+            document.querySelector('.random__movie-rating').textContent = randomFilm.vote_average.toString().slice(0 , 3);
+        
+
+            document.querySelector('.random_film_trailer_btn').addEventListener('click', () => {
+            //  const movie_id = document.querySelector('.random__hero-name').getAttribute('data-id');
+              
+              fetch(` https://api.themoviedb.org/3/movie/${randomFilmId}/videos?language=ru-RU`, options) // Трейлер
+              .then(trailerID => trailerID.json())
+              .then(trailerID => {
+                  let trailer = trailerID.results[0].key
+                  document.querySelector('.trailer').setAttribute('src', `https://www.youtube.com/embed/${trailer}`) 
+              })
+              .catch(err => console.error(err));
+            });  
+
+
+
+
+           })
+           
+//   КОД ДЛЯ API   
+
+
+
 
 
   //   ЗАПРОС СПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА
@@ -327,3 +371,4 @@ const options = {
 
   document.getElementById('copyright').innerHTML = ' &copy; ' + new Date().getFullYear() + ' FrontDead';
   
+ 
