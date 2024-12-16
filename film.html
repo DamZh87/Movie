@@ -29,11 +29,11 @@
                      <img src="./assets/img/header/logo.png" alt="logo" /></div
                ></a>
                <div class="header__menu-item">
-                  <a href="#main">Home</a>
-                  <a href="#top-movies">Discover</a>
-                  <a href="#about">Movie Release</a>
-                  <a href="#about">Forum</a>
-                  <a href="#about">About</a>
+                  <a href="./index.html">Главная</a>
+                        <a href="#top-movies">Недавно вышедшие</a>
+                        <a href="#about">Случайный фильм</a>
+                        <a href="#about">Форум</a>
+                        <a href="./about.html">О нас</a>
                </div>
                <div class="header__menu-user">
                   <ul>
@@ -105,11 +105,11 @@
                      <a
                         class="header__hero-buttons-continue"
                         href="#"
-                        data-hystmodal="#swiper_movie"
+                        data-hystmodal2="#film_trailer"
                         >Трейлер</a
                      >
                      <a class="header__hero-buttons-watchlist" href="#"
-                        >Не работает</a
+                        >Add Watchlist</a
                      >
                   </div>
                </div>
@@ -119,9 +119,36 @@
 
       <main class="main">
          <div class="container">
+            <div class="hystmodal" id="film_trailer" aria-hidden="true">
+               <div class="hystmodal__wrap">
+                  <div
+                     class="hystmodal__window"
+                     role="dialog"
+                     aria-modal="true"
+                  >
+                     <button data-hystclose class="hystmodal__close">
+                        Закрыть
+                     </button>
+
+                     <iframe
+                        class="trailer"
+                        width="560"
+                        height="315"
+                        src=""
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscrene
+                     ></iframe>
+
+                     <!-- <video controls="controls" src="./assets/JS.mp4" autoplay></video> -->
+                  </div>
+               </div>
+            </div>
             <!-- STORY LINE BLOCK -->
 
-            <h3>Сюжет</h3>
+            <h3>Story line</h3>
             <p class="story__line">
                Фильм — это искусство, которое позволяет зрителям погрузиться в
                мир воображаемых историй. С помощью уникальных визуальных
@@ -138,7 +165,7 @@
 
             <!-- TOP CAST BLOCK -->
 
-            <h3>Top cast</h3>
+            <h3>Актеры</h3>
 
             <div class="swiper swiperActors">
                <div class="swiper-wrapper"></div>
@@ -149,7 +176,7 @@
 
             <!-- SCREENSHOTS BLOCK -->
 
-            <h3>Кадры не из фильма</h3>
+            <h3>Screenshots</h3>
 
             <div class="screenshots__block">
                <img
@@ -170,22 +197,21 @@
                />
             </div>
 
-            <!-- SIMILAR FOR YOU BLOCK -->
 
-            <h3>Похожие</h3>
+        <!-- SIMILAR FOR YOU BLOCK -->
+
+        <h3>Похожие</h3>
             
-            <swiper-container class="mySwiper swiperSimilar" pagination-dynamic-bullets="true" pagination="true" pagination-clickable="true" slides-per-view="5" space-between="30"
-      free-mode="true">
-      
-    </swiper-container>
-              
+        <swiper-container class="mySwiper swiperSimilar" pagination-dynamic-bullets="true" pagination="true" pagination-clickable="true" slides-per-view="5" space-between="30"
+  free-mode="true">
+  
+</swiper-container>
          </div>
       </main>
-
+     
       <script src="./assets/lib/swiper-bundle.min.js"></script>
-      <script type="module" src="./assets/js/main.js"></script>
       <script src="./assets/lib/swiper-element-bundle.min.js"></script>
       <script src="./assets/lib/hystmodal.min.js"></script>
       <script src="./assets/js/film.js"></script>
-      </body>
+   </body>
 </html>
