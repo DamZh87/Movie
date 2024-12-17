@@ -219,6 +219,153 @@ const options = {
                   });
             return swiperSlideJustReleasedEl;
         }
+
+
+
+      //ЛУЧШИЕ ФИЛЬМЫ
+
+        let pageTop = 1;
+
+
+      const topListEl = document.querySelector('.week__block');
+
+      function renderTopCard({
+          title = '',
+          release_date = '',
+          poster_path = '',
+          id = '',
+          vote_average = '',
+          top = 1 
+      }) {
+          const cardTop = document.createElement('div');
+      
+          const placeTopEl = document.createElement('p');
+          const posterPathTopEl = document.createElement('img');
+      
+          const infoTopEl = document.createElement('div');
+      
+          const titleTopEl = document.createElement('p');
+          const ratingTop = document.createElement('p');
+          const yearTopEl = document.createElement('p');
+      
+              
+          posterPathTopEl.setAttribute('src', `https://image.tmdb.org/t/p/w500/${poster_path}`);
+      
+          placeTopEl.textContent = ' Топ  ' + top;
+      
+
+          yearTopEl.textContent = 'Год выхода: '+ release_date.slice(0, 4);
+
+          titleTopEl.textContent = title;
+      
+          ratingTop.textContent = 'Рейтинг: ' + vote_average.toString().slice(0, 3);
+      
+          titleTopEl.setAttribute('data-id-top', id);
+      
+          cardTop.className = 'week__card';
+      
+          placeTopEl.className = 'week__top';
+          posterPathTopEl.className = 'week__poster';
+          infoTopEl.className = 'week__info';
+          yearTopEl.className = 'week__top';
+          ratingTop.className = 'week__movie-rating';
+          titleTopEl.className = 'week__movie-name';
+      
+          
+          cardTop.appendChild(posterPathTopEl);
+          cardTop.appendChild(infoTopEl);
+          infoTopEl.appendChild(placeTopEl);
+          infoTopEl.appendChild(yearTopEl);
+          infoTopEl.appendChild(titleTopEl);
+          infoTopEl.appendChild(ratingTop);
+      
+          titleTopEl.addEventListener('click', () => {
+            const filmId = titleTopEl.getAttribute('data-id-top');
+            location.href='film.html';
+            localStorage.setItem('filmId', filmId) ;
+          });
+
+
+          posterPathTopEl.addEventListener('click', () => {
+            const filmId = titleTopEl.getAttribute('data-id-top');
+            location.href='film.html';
+            localStorage.setItem('filmId', filmId) ;
+          });
+
+
+          return cardTop;
+      }
+      
+
+    
+  
+
+      fetch(`https://api.themoviedb.org/3/movie/top_rated?language=ru-RU&page=${pageTop}`, options)
+          .then(topList => topList.json())
+          .then(topList => {
+              console.log(topList);
+              getTopList(topList.results);
+          })
+          .catch(err => console.error(err));
+      
+      function getTopList(list) {
+          let slider = document.querySelector("#myRange");
+          let output = document.querySelector("#quantity");
+          output.innerHTML = slider.value;
+      
+          let filmQuantity = 3;
+      
+          topListEl.innerHTML = '';
+      
+          
+          let topList = list.slice(0, filmQuantity);
+          topList.forEach((item, index) => {
+              const cardTop = renderTopCard({
+                  ...item,
+                  top: index + 1 
+              });
+              topListEl.appendChild(cardTop);
+          });
+      
+
+         
+
+
+
+          slider.oninput = function () {
+              output.innerHTML = this.value;
+      
+              filmQuantity = this.value;
+      
+              topListEl.innerHTML = '';
+      
+              let topList = list.slice(0, filmQuantity);
+      
+              topList.forEach((item, index) => {
+                  const cardTop = renderTopCard({
+                      ...item,
+                      top: index + 1 
+                  });
+                  topListEl.appendChild(cardTop);
+              });
+          };
+
+      
+          
+      }
+      
+
+
+
+
+
+
+
+
+
+
+
+
   
         // SEARCH FORM
         const searchBtn = document.querySelector('.search__btn');
@@ -349,8 +496,8 @@ const options = {
     });
     
   
-  
-  // RANDOM SWIPER
+
+      // RANDOM SWIPER
 
   var swiper = new Swiper(".randomSwiper", {
     slidesPerView: 3,
@@ -364,6 +511,7 @@ const options = {
       prevEl: ".swiper-button-prev",
     },
   });
+
 
 
   // footer
