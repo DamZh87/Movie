@@ -280,7 +280,7 @@ body{
     }
 
 main{
-    height: 500vh;
+    height: 1vh;
     background-color: black;
 }
 
@@ -305,3 +305,79 @@ h3{
 .actor-name{
     padding-left: 1rem;
 }
+
+
+
+  /* footer */
+
+
+  .footer__all{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    justify-content: space-between;
+    height: 7rem;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15rem;
+    overflow: hidden;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    border-top: 3px solid #4a4f52;
+  
+    
+  }
+  
+.weather{
+    font-size: 15px;
+    width: 40%;
+    display: flex;
+    font-family: "Inter", sans-serif;
+}
+  
+.currency{
+    margin-left: 2rem;
+    margin-right: 0;
+}   
+   .tele__img, .inst__img, .wts__img{
+    width: 2rem;
+    margin-right: 5px;
+    
+
+   }
+
+ .teleg, .inst, .wts{
+    color: #fff;
+ }  
+
+ .wts{
+   
+ }
+ 
+   .soc{
+    
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 40%;
+    align-items: center;
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+}   
+
+.soc a{
+  margin-left: 1rem;
+}
+
+   .temp_img{
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    margin-right: 0;
+
+   } 
+  
+   .cop{
+    display: flex;
+    
+   }

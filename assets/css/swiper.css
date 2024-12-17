@@ -121,7 +121,7 @@ swiper-slide::before {
   text-align: center;
   font-size: 18px;
   display: flex;
-  cursor: grab;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -142,14 +142,16 @@ swiper-slide::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
+ 
+  
 }
 
-.random__movie-name{
+.random__movie-name, .random__movie-name_1, .random__movie-name_2, .random__movie-name_3{
   position: absolute;
   font-family: inherit;
   font-size: .9rem;
-  bottom: 25px;
-  margin-left: .5rem;
+  bottom: 70px;
+  margin-left: 0.6rem;
   text-align: left;
   left: 0;
   z-index: 3;
@@ -182,9 +184,10 @@ swiper-slide::before {
   content: url(../img/main/swiper/star.svg);
   margin-right: .2rem;
 }
-.random__genre {
+.random__genre, .random__genre_2, .random__genre_3, .random__genre_1 {
   font-family: inherit;
   z-index: 3;
   color: rgba(255, 255, 255, 0.69);
   padding-right: 1rem;
+  padding-bottom: 10px;
 }
