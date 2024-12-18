@@ -105,24 +105,32 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        const swiperRatingGenreEl = document.createElement("div");
        const swiperMovieRatingEl = document.createElement("p");
        const swiperNovieGenre = document.createElement("p");
-       const img_JREl = document.createElement("img");
+       const img_SimEl = document.createElement("img");
        swiperSlideSimilarEl.className = "slide_JR";
        swiperMovieNameEl.className = "swiper_movie-name";
        swiperRatingGenreEl.className = "swiper_rating-genre";
        swiperMovieRatingEl.className = "swiper_movie-rating";
        swiperNovieGenre.className = "swiper_movie-genre";
-       img_JREl.className = "img_JR";
+       img_SimEl.className = "img_JR";
        swiperMovieNameEl.innerText = title;
        swiperMovieRatingEl.innerText = vote_average.toString().slice(0, 3);
        swiperNovieGenre.innerText = "Пока нет";
-       img_JREl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
+
+       if (poster_path !== undefined && poster_path !== null && poster_path !== "") {
+         
+           img_SimEl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
+       } else {
+          
+           img_SimEl.setAttribute("src", '../assets/img/none.jpg');  
+       }
+       
        swiperMovieNameEl.setAttribute("data-id", id);
        swipeSimilarEl.appendChild(swiperSlideSimilarEl);
        swiperSlideSimilarEl.appendChild(swiperMovieNameEl);
        swiperSlideSimilarEl.appendChild(swiperRatingGenreEl);
        swiperRatingGenreEl.appendChild(swiperMovieRatingEl);
        swiperRatingGenreEl.appendChild(swiperNovieGenre);
-       swiperSlideSimilarEl.appendChild(img_JREl);
+       swiperSlideSimilarEl.appendChild(img_SimEl);
        swiperMovieNameEl.addEventListener("click", () => {
            const filmId = swiperMovieNameEl.getAttribute("data-id");
            location.href = "film.html";
