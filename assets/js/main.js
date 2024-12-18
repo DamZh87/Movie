@@ -41,7 +41,16 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
    }) => {
        document.querySelector(".random__genre_1").textContent += ` ${name}  `;
    });
-   document.querySelector(".random_img_1").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm1.poster_path}`);
+
+   if (randomFilm1.poster_path !== undefined && randomFilm1.poster_path !== null && randomFilm1.poster_path !== "") {
+         
+    document.querySelector(".random_img_1").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm1.poster_path}`);
+} else {
+   
+    document.querySelector(".random_img_1").setAttribute("src", '../assets/img/none.jpg');
+}
+
+  
    document.querySelector(".random__movie-name_1").textContent = randomFilm1.title;
    document.querySelector(".random__rating_1").textContent = randomFilm1.vote_average.toString().slice(0, 3);
    document.querySelector(".random__movie-name_1").setAttribute("data-rand-id", randomFilm1.id);
@@ -62,7 +71,13 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
        }) => {
            document.querySelector(".random__genre_2").textContent += ` ${name}  `;
        });
-       document.querySelector(".random_img_2").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm2.poster_path}`);
+       if (randomFilm2.poster_path !== undefined && randomFilm2.poster_path !== null && randomFilm2.poster_path !== "") {
+         
+        document.querySelector(".random_img_2").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm2.poster_path}`);
+    } else {
+       
+        document.querySelector(".random_img_2").setAttribute("src", '../assets/img/none.jpg');
+    }
        document.querySelector(".random__movie-name_2").textContent = randomFilm2.title;
        document.querySelector(".random__rating_2").textContent = randomFilm2.vote_average.toString().slice(0, 3);
        document.querySelector(".random__movie-name_2").setAttribute("data-rand-id", randomFilm2.id);
@@ -84,7 +99,14 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
        }) => {
            document.querySelector(".random__genre_3").textContent += ` ${name}  `;
        });
-       document.querySelector(".random_img_3").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm3.poster_path}`);
+       
+       if (randomFilm3.poster_path !== undefined && randomFilm3.poster_path !== null && randomFilm3.poster_path !== "") {
+         
+        document.querySelector(".random_img_3").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm3.poster_path}`);
+    } else {
+       
+        document.querySelector(".random_img_3").setAttribute("src", '../assets/img/none.jpg');
+    }
        document.querySelector(".random__movie-name_3").textContent = randomFilm3.title;
        document.querySelector(".random__rating_3").textContent = randomFilm3.vote_average.toString().slice(0, 3);
        document.querySelector(".random__movie-name_3").setAttribute("data-rand-id", randomFilm3.id);
