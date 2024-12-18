@@ -202,17 +202,24 @@ body{
         /* padding-top: 1rem; */
         
     }
-    .header__hero-buttons-continue{
-        color: white;
-        margin-right: 1.5rem;
-        text-decoration: none;
-        background-color: #00925D;
-        padding: .8rem 1.5rem;
-        padding-left: 2.5rem;
-        font-size: 14px;
-        border-radius: 10px;
-        position: relative;
-    }
+    .header__hero-buttons-continue {
+      color: white;
+      cursor: pointer;
+      margin-right: 1.5rem;
+      text-decoration: none;
+      background-color: #00925D;
+      padding: .8rem 1.5rem;
+      padding-left: 2.5rem;
+      font-size: 14px;
+      border-radius: 10px;
+      position: relative;
+      transition: background-color 0.3s;
+      &:hover{
+          background-color: #007A4A; 
+          color: #fff; 
+          
+      }
+  }
     .header__hero-buttons-continue::before{
         content: url('../img/header/continue-icon.png');
         position: absolute;

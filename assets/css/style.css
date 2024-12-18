@@ -272,6 +272,12 @@ body {
     font-size: 14px;
     border-radius: 10px;
     position: relative;
+    transition: background-color 0.3s;
+    &:hover{
+        background-color: #007A4A; 
+        color: #fff; 
+        
+    }
 }
 
 .header__hero-buttons-continue::before {
@@ -294,7 +300,15 @@ body {
     font-size: 14px;
     border-radius: 10px;
     position: relative;
+    transition: background-color 0.3s;
+    &:hover{
+        background-color: #007A4A; 
+        color: #fff; 
+        
+    }
 }
+
+
 
 .random_film_trailer_btn::before {
     content: url('../img/header/continue-icon.png');
@@ -378,7 +392,16 @@ h3 {
 .movie_name,
 .swiper_movie-name {
     cursor: pointer;
+    transition: color 0.3s, transform 0.3s; 
+
 }
+.swiper_movie-name:hover,
+.movie_name:hover{
+    color: #f8f8f8; 
+    transform: scale(1.03);
+}
+
+
 
 .logo_png {
     width: 150px;
@@ -610,7 +633,21 @@ h3 {
     margin-top: 2rem;
     font-size: 1.5rem;
     cursor: pointer;
+    transition: color 0.3s, transform 0.3s; 
+   
 }
+
+.week__movie-name:hover{
+    color: #f8f8f8; 
+    transform: scale(1.03)
+}
+
+
+
+
+  
+
+
 
 .week__movie-genre {
     position: absolute;
