@@ -5,17 +5,16 @@ export function getWeather() {
     )
     .then((weather) => weather.json())
     .then((weather) => {
-        document.querySelector(".temp").textContent += weather.main.temp + "°";
+        console.log(weather.weather[0].icon);
+        document.querySelector(".weather_icon").setAttribute("src","http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png" );
+        document.querySelector(".temp").textContent += weather.main.temp.toString().slice(0, 4) + "°";
         document.querySelector(".humidity").textContent += weather.main.humidity + " %";
         document.querySelector(".description").textContent += weather.weather[0].description;
-        document.querySelector(".weather_icon").setAttribute(
-            "src",
-            "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png"
-        );
-        document.querySelector(".wind_speed").textContent += weather.wind.speed + " м/с";
+        document.querySelector(".wind_speed").textContent += weather.wind.speed + " м/с"; 
     })
     .catch((err) => console.error(err));
-}
+} 
+
 //
 
 //КУРС ВАЛЮТ

@@ -11,6 +11,7 @@
 
 body{
     background-color: black;
+        
 }
 
 .container{
@@ -19,37 +20,7 @@ body{
 }
 
 
-.container_about-actor{
-   display: flex;
-   flex-direction: row-reverse;
-   justify-content: space-around;
-   max-width: 80vw;
-}
 
-.about-actor{
-    max-width: 50vw;
-    padding-top: 1rem;
-}
-
-.actor_img_container{
-    max-width: 30vw;
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    
-}
-
-.actor_img {
-    width: 100%;           
-    height: auto;          
-    aspect-ratio: 3 / 4;   
-    object-fit: cover;  
-    border-radius: 5px;    
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
-}
 
 /* HEADER */
 .logo_png{
@@ -58,10 +29,10 @@ body{
 .header {
     
     width: 100%;
-    height: 85vh;
-    background-color: rgb(59, 56, 56);
+    height: 7vh;
+    background-color: rgb(17, 17, 17);
     position: relative;
-    background-image: url(../img/actor/back.jpg);
+   
                 
     }
 
@@ -165,13 +136,15 @@ body{
     font-family: "Rubik", sans-serif;
     flex-direction: column;
     align-items: flex-start;     
+
     }
 
     .header__hero-name{
-        margin-top: 5rem;
+        
         font-size: 32px;
         font-weight: 600;
         font-family: inherit;
+        
     }
 
     .header__hero-genre{
@@ -279,10 +252,27 @@ body{
         position: relative;
     }
 
+
+
+
+
+
+
+
+
+
+
 main{
-    height: 1vh;
-    background-color: black;
+    height: 100%;
+   
+    background-image: url(../img/actor/back.jpg);
 }
+
+
+
+
+
+
 
 h3{
     font-size: 25px;
@@ -302,82 +292,74 @@ h3{
 
 }
 
-.actor-name{
-    padding-left: 1rem;
-}
+.container_about-actor{
 
-
-
-  /* footer */
-
-
-  .footer__all{
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
-    justify-content: space-between;
-    height: 7rem;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 15rem;
-    overflow: hidden;
-    color: #fff;
-    font-family: "Inter", sans-serif;
-    border-top: 3px solid #4a4f52;
-  
     
-  }
-  
-.weather{
-    font-size: 15px;
-    width: 40%;
     display: flex;
-    font-family: "Inter", sans-serif;
-}
-  
-.currency{
-    margin-left: 2rem;
-    margin-right: 0;
-}   
-   .tele__img, .inst__img, .wts__img{
-    width: 2rem;
-    margin-right: 5px;
-    
-
-   }
-
- .teleg, .inst, .wts{
-    color: #fff;
- }  
-
- .wts{
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    max-width: 80vw;
+ }
+ .container_about-actor::after {
+    content: '';
+    width: 100vw;
+    height: 100%;
+    display: block;
+    position: absolute;
+    bottom: 0;
    
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0) 80%);
+  }
+
+  .container_about-actor::before {
+    content: '';
+    width: 100vw;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+   
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 2%, rgba(0, 0, 0, 0) 20%);
+  } 
+ 
+ .about-actor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+     max-width: 50vw;
+     padding-top: 1rem;
  }
  
-   .soc{
-    
-    display: flex;
-    justify-content: flex-end;
-    height: 100%;
-    width: 40%;
-    align-items: center;
-    background-color: #000;
-    font-family: "Inter", sans-serif;
-}   
+ .actor_img_container{
+     max-width: 30vw;
+     padding-top: 1rem;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 1rem;
+     
+ }
+ 
+ .actor_img {
+    padding-bottom: 2rem;
+     width: 90%;           
+     height: auto;          
+     aspect-ratio: 3 / 4;   
+     object-fit: cover;  
+     border-radius: 5px;    
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+ }
 
-.soc a{
-  margin-left: 1rem;
+
+
+.actor-name{
+    padding-bottom: 2rem;
+    color: #fff;
 }
 
-   .temp_img{
-    display: flex;
-    justify-content: center;
-    width: 2rem;
-    margin-right: 0;
 
-   } 
-  
-   .cop{
-    display: flex;
-    
-   }
+.empty{
+    height: 3rem;
+  }
