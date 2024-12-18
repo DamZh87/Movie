@@ -398,7 +398,6 @@ h3 {
 /* RANDOM BLOCK */
 
 .random__block {
-    background-image: url(../img/header/main-background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
