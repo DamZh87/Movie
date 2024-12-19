@@ -1,129 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/swiper.css">
-    <!-- <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/> -->
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/css/hystmodal.min.css">
     <title>FrontDead Movie project</title>
 </head>
+
 <body>
 
     <header class="header">
         
-      <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false" space-between="20" centered-slides="false" autoplay-delay="5000" autoplay-disable-on-interaction="true" >
+        <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false"
+            space-between="20" centered-slides="false" autoplay-delay="50000" autoplay-disable-on-interaction="true">
 
         </swiper-container>
 
         <div class="container">
             <div class="header__menu">
-                <a href="./index.html"><div class="header__menu-logo"><img class="logo_png" src="./assets/img/header/logo.png" alt="logo"></div></a>
+                <a href="./index.html">
+                    <div class="header__menu-logo">
+                        <img class="logo_png_open" src="./assets/img/header/logo.png" alt="logo" >
+                        <!-- <img class="logo_png_close" src="./assets/img/header/logo1.png" alt="logo" > -->
+                    </div>
+                </a>
                 <div class="header__menu-item">
-                        <a href="./index.html">Главная</a>
-                        <a href="#top-movies">Discover</a>
-                        <a href="#about">Movie Release</a>
-                        <a href="#about">Forum</a>
-                        <a href="./about.html">О нас</a>
+                    <nav data-opened="false" class="nav__h">
+                        <button class="burger__close">X</button>
+                        <a class="nav__s" href="./index.html">Главная</a>
+                        <a class="nav__s" href="#just_released">Новые</a>
+                        <a class="nav__s" href="#top">Лучшие</a>
+                        <a class="nav__s" href="#random">Случайные</a>
+                        <a class="nav__s" href="./about.html">О нас</a>
+                </nav>
+                    <button class="burger__open">&#8801;</button>
+                </div>
+                <div class="header__menu-user">
+                    <ul>
+                        <li class="search__btn"><svg width="23px" height="23px" viewBox="0 0 1024 1024" class="icon"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#fff">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z"
+                                        fill="#fff"></path>
+                                </g>
+
+                            </svg> 
+
+                           
+                        </li>
+
+
+                        <li>
+                                      
+                        </li>
+                        <!-- <li><svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M12.0009 5C13.4331 5 14.8066 5.50571 15.8193 6.40589C16.832 7.30606 17.4009 8.52696 17.4009 9.8C17.4009 11.7691 17.846 13.2436 18.4232 14.3279C19.1606 15.7133 19.5293 16.406 19.5088 16.5642C19.4849 16.7489 19.4544 16.7997 19.3026 16.9075C19.1725 17 18.5254 17 17.2311 17H6.77066C5.47638 17 4.82925 17 4.69916 16.9075C4.54741 16.7997 4.51692 16.7489 4.493 16.5642C4.47249 16.406 4.8412 15.7133 5.57863 14.3279C6.1558 13.2436 6.60089 11.7691 6.60089 9.8C6.60089 8.52696 7.16982 7.30606 8.18251 6.40589C9.19521 5.50571 10.5687 5 12.0009 5ZM12.0009 5V3M9.35489 20C10.0611 20.6233 10.9888 21.0016 12.0049 21.0016C13.0209 21.0016 13.9486 20.6233 14.6549 20"
+                                        stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    </path>
+                                </g>
+                            </svg></li>
+                        <li>
+                            <div class="user__avatar"></div>
+                        </li> -->
+                    </ul>
+
+                    <!-- SEARCHING FORM -->
+
+                    <div class="search-container-hide">
+                        <a href="#" class="search-button-close">X</a>
+                        <form action="/search" method="get">
+                            <input type="text" placeholder="Поиск..." class="search-input" id="find">
+                            <div id="find_cont"></div>
+                        </form>
                     </div>
-                    <div class="header__menu-user">
-                        <ul>
-                            <li class="search__btn"><svg width="23px" height="23px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z" fill="#fff"></path></g></svg></li>
-                            <li><svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.0009 5C13.4331 5 14.8066 5.50571 15.8193 6.40589C16.832 7.30606 17.4009 8.52696 17.4009 9.8C17.4009 11.7691 17.846 13.2436 18.4232 14.3279C19.1606 15.7133 19.5293 16.406 19.5088 16.5642C19.4849 16.7489 19.4544 16.7997 19.3026 16.9075C19.1725 17 18.5254 17 17.2311 17H6.77066C5.47638 17 4.82925 17 4.69916 16.9075C4.54741 16.7997 4.51692 16.7489 4.493 16.5642C4.47249 16.406 4.8412 15.7133 5.57863 14.3279C6.1558 13.2436 6.60089 11.7691 6.60089 9.8C6.60089 8.52696 7.16982 7.30606 8.18251 6.40589C9.19521 5.50571 10.5687 5 12.0009 5ZM12.0009 5V3M9.35489 20C10.0611 20.6233 10.9888 21.0016 12.0049 21.0016C13.0209 21.0016 13.9486 20.6233 14.6549 20" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></li>
-                            <li><div class="user__avatar"></div></li>
-                        </ul>
-
-                               <!-- SEARCHING FORM -->
-
-                            <div class="search-container-hide" >
-                                <a href="#" class="search-button-close">X</a>
-                                <form action="/search" method="get">
-                                    <input type="text" placeholder="Поиск..." class="search-input" id="find">
-                                    <div  id="find_cont"></div>
-                                </form>
-                            </div>
 
 
 
-                        
-                    </div>
+
+                </div>
             </div>
         </div>
     </header>
-    
+
+
     <div class="container">
         <div class="element">
-        <div class="bar">
-          <div class="items">
-            <div class="item">
-              <img src="./assets/img/karusel/Disney.svg" alt="">
+            <div class="bar">
+                <div class="items">
+                    <div class="item">
+                        <img src="./assets/img/karusel/Disney.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/HBOMax.svg" alt="" class="img__hbo">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/marvel.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img__geg" src="./assets/img/karusel/netflix.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/pixar.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/star-wars.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/Disney.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/HBOMax.svg" alt="" class="img__hbo">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/marvel.svg" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="item">
-                <img src="./assets/img/karusel/HBOMax.svg" alt="" class="img__hbo">
+            <div class="bar">
+                <div class="items">
+                    <div class="item">
+                        <img class="img__geg" src="./assets/img/karusel/netflix.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/pixar.svg" alt="">
+                    </div>karusel
+                    <div class="item">
+                        <img src="./assets/img/karusel/star-wars.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/Disney.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/HBOMax.svg" alt="" class="img__hbo">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/marvel.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img__geg" src="./assets/img/karusel/netflix.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/pixar.svg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/karusel/star-wars.svg" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="item">
-                <img src="./assets/img/karusel/marvel.svg" alt="">
-            </div>
-            <div class="item">
-                <img class="img__geg" src="./assets/img/karusel/netflix.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/pixar.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/star-wars.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/Disney.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/HBOMax.svg" alt="" class="img__hbo">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/marvel.svg" alt="">
-            </div>
-          </div>
         </div>
-        <div class="bar">
-          <div class="items">
-            <div class="item">
-                <img class="img__geg" src="./assets/img/karusel/netflix.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/pixar.svg" alt="">
-            </div>karusel
-            <div class="item">
-                <img src="./assets/img/karusel/star-wars.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/Disney.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/HBOMax.svg" alt="" class="img__hbo">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/marvel.svg" alt="">
-            </div>
-            <div class="item">
-                <img class="img__geg" src="./assets/img/karusel/netflix.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/pixar.svg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/img/karusel/star-wars.svg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+
+
 
     <main class="main">
 
@@ -132,11 +181,109 @@
 
 
         <div class="container">
-            <h3>Недавно вышедшие</h3>
-        <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-dynamic-bullets="true" pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30" grab-cursor="true" navigation="true" >
-    
-        </swiper-container>
-</div>
+            <h3 id="just_released">Недавно вышедшие</h3>
+            <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-dynamic-bullets="true"
+                pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30"
+                grab-cursor="true" navigation="true">
+
+            </swiper-container>
+        </div>
+
+
+        <!-- БЛОК ТОП  -->
+        <div class="container">
+
+
+
+
+
+            <h3 id="top">Лучшие фильмы</h3>
+
+            <div class="best">
+
+
+
+
+                <p class="best_p"> Выберите количество фильмов</p>
+                <input type="range" min="3" max="15" value="3" class="slider" id="myRange">
+                <p id="quantity"> </p>
+            </div>
+
+
+
+
+
+            <div class="week__block">
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- БЛОК С РАНДОМНЫМ ФИЛЬМОМ -->
+        <div class="container">
+            <h3 id="random">Случайные фильмы</h3>
+        </div>
+        <div class="random__block">
+            <div class="container">
+                <div class="random__container">
+                    <div class="random__about-movie">
+                        <div class="random__hero-name"></div>
+                        <div class="random__movie-info">
+                            <p class="random__movie-rating"></p>
+                            <p class="random__year"></p>
+                            <p class="random__genre">Жанр: </p>
+
+
+                        </div>
+                        <p class="random__descript"></p>
+                        <a class="random_film_trailer_btn" data-hystmodal="#swiper_movie">Трейлер</a>
+                    </div>
+
+
+                    <div class="swiper randomSwiper">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide swiper-slide_1">
+                                <img  class="random_img_1" src="" alt="">
+                                <p class="random__movie-name_1"></p>
+                                <div class="random__rating-genre">
+                                    <p class="random__rating_1"></p>
+                                    <p class="random__genre_1"></p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide swiper-slide_2">
+                                <img class="random_img_2" src="" alt="">
+                                <p class="random__movie-name_2"></p>
+                                <div class="random__rating-genre">
+                                    <p class="random__rating_2"></p>
+                                    <p class="random__genre_2"></p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide swiper-slide_3">
+                                <img class="random_img_3" src="" alt="">
+                                <p class="random__movie-name_3"></p>
+                                <div class="random__rating-genre">
+                                    <p class="random__rating_3"></p>
+                                    <p class="random__genre_3"></p>
+                                </div>
+                            </div>
+                       
+
+                        </div>
+   
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
     </main>
 
     <div class="hystmodal" id="swiper_movie" aria-hidden="true">
@@ -144,30 +291,85 @@
             <div class="hystmodal__window" role="dialog" aria-modal="true">
                 <button data-hystclose class="hystmodal__close">Закрыть</button>
 
-                <iframe class="trailer" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscrene></iframe>
-                   
-                
+                <iframe class="trailer" width="560" height="315" src="" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscrene></iframe>
 
-                
 
-      
-                    
-                       
-                </div>
-                </div>
+
+
+
+
+
+
             </div>
         </div>
     </div>
-    karusel
+    </div>
+    </div>
+
+    <footer class="footer">
+         
+        <div class="footer__all" id="footer__all">
+           <!-- <div class="cop">
+                     &copy; 2024 <pre>  FrondDead</pre>
+                 </div> -->
+           <div class="weather">
+              <p>
+                 Погода в Кокшетау:
+                 <img src="" class="weather_icon" alt="" />
+              </p>
+              <img
+                 src="./assets/img/footer/temp1.png"
+                 alt=""
+                 class="temp_img"
+              />
+              <p class="temp"></p>
+              <!-- <p class="humidity">Влажность воздуха: </p> -->
+              <p class="description"></p>
+              <!-- <p class="wind_speed" >Скорость ветра: </p> -->
+
+              <p class="currency">Один доллар равен </p>
+           </div>
+           <p class="cop" id="copyright">Copyright &copy; FrontDead</p>
+           <div class="soc">
+              <img
+                 class="tele__img"
+                 src="./assets/img/footer/github.svg"
+                 alt=""
+              />
+              <a
+                 class="teleg"
+                 href="https://github.com/DamZh87"
+                 target="_blank"
+              >
+                 DamZh87</a
+              >
+              <a
+                 class="inst"
+                 href="https://github.com/22i01"
+                 target="_blank"
+                 >22i01</a
+              >
+              <a
+                 class="wts"
+                 href="https://github.com/AlexVah02"
+                 target="_blank"
+                 >Alex</a
+              >
+           </div>
+        </div>
+     
+  </footer>
 
 
 
 
 
-   
     <script type="module" src="./assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/lib/swiper-element-bundle.min.js"></script>
     <script src="./assets/lib/hystmodal.min.js"></script>
 </body>
+
 </html>

@@ -16,7 +16,7 @@
          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
          rel="stylesheet"
       />
-      <link rel="stylesheet" href="./assets/css/film.css" />
+      <link rel="stylesheet" href="./assets/css/actor.css" />
       <link rel="stylesheet" href="./assets/css/hystmodal.min.css" />
       <title>FrontDead About Movie</title>
    </head>
@@ -26,14 +26,14 @@
             <div class="header__menu">
                <a href="./index.html"
                   ><div class="header__menu-logo">
-                     <img class="logo_png" src="./assets/img/header/logo.png" alt="logo" /></div
+                     <img
+                        class="logo_png"
+                        src="./assets/img/header/logo.png"
+                        alt="logo"
+                     /></div
                ></a>
                <div class="header__menu-item">
                   <a href="./index.html">Главная</a>
-                  <a href="#short_review">О фильме</a>
-                     <a href="#actors">Актеры</a>
-                  <a href="#screen_shots">Сриншоты</a>
-                  <a href="#similar">Похожие</a>
                   <a href="./about.html">О нас</a>
                </div>
                <div class="header__menu-user">
@@ -79,125 +79,25 @@
             </div>
 
             <div class="header__hero">
-               <div class="header__hero-name"><p class="hero-name"></p></div>
-               <div class="header__hero-genre">
-                  <p class="hero-year"></p>
-                  <p class="hero-genre"></p>
-               </div>
-               <div class="header__hero-descr"><p class="hero-descr"></p></div>
-               <div class="buttons-container">
-                  <div class="header__hero-buttons">
-                     <a
-                        class="header__hero-buttons-continue"
-                        href="#"
-                        data-hystmodal2="#film_trailer"
-                        >Трейлер</a
-                     >
-                   
+               <div class="header__hero-name"><p class="actor-name"></p></div>
+
+               <div class="container_about-actor">
+                  <div class="about-actor">
+                     <!-- STORY LINE BLOCK -->
+                     <p class="biography"></p>
+                  </div>
+                  <div class="actor_img_container">
+                     <img class="actor_img" src="" alt="" />
                   </div>
                </div>
+
+               <div class="header__hero-descr"><p class="hero-descr"></p></div>
             </div>
          </div>
       </header>
 
-      <main class="main">
-         <div class="container">
-            <div class="hystmodal" id="film_trailer" aria-hidden="true">
-               <div class="hystmodal__wrap">
-                  <div
-                     class="hystmodal__window"
-                     role="dialog"
-                     aria-modal="true"
-                  >
-                     <button data-hystclose class="hystmodal__close">
-                        Закрыть
-                     </button>
-
-                     <iframe
-                        class="trailer"
-                        width="560"
-                        height="315"
-                        src=""
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscrene
-                     ></iframe>
-
-                  </div>
-               </div>
-            </div>
-            <!-- STORY LINE BLOCK -->
-
-            <h3 id="#short_review">О фильме</h3>
-            <p class="story__line">
-               Фильм — это искусство, которое позволяет зрителям погрузиться в
-               мир воображаемых историй. С помощью уникальных визуальных
-               эффектов, музыки и захватывающих сценариев, кино способно вызвать
-               сильные эмоции и оставить неизгладимое впечатление. Каждый фильм
-               — это результат труда множества людей: режиссёров, актёров,
-               сценаристов, операторов и многих других. Иногда фильм может
-               затронуть важные социальные вопросы, заставив зрителя задуматься
-               о своей жизни и мире вокруг. Жанры кино разнообразны, от драм и
-               комедий до фантастики и триллеров. Важно, чтобы фильм не только
-               развлекал, но и оставлял зрителя с вопросами, на которые стоит
-               найти ответы.
-            </p>
-
-            <!-- TOP CAST BLOCK -->
-
-            <h3 id="actors">Актеры</h3>
-
-            <div class="swiper swiperActors">
-               <div class="swiper-wrapper"></div>
-
-               <div class="swiper-button-next"></div>
-               <div class="swiper-button-prev"></div>
-            </div>
-
-            <!-- SCREENSHOTS BLOCK -->
-
-            <h3 id="screen_shots">Скриншоты</h3>
-
-            <div class="screenshots__block">
-               <img
-                  src="https://picsum.photos/id/22/360/240"
-                  alt="screenshot"
-               />
-               <img
-                  src="https://picsum.photos/id/15/360/240"
-                  alt="screenshot"
-               />
-               <img
-                  src="https://picsum.photos/id/182/360/240"
-                  alt="screenshot"
-               />
-               <img
-                  src="https://picsum.photos/id/58/360/240"
-                  alt="screenshot"
-               />
-            </div>
-
-            <!-- SIMILAR FOR YOU BLOCK -->
-
-            <h3 id="similar">Похожие</h3>
-
-            <swiper-container
-               class="mySwiper swiperSimilar"
-               pagination-dynamic-bullets="true"
-               pagination="true"
-               pagination-clickable="true"
-               slides-per-view="5"
-               space-between="30"
-               free-mode="true"
-            >
-            </swiper-container>
-         </div>
-      </main>
-
+      <main class="main"></main>
       <footer class="footer">
-         
          <div class="footer__all" id="footer__all">
             <!-- <div class="cop">
                       &copy; 2024 <pre>  FrondDead</pre>
@@ -233,10 +133,7 @@
                >
                   DamZh87</a
                >
-               <a
-                  class="inst"
-                  href="https://github.com/22i01"
-                  target="_blank"
+               <a class="inst" href="https://github.com/22i01" target="_blank"
                   >22i01</a
                >
                <a
@@ -247,13 +144,8 @@
                >
             </div>
          </div>
-      
-   </footer>
-
-      <script src="./assets/lib/swiper-bundle.min.js"></script>
-      <script src="./assets/lib/swiper-element-bundle.min.js"></script>
-      <script src="./assets/lib/hystmodal.min.js"></script>
-      <script type="module" src="./assets/js/film.js"></script>
+      </footer>
+  
+      <script type="module" src="./assets/js/actor.js"></script>
    </body>
 </html>
- <footer class="footer">
