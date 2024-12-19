@@ -11,6 +11,7 @@
 
 body{
     background-color: black;
+        
 }
 
 .container{
@@ -19,47 +20,19 @@ body{
 }
 
 
-.container_about-actor{
-   display: flex;
-   flex-direction: row-reverse;
-   justify-content: space-around;
-   max-width: 80vw;
-}
 
-.about-actor{
-    max-width: 50vw;
-    padding-top: 1rem;
-}
-
-.actor_img_container{
-    max-width: 30vw;
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    
-}
-
-.actor_img {
-    width: 100%;           
-    height: auto;          
-    aspect-ratio: 3 / 4;   
-    object-fit: cover;  
-    border-radius: 5px;    
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
-}
 
 /* HEADER */
-
+.logo_png{
+    width: 150px;
+}
 .header {
     
     width: 100%;
-    height: 85vh;
-    background-color: rgb(59, 56, 56);
+    height: 7vh;
+    background-color: rgb(17, 17, 17);
     position: relative;
-    background-image: url(../img/actor/back.jpg);
+   
                 
     }
 
@@ -120,167 +93,33 @@ body{
     padding-right: 0;
   }
 
-.header__menu-user ul{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    cursor: pointer;
-    transition: transform 1s ease-in-out;
-    }
-.header__menu-user ul li{
-    padding-right: 2rem;
-    &:last-child{
-        padding-right: 0;
-    }
-    &:hover{
-        scale: 1.05;
-    }
-    }
-
-    .user__avatar{
-        background-color: #ac7474;
-        height: 1.5rem;
-        width: 1.5rem;
-        border-radius: 50%;
-        border: 1px solid white;
-        transform: translateY(-10%);
-        position: relative;
-    }
-    .user__avatar::after{
-        content: url('../img/header/arrow-down.svg');
-        position: absolute;
-        top: 10%;
-        left: 110%;       
-    }
-
-    .header__hero{
-    position: relative;
-    display: flex;
-    z-index: 5;
-    color: white;
-    bottom: 0;
-    margin-bottom: 5rem;
-    font-family: "Rubik", sans-serif;
-    flex-direction: column;
-    align-items: flex-start;     
-    }
-
-    .header__hero-name{
-        margin-top: 5rem;
-        font-size: 32px;
-        font-weight: 600;
-        font-family: inherit;
-    }
-
-    .header__hero-genre{
-        font-size: 14px;
-        line-height: 22px;
-        color: grey;
-        font-family: inherit;
-    }
-
-    .header__hero-descr{
-        margin-top: 1rem;
-        font-size: 14px;
-        line-height: 22px;
-        color: grey;
-        font-family: inherit;
-        max-width: 20rem;
-        text-align: left;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        
-    }
-
-    .buttons-container{
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        min-width: 80vw;
-    }
-
-    .header__hero-buttons{
-        margin-top: 2rem;
-        color: white;
-        /* padding-top: 1rem; */
-        
-    }
-    .header__hero-buttons-continue{
-        color: white;
-        margin-right: 1.5rem;
-        text-decoration: none;
-        background-color: #00925D;
-        padding: .8rem 1.5rem;
-        padding-left: 2.5rem;
-        font-size: 14px;
-        border-radius: 10px;
-        position: relative;
-    }
-    .header__hero-buttons-continue::before{
-        content: url('../img/header/continue-icon.png');
-        position: absolute;
-        left: 8%;
-        bottom: 20%;
-        
-    }
-    .header__hero-buttons-watchlist{
-        color: white;
-        text-decoration: none;
-        background-color: black;
-        padding: .8rem 1.5rem;
-        padding-left: 2.5rem;
-        border: #fff 1px solid;
-        font-size: 14px;
-        border-radius: 10px;
-        position: relative;
-    }
-    .header__hero-buttons-watchlist::before{
-        content: url('../img/header/bookmark.png');
-        position: absolute;
-        left: 8%;
-        bottom: 15%;
-    }
-
-    .header__hero-buttons-download {
-        color: white;
-        text-decoration: none;
-        background-color: black;
-        padding: .8rem 1.5rem;
-        padding-left: 2.5rem;
-        border: #fff 1px solid;
-        font-size: 14px;
-        border-radius: 10px;
-        position: relative;
-    }
-    .header__hero-buttons-share {
-        color: white;
-        text-decoration: none;
-        background-color: black;
-        padding: .8rem 1.5rem;
-        padding-left: 2.5rem;
-        border: #fff 1px solid;
-        font-size: 14px;
-        border-radius: 10px;
-        position: relative;
-    }
-    .header__hero-buttons-like {
-        color: white;
-        text-decoration: none;
-        background-color: black;
-        padding: .8rem 1.5rem;
-        padding-left: 2.5rem;
-        border: #fff 1px solid;
-        font-size: 14px;
-        border-radius: 10px;
-        position: relative;
-    }
-
 main{
-    height: 500vh;
-    background-color: black;
+    height: 100%;
+   
+    background-image: url(../img/actor/back.jpg);
 }
+
+main::before{
+    content: '';
+    width: 100vw;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 2%, rgba(0, 0, 0, 0) 20%);
+}
+
+main::after{
+    content: '';
+    width: 100vw;
+    height: 100%;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0) 80%);
+}
+
+
 
 h3{
     font-size: 25px;
@@ -300,6 +139,56 @@ h3{
 
 }
 
+.container_about-actor{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    max-width: 80vw;
+    position: relative;
+    z-index: 1;
+    padding-top: 5rem;
+    padding-bottom: 15rem;
+ }
+ 
+ 
+ .about-actor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+     max-width: 50vw;
+     padding-top: 1rem;
+ }
+ 
+ .actor_img_container{
+     max-width: 30vw;
+     padding-top: 1rem;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 1rem;
+     
+ }
+ 
+ .actor_img {
+    padding-bottom: 2rem;
+     width: 90%;           
+     height: auto;          
+     aspect-ratio: 3 / 4;   
+     object-fit: cover;  
+     border-radius: 5px;    
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+ }
+
+
+
 .actor-name{
-    padding-left: 1rem;
+    padding-bottom: 2rem;
+    color: #fff;
 }
+
+
+.empty{
+    height: 3rem;
+  }
