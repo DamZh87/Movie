@@ -65,11 +65,23 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
            document.querySelector(".trailer").setAttribute("src", `https://www.youtube.com/embed/${trailer}`);
            }).catch((err) => console.error(err));
    });
+
+   
    // ACTORS SWIPER
    var swiper = new Swiper(".swiperActors", {
-       slidesPerView: 6,
+       
        spaceBetween: 30,
        loop: true,
+       breakpoints: {
+        499: {
+            slidesPerView: 2,
+            spaceBetweenSlides: 30
+        },
+        999: {
+            slidesPerView: 6,
+            spaceBetweenSlides: 40
+        }
+    },
        pagination: {
            el: ".swiper-pagination",
            clickable: true,
@@ -79,7 +91,10 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
            prevEl: ".swiper-button-prev",
            clickable: true,
        },
+       
    });
+
+
    // SIMILAR SWIPER
    fetch(`https://api.themoviedb.org/3/movie/${movie_id}/similar?language=ru-RU&page=1`, options).then((SimilarList) => SimilarList.json()).then((SimilarList) => {
        getSimilar(SimilarList.results);

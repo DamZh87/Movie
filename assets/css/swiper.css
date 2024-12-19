@@ -110,11 +110,14 @@ swiper-slide::before {
 /* RANDOM SWIPER */
 
 .randomSwiper.swiper {
-    
   width: 40vw;
   height: 10%;
   z-index: 2;
-
+}
+@media screen and (max-width:850px) {
+  .randomSwiper.swiper {
+    display: none;
+  }
 }
 
 .randomSwiper .swiper-slide {

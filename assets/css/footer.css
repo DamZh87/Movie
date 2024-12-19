@@ -1,15 +1,16 @@
 /* footer */
 
 
+
 .footer__all {
     display: flex;
     align-items: center;
     padding: 0 2rem;
     justify-content: space-between;
-       width: 100%;
-    /* border-radius: 10px; */
-    /* margin-top: 1rem; */
+    width: 100%;
     height: 5rem;
+    position: relative;
+    z-index: 5;
     overflow: hidden;
     color: #fff;
     font-family: "Inter", sans-serif;

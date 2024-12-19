@@ -132,16 +132,22 @@ body {
 }
 
 .header__menu {
-    margin-top: 15px;
+    padding: 1rem 0 .5px 0;
     top: 0;
     width: 80vw;
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
-}
+    backdrop-filter: blur(2px);
+    }
+    @media screen and (max-width: 850px) {
+        .header__menu {
+            display: none;
+            }
+    }
 
 
 .header__menu-item a {
@@ -449,13 +455,23 @@ h3 {
 }
 
 .random__about-movie {
-    /* padding: 15rem 0 0 15rem; */
+    padding-bottom: 5rem;
     width: 40vw;
     z-index: 2;
+    backdrop-filter: blur(2px);
+}
+@media screen and (max-width:850px) {
+    .random__about-movie {
+        padding-bottom: 5rem;
+        width: 90vw;
+        z-index: 2;
+    }
 }
 
 .random__movie-info {
     display: flex;
+    align-items: flex-start;
+    padding-top: 1rem;
 }
 
 .random__hero-name {
@@ -505,7 +521,6 @@ h3 {
 }
 
 .random__descript {
-    margin-top: 1rem;
     margin-bottom: 2rem;
     font-size: 14px;
     line-height: 22px;
@@ -517,6 +532,12 @@ h3 {
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width:8580px) {
+    .random__descript {
+       text-align: justify;
+    }
 }
 
 
@@ -559,16 +580,6 @@ h3 {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 .best {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -581,11 +592,6 @@ h3 {
 
 
 .week__block {
-    /* display: flex;
-    flex-wrap: wrap;
-    
-    justify-content: space-around; */
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
@@ -593,9 +599,15 @@ h3 {
     justify-content: center;
     align-content: center;
     color: white;
-
-
     margin: 4rem 0;
+}
+
+@media screen and (max-width: 850px) {
+    .week__block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
 }
 
 .week__card {
@@ -636,16 +648,16 @@ h3 {
     transition: color 0.3s, transform 0.3s; 
    
 }
+@media screen and (max-width:850px) {
+    .week__movie-name {
+        font-size: 1rem;
+    }
+}
 
 .week__movie-name:hover{
     color: #f8f8f8; 
     transform: scale(1.03)
 }
-
-
-
-
-  
 
 
 
