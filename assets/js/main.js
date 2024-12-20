@@ -122,10 +122,25 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
        });
    })
 });
-//   ЗАПРОС СПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА
-fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options).then((movieList) => movieList.json()).then((movieList) => {
-   getMovieList(movieList.results);
-}).catch((err) => console.error(err));
+
+
+ 
+ 
+
+
+
+
+fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
+  .then((response) => response.json())
+  .then((movieList) => {
+    getMovieList(movieList.results);
+  // console.log(movieList.results);
+    
+});
+
+
+
+
 // ПОЛУЧЕНИЕСПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА
 function getMovieList(list) {
    swiperHeaderEl.innerHTML = "";
@@ -144,6 +159,11 @@ function renderMovieswiperSlide({
    release_date = "",
    overview = "",
    id = "",
+   genre_ids = "",
+
+
+   
+   
 }) {
    const swiperSlide = document.createElement("swiper-slide");
    const slideEl = document.createElement("div");
@@ -175,11 +195,26 @@ function renderMovieswiperSlide({
    slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
    movieNameEl.textContent = title;
    movieYearEl.textContent = release_date.slice(0, 4);
-   movieGenreEl.textContent = "Жанр";
+
+    fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
+      .then((genreRes) => genreRes.json())
+      .then((genreRes) => {
+
+        let genreList = genreRes.genres
+         const resultGenres = genreList.filter(i => genre_ids.includes(i.id));
+ 
+         resultGenres.forEach(({
+            name
+        }) => {
+
+           movieGenreEl.textContent += `${name}  `   
+        });
+
+})
+
    headerHeroButtonsContinueEl.textContent = "Трейлер";
    headerHeroButtonsContinueEl.setAttribute("data-hystmodal", "#swiper_movie");
-   // headerHeroButtonsWatchswiperHeaderEl.textContent = 'Add Watchlist'
-   movieDescriptEl.textContent = overview;
+    movieDescriptEl.textContent = overview;
    movieNameEl.setAttribute("data-id", id);
    swiperSlide.appendChild(headerHeroEl);
    headerHeroEl.appendChild(headerHeroNameEl);
@@ -192,7 +227,6 @@ function renderMovieswiperSlide({
    headerHeroEl.appendChild(buttonsContainerEl);
    buttonsContainerEl.appendChild(headerHeroButtonsEl);
    headerHeroButtonsEl.appendChild(headerHeroButtonsContinueEl);
-   // headerHeroButtonsEl.appendChild(headerHeroButtonsWatchswiperHeaderEl)
    swiperSlide.appendChild(slideEl);
    movieNameEl.addEventListener("click", () => {
        const filmId1 = movieNameEl.getAttribute("data-id");
