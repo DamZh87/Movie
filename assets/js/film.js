@@ -114,6 +114,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        title = "",
        vote_average = "",
        id = "",
+       genre_ids = "",
    }) {
        const swiperSlideSimilarEl = document.createElement("swiper-slide");
        const swiperMovieNameEl = document.createElement("p");
@@ -129,8 +130,27 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        img_SimEl.className = "img_JR";
        swiperMovieNameEl.innerText = title;
        swiperMovieRatingEl.innerText = vote_average.toString().slice(0, 3);
-       swiperNovieGenre.innerText = "Пока нет";
 
+
+       fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
+       .then((genreRes1) => genreRes1.json())
+       .then((genreRes1) => {
+    
+         let genreList1 = genreRes1.genres
+          const resultGenres = genreList1.filter(i => genre_ids.includes(i.id));
+    
+          resultGenres.slice(0 , 2).forEach(({
+             name
+         }) => {
+             
+            swiperNovieGenre.innerText += `${name}  `  
+            console.log(`${name}  `);
+             
+         });
+    
+    })
+
+      
        if (poster_path !== undefined && poster_path !== null && poster_path !== "") {
          
            img_SimEl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
