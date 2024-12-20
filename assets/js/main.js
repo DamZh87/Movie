@@ -195,7 +195,7 @@ function renderMovieswiperSlide({
    slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
    movieNameEl.textContent = title;
    movieYearEl.textContent = release_date.slice(0, 4);
-
+   movieGenreEl.textContent = 'Жанр: '
     fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
       .then((genreRes) => genreRes.json())
       .then((genreRes) => {
@@ -206,7 +206,7 @@ function renderMovieswiperSlide({
          resultGenres.forEach(({
             name
         }) => {
-
+            
            movieGenreEl.textContent += `${name}  `   
         });
 
@@ -264,6 +264,7 @@ function renderJustRealeased({
    title = "",
    vote_average = "",
    id = "",
+   genre_ids = "",
 }) {
    const swiperSlideJustReleasedEl = document.createElement("swiper-slide");
    const swiperMovieNameEl = document.createElement("p");
@@ -279,7 +280,29 @@ function renderJustRealeased({
    img_JREl.className = "img_JR";
    swiperMovieNameEl.innerText = title;
    swiperMovieRatingEl.innerText = vote_average.toString().slice(0, 3);
-   swiperNovieGenre.innerText = "Пока нет";
+
+   fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
+   .then((genreRes1) => genreRes1.json())
+   .then((genreRes1) => {
+
+     let genreList1 = genreRes1.genres
+      const resultGenres = genreList1.filter(i => genre_ids.includes(i.id));
+
+      resultGenres.slice(0 , 2).forEach(({
+         name
+     }) => {
+         
+        swiperNovieGenre.innerText += `${name}  `  
+        console.log(`${name}  `);
+         
+     });
+
+})
+    
+
+
+
+  // swiperNovieGenre.innerText = "Пока нет";
    img_JREl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
    swiperMovieNameEl.setAttribute("data-id", id);
    swipeJustReleasedEl.appendChild(swiperSlideJustReleasedEl);
