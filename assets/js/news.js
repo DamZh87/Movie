@@ -1,5 +1,14 @@
 import {getWeather, getCurrency, footer} from './footer.js';
 
+function getNewsnewsList (newsList) {
+  newsBlock.innerHTML = '';
+  newsList.forEach (item => {
+    const cardNews = rendernewCard (item);
+    newsBlock.appendChild (cardNews);
+  });
+}
+
+
 fetch (
   `https://newsapi.org/v2/everything?language=ru&q=movie&apiKey=fdb87e6cc0c846d7b9e9b9b59ebaa044`
 )
@@ -46,13 +55,7 @@ function rendernewCard({
   return cardNews;
 }
 
-function getNewsnewsList (newsList) {
-  newsBlock.innerHTML = '';
-  newsList.forEach (item => {
-    const cardNews = rendernewCard (item);
-    newsBlock.appendChild (cardNews);
-  });
-}
+
 
 // footer
 footer()
