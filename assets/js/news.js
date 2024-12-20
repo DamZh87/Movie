@@ -3,9 +3,9 @@ import {getWeather, getCurrency, footer} from './footer.js';
 fetch (
   `https://newsapi.org/v2/everything?language=ru&q=movie&apiKey=fdb87e6cc0c846d7b9e9b9b59ebaa044`
 )
-  .then (response => response.json ())
+  .then (news => news.json ())
   .then (news => {
-    getNewsList (news.articles);
+    getNewsnewsList (news.articles);
     console.log (news.articles);
   })
   .catch (err => console.error (err));
@@ -46,9 +46,9 @@ function rendernewCard({
   return cardNews;
 }
 
-function getNewsList (list) {
+function getNewsnewsList (newsList) {
   newsBlock.innerHTML = '';
-  list.forEach (item => {
+  newsList.forEach (item => {
     const cardNews = rendernewCard (item);
     newsBlock.appendChild (cardNews);
   });
