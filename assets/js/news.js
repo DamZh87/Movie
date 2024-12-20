@@ -1,3 +1,5 @@
+import {getWeather, getCurrency, footer} from './footer.js';
+
 fetch (
   `https://newsapi.org/v2/everything?language=ru&q=movie&apiKey=fdb87e6cc0c846d7b9e9b9b59ebaa044`
 )
@@ -51,3 +53,10 @@ function getNewsList (list) {
     newsBlock.appendChild (cardNews);
   });
 }
+
+// footer
+footer()
+   // ПОГОДА ))
+getWeather()
+   //КУРС ВАЛЮТ))
+getCurrency()
