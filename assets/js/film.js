@@ -34,12 +34,12 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        profile_path = "",
        id = "",
    }) {
-       const actorsSlideEl = document.createElement("div");
-       const profile_pathEl = document.createElement("img");
+       const actorsSlideEl = document.createElement("div"),
+             profile_pathEl = document.createElement("img"),
+             swiperActorContainerEl = document.createElement("div"),
+             swiperActorNameEl = document.createElement("p"),
+             swiperHeroNameEl = document.createElement("p");
        profile_pathEl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${profile_path}`);
-       const swiperActorContainerEl = document.createElement("div");
-       const swiperActorNameEl = document.createElement("p");
-       const swiperHeroNameEl = document.createElement("p");
        swiperActorNameEl.innerText = name;
        swiperHeroNameEl.innerText = character;
        actorsSlideEl.className = "swiper-slide";
@@ -116,12 +116,12 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        id = "",
        genre_ids = "",
    }) {
-       const swiperSlideSimilarEl = document.createElement("swiper-slide");
-       const swiperMovieNameEl = document.createElement("p");
-       const swiperRatingGenreEl = document.createElement("div");
-       const swiperMovieRatingEl = document.createElement("p");
-       const swiperNovieGenre = document.createElement("p");
-       const img_SimEl = document.createElement("img");
+       const swiperSlideSimilarEl = document.createElement("swiper-slide"),
+             swiperMovieNameEl = document.createElement("p"),
+             swiperRatingGenreEl = document.createElement("div"),
+             swiperMovieRatingEl = document.createElement("p"),
+             swiperNovieGenre = document.createElement("p"),
+             img_SimEl = document.createElement("img");
        swiperSlideSimilarEl.className = "slide_JR";
        swiperMovieNameEl.className = "swiper_movie-name";
        swiperRatingGenreEl.className = "swiper_rating-genre";

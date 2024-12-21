@@ -2,17 +2,17 @@ import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 
 //RandomFilm
-let randomFilmId = Math.floor(Math.random() * 1000);
-let randomFilm1Id = Math.floor(Math.random() * 1000);
-let randomFilm2Id = Math.floor(Math.random() * 1000);
-let randomFilm3Id = Math.floor(Math.random() * 1000);
+let randomFilmId = Math.floor(Math.random() * 1000),
+    randomFilm1Id = Math.floor(Math.random() * 1000),
+    randomFilm2Id = Math.floor(Math.random() * 1000),
+    randomFilm3Id = Math.floor(Math.random() * 1000);
 
-fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes) => randomFilmRes.json()).then((randomFilmRes) => {
+fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by=popularity.asc&release_date.gte=1980-01-01&release_date.lte=2024-12-31`, options)
+  .then((randomFilmRes) => randomFilmRes.json())
+  .then((randomFilmRes) => {
    let randomFilm = randomFilmRes;
-   randomFilm.genres.forEach(({
-       name
-   }) => {
-       document.querySelector(".random__genre").textContent += ` ${name}  `;
+   randomFilm.genres.forEach(({name}) => {
+   document.querySelector(".random__genre").textContent += ` ${name}  `;
    });
    document.querySelector(".random__block").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${randomFilm.backdrop_path})`;
    document.querySelector(".random__hero-name").textContent = randomFilm.title;
@@ -123,13 +123,6 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
    })
 });
 
-
- 
- 
-
-
-
-
 fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
   .then((response) => response.json())
   .then((movieList) => {
@@ -165,20 +158,20 @@ function renderMovieswiperSlide({
    
    
 }) {
-   const swiperSlide = document.createElement("swiper-slide");
-   const slideEl = document.createElement("div");
-   const headerHeroEl = document.createElement("div");
-   const headerHeroNameEl = document.createElement("div");
-   const movieNameEl = document.createElement("p");
-   const headerHeroGenreEl = document.createElement("div");
-   const movieYearEl = document.createElement("p");
-   const movieGenreEl = document.createElement("p");
-   const headerHeroDescrEl = document.createElement("div");
-   const movieDescriptEl = document.createElement("p");
-   const buttonsContainerEl = document.createElement("div");
-   const headerHeroButtonsEl = document.createElement("div");
-   const headerHeroButtonsContinueEl = document.createElement("a");
-   const headerHeroButtonsWatchswiperHeaderEl = document.createElement("a");
+   const swiperSlide = document.createElement("swiper-slide"),
+         slideEl = document.createElement("div"),
+         headerHeroEl = document.createElement("div"),
+         headerHeroNameEl = document.createElement("div"),
+         movieNameEl = document.createElement("p"),
+         headerHeroGenreEl = document.createElement("div"),
+         movieYearEl = document.createElement("p"),
+         movieGenreEl = document.createElement("p"),
+         headerHeroDescrEl = document.createElement("div"),
+         movieDescriptEl = document.createElement("p"),
+         buttonsContainerEl = document.createElement("div"),
+         headerHeroButtonsEl = document.createElement("div"),
+         headerHeroButtonsContinueEl = document.createElement("a"),
+         headerHeroButtonsWatchswiperHeaderEl = document.createElement("a");
    slideEl.className = "header_swiper";
    headerHeroEl.className = "header__hero";
    headerHeroNameEl.className = "header__hero-name";
@@ -214,7 +207,7 @@ function renderMovieswiperSlide({
 
    headerHeroButtonsContinueEl.textContent = "Трейлер";
    headerHeroButtonsContinueEl.setAttribute("data-hystmodal", "#swiper_movie");
-    movieDescriptEl.textContent = overview;
+   movieDescriptEl.textContent = overview;
    movieNameEl.setAttribute("data-id", id);
    swiperSlide.appendChild(headerHeroEl);
    headerHeroEl.appendChild(headerHeroNameEl);
@@ -266,12 +259,12 @@ function renderJustRealeased({
    id = "",
    genre_ids = "",
 }) {
-   const swiperSlideJustReleasedEl = document.createElement("swiper-slide");
-   const swiperMovieNameEl = document.createElement("p");
-   const swiperRatingGenreEl = document.createElement("div");
-   const swiperMovieRatingEl = document.createElement("p");
-   const swiperNovieGenre = document.createElement("p");
-   const img_JREl = document.createElement("img");
+   const swiperSlideJustReleasedEl = document.createElement("swiper-slide"),
+         swiperMovieNameEl = document.createElement("p"),
+         swiperRatingGenreEl = document.createElement("div"),
+         swiperMovieRatingEl = document.createElement("p"),
+         swiperNovieGenre = document.createElement("p"),
+         img_JREl = document.createElement("img");
    swiperSlideJustReleasedEl.className = "slide_JR";
    swiperMovieNameEl.className = "swiper_movie-name";
    swiperRatingGenreEl.className = "swiper_rating-genre";
@@ -330,13 +323,13 @@ function renderTopCard({
    vote_average = "",
    top = 1,
 }) {
-   const cardTop = document.createElement("div");
-   const placeTopEl = document.createElement("p");
-   const posterPathTopEl = document.createElement("img");
-   const infoTopEl = document.createElement("div");
-   const titleTopEl = document.createElement("p");
-   const ratingTop = document.createElement("p");
-   const yearTopEl = document.createElement("p");
+   const cardTop = document.createElement("div"),
+         placeTopEl = document.createElement("p"),
+         posterPathTopEl = document.createElement("img"),
+         infoTopEl = document.createElement("div"),
+         titleTopEl = document.createElement("p"),
+         ratingTop = document.createElement("p"),
+         yearTopEl = document.createElement("p");
    posterPathTopEl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
    placeTopEl.textContent = " Топ  " + top;
    yearTopEl.textContent = "Год выхода: " + release_date.slice(0, 4);

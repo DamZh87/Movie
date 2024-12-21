@@ -28,16 +28,16 @@ function rendernewCard({
   urlToImage = '', 
   url = '',
 }) {
-  const cardNews = document.createElement ('div');
-  const titleEl = document.createElement ('p');
-  const urlEl = document.createElement ('a');
-  const descriptionEl = document.createElement ('p');
-  const urlToImageEl = document.createElement ('img');
+  const cardNews = document.createElement ('div'),
+        titleEl = document.createElement ('p'),
+        urlEl = document.createElement ('a'),
+        descriptionEl = document.createElement ('p'),
+        urlToImageEl = document.createElement ('img');
 
-    cardNews.className = "news_card"
-    titleEl.className = "news_card_title"
-    descriptionEl.className = "news_card_desc"
-    urlToImageEl.className = "news_card_img"
+  cardNews.className = "news_card"
+  titleEl.className = "news_card_title"
+  descriptionEl.className = "news_card_desc"
+  urlToImageEl.className = "news_card_img"
 
   titleEl.textContent = title;
   descriptionEl.textContent = description;
