@@ -1,5 +1,6 @@
 import {getWeather, getCurrency, footer} from './footer.js';
 
+
 function getNewsnewsList (newsList) {
   newsBlock.innerHTML = '';
   newsList.forEach (item => {
