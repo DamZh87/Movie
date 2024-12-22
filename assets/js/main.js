@@ -1,11 +1,123 @@
 import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 
-//RandomFilm
-let randomFilmId = Math.floor(Math.random() * 1000),
-    randomFilm1Id = Math.floor(Math.random() * 1000),
-    randomFilm2Id = Math.floor(Math.random() * 1000),
-    randomFilm3Id = Math.floor(Math.random() * 1000);
+// ПОЛУЧЕНИЕ СПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА И РЕНДЕР
+
+fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
+  .then((response) => response.json())
+  .then((movieList) => {
+   getMovieList(movieList.results);
+});
+
+function getMovieList(list) {
+    swiperHeaderEl.innerHTML = "";
+    let headerQunatity = list.slice(0, 5);
+    headerQunatity.forEach((item) => {
+        const swiperSlide = renderMovieswiperSlide(item);
+        swiperHeaderEl.appendChild(swiperSlide);
+    });
+ }
+
+ const swiperHeaderEl = document.querySelector(".swiper-two");
+ 
+ function renderMovieswiperSlide({
+    backdrop_path = "",
+    title = "",
+    release_date = "",
+    overview = "",
+    id = "",
+    genre_ids = "",
+    }) 
+ {
+    const swiperSlide = document.createElement("swiper-slide"),
+          slideEl = document.createElement("div"),
+          headerHeroEl = document.createElement("div"),
+          headerHeroNameEl = document.createElement("div"),
+          movieNameEl = document.createElement("p"),
+          headerHeroGenreEl = document.createElement("div"),
+          movieYearEl = document.createElement("p"),
+          movieGenreEl = document.createElement("p"),
+          headerHeroDescrEl = document.createElement("div"),
+          movieDescriptEl = document.createElement("p"),
+          buttonsContainerEl = document.createElement("div"),
+          headerHeroButtonsEl = document.createElement("div"),
+          headerHeroButtonsContinueEl = document.createElement("a"),
+          headerHeroButtonsWatchswiperHeaderEl = document.createElement("a");
+
+            slideEl.className = "header_swiper";
+            headerHeroEl.className = "header__hero";
+            headerHeroNameEl.className = "header__hero-name";
+            movieNameEl.className = "movie_name";
+            headerHeroGenreEl.className = "header__hero-genre";
+            movieYearEl.className = "movie_year";
+            movieGenreEl.className = "movie_genre";
+            headerHeroDescrEl.className = "header__hero-descr";
+            movieDescriptEl.className = "movie_descript";
+            buttonsContainerEl.className = "buttons-container";
+            headerHeroButtonsEl.className = "header__hero-buttons";
+            headerHeroButtonsContinueEl.className = "header__hero-buttons-continue";
+            headerHeroButtonsWatchswiperHeaderEl.className = "header__hero-buttons-watchlist";
+
+                slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
+                movieNameEl.textContent = title;
+                movieYearEl.textContent = release_date.slice(0, 4);
+                movieGenreEl.textContent = 'Жанр: '
+
+                fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
+                .then((genreRes) => genreRes.json())
+                .then((genreRes) => {
+                    let genreList = genreRes.genres
+                    const resultGenres = genreList.filter(i => genre_ids.includes(i.id));
+                        resultGenres.forEach(({name}) => {
+                        movieGenreEl.textContent += `${name}  `   
+                    });
+                })
+
+                headerHeroButtonsContinueEl.textContent = "Трейлер";
+                headerHeroButtonsContinueEl.setAttribute("data-hystmodal", "#swiper_movie");
+                movieDescriptEl.textContent = overview;
+                movieNameEl.setAttribute("data-id", id);
+
+                    swiperSlide.appendChild(headerHeroEl);
+                    headerHeroEl.appendChild(headerHeroNameEl);
+                    headerHeroEl.appendChild(headerHeroGenreEl);
+                    headerHeroGenreEl.appendChild(movieYearEl);
+                    headerHeroGenreEl.appendChild(movieGenreEl);
+                    headerHeroEl.appendChild(headerHeroDescrEl);
+                    headerHeroDescrEl.appendChild(movieDescriptEl);
+                    headerHeroNameEl.appendChild(movieNameEl);
+                    headerHeroEl.appendChild(buttonsContainerEl);
+                    buttonsContainerEl.appendChild(headerHeroButtonsEl);
+                    headerHeroButtonsEl.appendChild(headerHeroButtonsContinueEl);
+                    swiperSlide.appendChild(slideEl);
+
+                movieNameEl.addEventListener("click", () => {
+                    const filmId1 = movieNameEl.getAttribute("data-id");
+                    location.href = "film.html";
+                    localStorage.setItem("filmId", filmId1);
+                });
+
+    // ПОЛУЧЕНИЕСПИСКА ТРЕЙЛЕРА ПО id ФИЛЬМА И ВЫВОД
+    headerHeroButtonsContinueEl.addEventListener("click", () => {
+        const movie_id = movieNameEl.getAttribute("data-id");
+        fetch(` https://api.themoviedb.org/3/movie/${movie_id}/videos?language=ru-RU`, options) // Трейлер
+        .then((trailerID) => trailerID.json()).then((trailerID) => {
+            let trailer = trailerID.results[0].key;
+            document.querySelector(".trailer").setAttribute("src", `https://www.youtube.com/embed/${trailer}`);
+        }).catch((err) => console.error(err));
+    });
+    //--//--//
+    return swiperSlide;
+ }
+
+ //--//--//--//--//--//--//--//--//--//
+
+
+//RANDOM FILM
+    let randomFilmId = Math.floor(Math.random() * 1000),
+        randomFilm1Id = Math.floor(Math.random() * 1000),
+        randomFilm2Id = Math.floor(Math.random() * 1000),
+        randomFilm3Id = Math.floor(Math.random() * 1000);
 
 fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by=popularity.asc&release_date.gte=1980-01-01&release_date.lte=2024-12-31`, options)
   .then((randomFilmRes) => randomFilmRes.json())
@@ -14,6 +126,7 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by
    randomFilm.genres.forEach(({name}) => {
    document.querySelector(".random__genre").textContent += ` ${name}  `;
    });
+
    document.querySelector(".random__block").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${randomFilm.backdrop_path})`;
    document.querySelector(".random__hero-name").textContent = randomFilm.title;
    document.querySelector(".random__descript").textContent = randomFilm.overview;
@@ -21,11 +134,13 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by
    document.querySelector(".random__year").textContent = randomFilm.release_date.slice(0, 4);
    document.querySelector(".random__movie-rating").textContent = randomFilm.vote_average.toString().slice(0, 3);
    document.querySelector(".random__hero-name").setAttribute("data-rand-id", randomFilm.id);
+
    document.querySelector(".random__hero-name").addEventListener("click", () => {
        const filmId = document.querySelector(".random__hero-name").getAttribute("data-rand-id");
        location.href = "film.html";
        localStorage.setItem("filmId", filmId);
    });
+
    document.querySelector(".random_film_trailer_btn").addEventListener("click", () => {
        fetch(` https://api.themoviedb.org/3/movie/${randomFilmId}/videos?language=ru-RU`, options) // Трейлер
        .then((trailerID) => trailerID.json()).then((trailerID) => {
@@ -34,23 +149,20 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by
        }).catch((err) => console.error(err));
    });
 });
+
 fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes1) => randomFilmRes1.json()).then((randomFilmRes1) => {
    let randomFilm1 = randomFilmRes1;
-   randomFilm1.genres.forEach(({
-       name
-   }) => {
+   randomFilm1.genres.forEach(({name}) => {
        document.querySelector(".random__genre_1").textContent += ` ${name}  `;
    });
 
    if (randomFilm1.poster_path !== undefined && randomFilm1.poster_path !== null && randomFilm1.poster_path !== "") {
          
     document.querySelector(".random_img_1").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm1.poster_path}`);
-} else {
+    } else {
    
     document.querySelector(".random_img_1").setAttribute("src", '../assets/img/none.jpg');
-}
-
-  
+    }
    document.querySelector(".random__movie-name_1").textContent = randomFilm1.title;
    document.querySelector(".random__rating_1").textContent = randomFilm1.vote_average.toString().slice(0, 3);
    document.querySelector(".random__movie-name_1").setAttribute("data-rand-id", randomFilm1.id);
@@ -66,9 +178,7 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
    });
    fetch(`https://api.themoviedb.org/3/movie/${randomFilm2Id}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes2) => randomFilmRes2.json()).then((randomFilmRes2) => {
        let randomFilm2 = randomFilmRes2;
-       randomFilm2.genres.forEach(({
-           name
-       }) => {
+       randomFilm2.genres.forEach(({name}) => {
            document.querySelector(".random__genre_2").textContent += ` ${name}  `;
        });
        if (randomFilm2.poster_path !== undefined && randomFilm2.poster_path !== null && randomFilm2.poster_path !== "") {
@@ -94,9 +204,7 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
    });
    fetch(`https://api.themoviedb.org/3/movie/${randomFilm3Id}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes3) => randomFilmRes3.json()).then((randomFilmRes3) => {
        let randomFilm3 = randomFilmRes3;
-       randomFilm3.genres.forEach(({
-           name
-       }) => {
+       randomFilm3.genres.forEach(({name}) => {
            document.querySelector(".random__genre_3").textContent += ` ${name}  `;
        });
        
@@ -122,121 +230,8 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
        });
    })
 });
+//--//--//--//--//--//--//
 
-fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
-  .then((response) => response.json())
-  .then((movieList) => {
-    getMovieList(movieList.results);
-  // console.log(movieList.results);
-    
-});
-
-
-
-
-// ПОЛУЧЕНИЕСПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА
-function getMovieList(list) {
-   swiperHeaderEl.innerHTML = "";
-   let headerQunatity = list.slice(0, 5);
-   headerQunatity.forEach((item) => {
-       const swiperSlide = renderMovieswiperSlide(item);
-       swiperHeaderEl.appendChild(swiperSlide);
-   });
-}
-// РЕНДЕР ХЭДЕРА
-const swiperHeaderEl = document.querySelector(".swiper-two");
-
-function renderMovieswiperSlide({
-   backdrop_path = "",
-   title = "",
-   release_date = "",
-   overview = "",
-   id = "",
-   genre_ids = "",
-
-
-   
-   
-}) {
-   const swiperSlide = document.createElement("swiper-slide"),
-         slideEl = document.createElement("div"),
-         headerHeroEl = document.createElement("div"),
-         headerHeroNameEl = document.createElement("div"),
-         movieNameEl = document.createElement("p"),
-         headerHeroGenreEl = document.createElement("div"),
-         movieYearEl = document.createElement("p"),
-         movieGenreEl = document.createElement("p"),
-         headerHeroDescrEl = document.createElement("div"),
-         movieDescriptEl = document.createElement("p"),
-         buttonsContainerEl = document.createElement("div"),
-         headerHeroButtonsEl = document.createElement("div"),
-         headerHeroButtonsContinueEl = document.createElement("a"),
-         headerHeroButtonsWatchswiperHeaderEl = document.createElement("a");
-   slideEl.className = "header_swiper";
-   headerHeroEl.className = "header__hero";
-   headerHeroNameEl.className = "header__hero-name";
-   movieNameEl.className = "movie_name";
-   headerHeroGenreEl.className = "header__hero-genre";
-   movieYearEl.className = "movie_year";
-   movieGenreEl.className = "movie_genre";
-   headerHeroDescrEl.className = "header__hero-descr";
-   movieDescriptEl.className = "movie_descript";
-   buttonsContainerEl.className = "buttons-container";
-   headerHeroButtonsEl.className = "header__hero-buttons";
-   headerHeroButtonsContinueEl.className = "header__hero-buttons-continue";
-   headerHeroButtonsWatchswiperHeaderEl.className = "header__hero-buttons-watchlist";
-   slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
-   movieNameEl.textContent = title;
-   movieYearEl.textContent = release_date.slice(0, 4);
-   movieGenreEl.textContent = 'Жанр: '
-    fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
-      .then((genreRes) => genreRes.json())
-      .then((genreRes) => {
-
-        let genreList = genreRes.genres
-         const resultGenres = genreList.filter(i => genre_ids.includes(i.id));
- 
-         resultGenres.forEach(({
-            name
-        }) => {
-            
-           movieGenreEl.textContent += `${name}  `   
-        });
-
-})
-
-   headerHeroButtonsContinueEl.textContent = "Трейлер";
-   headerHeroButtonsContinueEl.setAttribute("data-hystmodal", "#swiper_movie");
-   movieDescriptEl.textContent = overview;
-   movieNameEl.setAttribute("data-id", id);
-   swiperSlide.appendChild(headerHeroEl);
-   headerHeroEl.appendChild(headerHeroNameEl);
-   headerHeroEl.appendChild(headerHeroGenreEl);
-   headerHeroGenreEl.appendChild(movieYearEl);
-   headerHeroGenreEl.appendChild(movieGenreEl);
-   headerHeroEl.appendChild(headerHeroDescrEl);
-   headerHeroDescrEl.appendChild(movieDescriptEl);
-   headerHeroNameEl.appendChild(movieNameEl);
-   headerHeroEl.appendChild(buttonsContainerEl);
-   buttonsContainerEl.appendChild(headerHeroButtonsEl);
-   headerHeroButtonsEl.appendChild(headerHeroButtonsContinueEl);
-   swiperSlide.appendChild(slideEl);
-   movieNameEl.addEventListener("click", () => {
-       const filmId1 = movieNameEl.getAttribute("data-id");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId1);
-   });
-   // ПОЛУЧЕНИЕСПИСКА ТРЕЙЛЕРА ПО id ФИЛЬМА И ВЫВОД
-   headerHeroButtonsContinueEl.addEventListener("click", () => {
-       const movie_id = movieNameEl.getAttribute("data-id");
-       fetch(` https://api.themoviedb.org/3/movie/${movie_id}/videos?language=ru-RU`, options) // Трейлер
-       .then((trailerID) => trailerID.json()).then((trailerID) => {
-           let trailer = trailerID.results[0].key;
-           document.querySelector(".trailer").setAttribute("src", `https://www.youtube.com/embed/${trailer}`);
-       }).catch((err) => console.error(err));
-   });
-   return swiperSlide;
-}
 //   ЗАПРОС СПИСКА НЕДАВНИХ ФИЛЬМОВ ДЛЯ СЛАЙДЕРА "Недавно вышедшие"
 fetch(` https://api.themoviedb.org/3/trending/movie/week?language=ru-RU`, options).then((JustRealeasedList) => JustRealeasedList.json()).then((JustRealeasedList) => {
    getJustRealeased(JustRealeasedList.results);
@@ -291,9 +286,6 @@ function renderJustRealeased({
      });
 
 })
-    
-
-
 
   // swiperNovieGenre.innerText = "Пока нет";
    img_JREl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
@@ -369,7 +361,7 @@ function getTopList(list) {
    let slider = document.querySelector("#myRange");
    let output = document.querySelector("#quantity");
    output.innerHTML = slider.value;
-   let filmQuantity = 3;
+   let filmQuantity = 6;
    topListEl.innerHTML = "";
    let topList = list.slice(0, filmQuantity);
    topList.forEach((item, index) => {

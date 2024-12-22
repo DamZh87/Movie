@@ -520,19 +520,46 @@ h3 {
     font-family: "Inter", sans-serif;
 }
 
-.random__descript {
-    margin-bottom: 2rem;
-    font-size: 14px;
-    line-height: 22px;
-    color: grey;
-    font-family: inherit;
-    max-width: 30rem;
-    text-align: left;
+.desc_container {
+    position: relative;
     overflow: hidden;
+    margin-bottom: 2rem;
+    line-height: 22px;
+    font-family: inherit;
+    margin-right: 1rem;
+    padding: .5rem;
+    text-align: left;
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
+    z-index: 2;
+    opacity: 80%;
+    border-radius: .5rem;
+
 }
+
+.desc_container::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    background-color: #000000;
+    filter: blur(3rem);
+    z-index: 3;
+   
+}
+
+.random__descript {
+    position: relative;
+    z-index: 3; 
+    color: rgb(161, 159, 159);
+    font-size: 14px;
+
+}
+
+
 
 @media screen and (max-width:8580px) {
     .random__descript {
@@ -566,10 +593,12 @@ h3 {
     -webkit-appearance: none;
     appearance: none;
     width: 1rem;
-    height: 2rem;
+    height: 1.3rem;
     background: #00925D;
     cursor: pointer;
     border-radius: 5px;
+
+
 }
 
 .slider::-moz-range-thumb {
@@ -586,7 +615,7 @@ h3 {
     gap: 3rem;
     padding: 1rem;
     justify-content: center;
-    align-content: center;
+    align-items:center;
     color: white;
 }
 
@@ -737,4 +766,9 @@ h3 {
 
 .empty{
     height: 3rem;
+  }
+
+#quantity{
+font-size:x-large;
+text-align: center;
   }
