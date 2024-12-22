@@ -2,7 +2,6 @@ import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 
 // ПОЛУЧЕНИЕ СПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА И РЕНДЕР
-
 fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
   .then((response) => response.json())
   .then((movieList) => {
