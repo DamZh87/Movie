@@ -1,6 +1,9 @@
 @import url('./swiper.css');
 
 
+/* СТРОКА 393 АДАПТАЦИЯ .screenshots__block img */
+
+
 
 *{
     margin: 0;
@@ -386,6 +389,12 @@ h3{
     width: 20vw;
     border-radius: 20px;
     
+}
+
+@media screen and (max-width: 800px) {
+  .screenshots__block img{
+    width: 35vw;
+  }
 }
 
   .screenshots__block{

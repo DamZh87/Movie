@@ -193,4 +193,5 @@ swiper-slide::before {
   color: rgba(255, 255, 255, 0.69);
   padding-right: 1rem;
   padding-bottom: 10px;
+  text-align: right;
 }

@@ -34,12 +34,15 @@
                     </div>
                 </a>
                 <div class="header__menu-item">
-                    <a href="./index.html">Главная</a>
-                    <a href="#just_released">Новые</a>
-                    <a href="#top">Лучшие</a>
-                    <a href="#random">Случайные</a>
-                    <a href="./news.html">Статьи о кино</a>
-                    <a href="./about.html">О нас</a>
+                    <nav data-opened="false" class="nav__h">
+                        <button class="burger__close">X</button>
+                        <a href="./index.html">Главная</a>
+                        <a href="#just_released">Новые</a>
+                        <a href="#top">Лучшие</a>
+                        <a href="#random">Случайные</a>
+                        <a href="./news.html">Статьи о кино</a>
+                        <a href="./about.html">О нас</a>
+                    </nav>
                 </div>
                 <div class="header__menu-user">
                     <ul>
@@ -56,11 +59,8 @@
                             </svg> 
                         </li>
 
-                        <li>
-                                      
-                        </li>
                     </ul>
-
+                            <button class="burger__open">&#8801;</button>
                     <!-- SEARCHING FORM -->
                     <div class="search-container-hide">
                         <a href="#" class="search-button-close">X</a>
@@ -142,13 +142,19 @@
     </div>
 
 <main class="main">
+
+
+
+        <!-- БЛОК НЕДАВНО ВЫШЕДШИЕ -->
         <div class="container">
             <h3 id="just_released">Недавно вышедшие</h3>
-            <swiper-container class="mySwiper swiper-JR" pagination="true" pagination-dynamic-bullets="true"
-                pagination-clickable="false" slides-per-view="6" centered-slides="false" space-between="30"
-                grab-cursor="true" navigation="true">
+            <swiper-container class="mySwiper swiper-JR" pagination-dynamic-bullets="true" pagination-clickable="true" navigation="true">
             </swiper-container>
         </div>
+
+
+
+        
         <!-- БЛОК ТОП  -->
         <div class="container">
             <h3 id="top">Лучшие фильмы</h3>

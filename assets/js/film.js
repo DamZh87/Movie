@@ -3,6 +3,48 @@ import {options} from './movieAPI.js';
 
 const movie_id = JSON.parse(localStorage.getItem("filmId"));
 
+
+//ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
+const swiperSimilar1 = document.querySelector('.swiperSimilar');
+const swiperSimilarParams = {
+    slidesPerView: 2,
+    spaceBetween: 30,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    breakpoints: {
+        499: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        999: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+        },
+        800: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        }
+    },
+    on: {
+      init() {
+       
+      },
+    },
+  };
+
+  Object.assign(swiperSimilar1, swiperSimilarParams);
+
+  swiperSimilar1.initialize();
+
+  //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
+
+
+
+
+
+
 fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).then((filmById) => filmById.json()).then((filmById) => {
    let mainFilmInfo = filmById;
    filmById.genres.forEach(({
@@ -151,7 +193,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
     })
 
       
-       if (poster_path !== undefined && poster_path !== null && poster_path !== "") {
+       if (poster_path) {
          
            img_SimEl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
        } else {

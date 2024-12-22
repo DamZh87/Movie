@@ -1,6 +1,57 @@
 import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 
+//ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
+const swiperJR = document.querySelector('.swiper-JR');
+const swiperJRParams = {
+    spaceBetween: 30,
+    slidesPerView: 6,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    breakpoints: {
+        499: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        999: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+        },
+        800: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        }
+    },
+    on: {
+      init() {
+       
+      },
+    },
+  };
+
+  Object.assign(swiperJR, swiperJRParams);
+
+  swiperJR.initialize();
+
+  //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
+
+// burger
+const navBurger = document.querySelector('.nav__h');
+const closeBurger = document.querySelector('.burger__close');
+const openBurger = document.querySelector('.burger__open');
+
+ openBurger.addEventListener('click', ()=>{
+     navBurger.setAttribute('data-opened', 'true')
+ })
+
+
+closeBurger.addEventListener('click', ()=>{
+    navBurger.setAttribute('data-opened', 'false')
+})
+
+
 // ПОЛУЧЕНИЕ СПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА И РЕНДЕР
 fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
   .then((response) => response.json())
@@ -113,12 +164,14 @@ function getMovieList(list) {
 
 
 //RANDOM FILM
-    let randomFilmId = Math.floor(Math.random() * 1000),
-        randomFilm1Id = Math.floor(Math.random() * 1000),
-        randomFilm2Id = Math.floor(Math.random() * 1000),
-        randomFilm3Id = Math.floor(Math.random() * 1000);
+function getRandomFilmId(min, max) {
+    min = Math.ceil(6);
+    max = Math.floor(1000);
+    return Math.floor(Math.random() * (max - min) + min); 
+}
 
-fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by=popularity.asc&release_date.gte=1980-01-01&release_date.lte=2024-12-31`, options)
+
+fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc&release_date.gte=1980-01-01&release_date.lte=2024-12-31`, options)
   .then((randomFilmRes) => randomFilmRes.json())
   .then((randomFilmRes) => {
    let randomFilm = randomFilmRes;
@@ -141,21 +194,29 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilmId}?language=ru-RU&sort_by
    });
 
    document.querySelector(".random_film_trailer_btn").addEventListener("click", () => {
-       fetch(` https://api.themoviedb.org/3/movie/${randomFilmId}/videos?language=ru-RU`, options) // Трейлер
+       fetch(` https://api.themoviedb.org/3/movie/${randomFilm.id}/videos?language=ru-RU`, options) // Трейлер
        .then((trailerID) => trailerID.json()).then((trailerID) => {
-           let trailer = trailerID.results[0].key;
-           document.querySelector(".trailer").setAttribute("src", `https://www.youtube.com/embed/${trailer}`);
+           let trailer = trailerID.results[0]?.key;
+  //Добавить
+           if (trailer) {
+            document.querySelector(".trailer").setAttribute("src", `https://www.youtube.com/embed/${trailer}`)
+            }
+           else {
+            document.querySelector(".trailer").setAttribute("src", `https://www.youtube.com/embed/nkGlAEnkQhw?si=jI2Q09i8dJ_131Yg`)
+           }
+   //
+
        }).catch((err) => console.error(err));
    });
 });
 
-fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes1) => randomFilmRes1.json()).then((randomFilmRes1) => {
+fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes1) => randomFilmRes1.json()).then((randomFilmRes1) => {
    let randomFilm1 = randomFilmRes1;
    randomFilm1.genres.forEach(({name}) => {
        document.querySelector(".random__genre_1").textContent += ` ${name}  `;
    });
 
-   if (randomFilm1.poster_path !== undefined && randomFilm1.poster_path !== null && randomFilm1.poster_path !== "") {
+   if (randomFilm1.poster_path) {
          
     document.querySelector(".random_img_1").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm1.poster_path}`);
     } else {
@@ -175,12 +236,12 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
        location.href = "film.html";
        localStorage.setItem("filmId", filmId);
    });
-   fetch(`https://api.themoviedb.org/3/movie/${randomFilm2Id}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes2) => randomFilmRes2.json()).then((randomFilmRes2) => {
+   fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes2) => randomFilmRes2.json()).then((randomFilmRes2) => {
        let randomFilm2 = randomFilmRes2;
        randomFilm2.genres.forEach(({name}) => {
            document.querySelector(".random__genre_2").textContent += ` ${name}  `;
        });
-       if (randomFilm2.poster_path !== undefined && randomFilm2.poster_path !== null && randomFilm2.poster_path !== "") {
+       if (randomFilm2.poster_path) {
          
         document.querySelector(".random_img_2").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm2.poster_path}`);
     } else {
@@ -201,13 +262,13 @@ fetch(`https://api.themoviedb.org/3/movie/${randomFilm1Id}?language=ru-RU&sort_b
        location.href = "film.html";
        localStorage.setItem("filmId", filmId);
    });
-   fetch(`https://api.themoviedb.org/3/movie/${randomFilm3Id}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes3) => randomFilmRes3.json()).then((randomFilmRes3) => {
+   fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes3) => randomFilmRes3.json()).then((randomFilmRes3) => {
        let randomFilm3 = randomFilmRes3;
        randomFilm3.genres.forEach(({name}) => {
            document.querySelector(".random__genre_3").textContent += ` ${name}  `;
        });
        
-       if (randomFilm3.poster_path !== undefined && randomFilm3.poster_path !== null && randomFilm3.poster_path !== "") {
+       if (randomFilm3.poster_path) {
          
         document.querySelector(".random_img_3").setAttribute('src', `https://image.tmdb.org/t/p/w500/${randomFilm3.poster_path}`);
     } else {

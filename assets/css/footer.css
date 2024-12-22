@@ -1,6 +1,8 @@
 /* footer */
 
 
+/* СТРОКА 22 АДАПТАЦИЯ .footer__all */
+/* СТРОКА 62 flex wrap */
 
 .footer__all {
     display: flex;
@@ -15,9 +17,14 @@
     color: #fff;
     font-family: "Inter", sans-serif;
     border-top: 1px solid #4a4f52;
-
-
 }
+
+@media screen and (max-width: 800px) {
+    .footer__all {
+        height: 8rem;
+    }
+}
+
 
 .weather {
     font-size: 15px;
@@ -25,6 +32,12 @@
     display: flex;
     font-family: "Inter", sans-serif;
     align-items: center
+}
+
+@media screen and (max-width:750px) {
+    .weather {
+        flex-direction: column;
+    }
 }
 
 .currency {
@@ -46,7 +59,7 @@
 }
 
 .soc {
-
+    flex-wrap: wrap;
     display: flex;
     justify-content: flex-end;
     height: 100%;

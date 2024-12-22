@@ -10,18 +10,38 @@ export const options = {
  };
 
 //ПОЛУЧИТЬ ИНФОРМАЦИЮ ОБ АКТЕРЕ
+
  export function getActor(){
    fetch(`https://api.themoviedb.org/3/person/${actor_id}?language=ru-RU`, options)
    .then((actor) => actor.json())
    .then((actor) => {
-      document.querySelector(".biography").textContent = actor.biography;
-      document.querySelector(".actor-name").textContent = actor.name;
-      document
-         .querySelector(".actor_img")
-         .setAttribute(
-            "src",
-            `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
-         );
+
+         if (actor.biography) {   
+         document.querySelector(".biography").textContent = actor.biography;
+         document.querySelector(".actor-name").textContent = actor.name;
+         document
+            .querySelector(".actor_img")
+            .setAttribute(
+               "src",
+               `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+            ); 
+         }
+         else {
+            fetch(`https://api.themoviedb.org/3/person/${actor_id}?language=us-EN`, options)
+            .then((actorEn) => actorEn.json())
+            .then((actorEn) => { 
+            document.querySelector(".biography").textContent = actorEn.biography;
+            document.querySelector(".actor-name").textContent = actor.name;
+            document
+               .querySelector(".actor_img")
+               .setAttribute(
+                  "src",
+                  `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+               ); 
+         }
+      )
+      }
+ 
    })
 .catch((actor) => console.error(err));
  }
