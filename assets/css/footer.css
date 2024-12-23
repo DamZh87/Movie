@@ -21,7 +21,8 @@
 
 @media screen and (max-width: 800px) {
     .footer__all {
-        height: 8rem;
+        height: 5rem;
+        justify-content: center;
     }
 }
 
@@ -36,7 +37,7 @@
 
 @media screen and (max-width:750px) {
     .weather {
-        flex-direction: column;
+        display: none;
     }
 }
 
@@ -69,6 +70,12 @@
     font-family: "Inter", sans-serif;
 }
 
+@media screen and (max-width:750px) {
+    .soc {
+        display: none;
+    }
+}
+
 .soc a {
     margin-left: 1rem;
 }
@@ -82,4 +89,10 @@
 
 .cop {
     display: flex;
+}
+
+@media screen and (max-width:750px) {
+    .cop {
+        justify-content: center;
+    }
 }

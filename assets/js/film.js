@@ -193,7 +193,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
     })
 
       
-       if (poster_path !== undefined && poster_path !== null && poster_path !== "") {
+       if (poster_path) {
          
            img_SimEl.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
        } else {
