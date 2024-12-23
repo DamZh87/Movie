@@ -212,14 +212,16 @@ body {
   
   .nav__h{
     position: fixed;
+    color: lightgray;
     flex-direction: column;
     align-items: stretch;
     font-size: 1rem;
     width: 100%;
-    max-width: 200px;
+    max-width: 220px;
     height: 100%;
     margin-top: 50px;
-    background-color: var( --colorredback);
+    /* background-color: rgba(26, 24, 24, 0.363); */
+    background-color: rgba(0, 0, 0, 0.92);
     top: 0;
     right: -100px;
     color: white;
@@ -232,6 +234,10 @@ body {
   
   .nav__h[data-opened="true"]{
   transform: translateX(0);
+  height: 100vh;
+  backdrop-filter: blur(30px);
+  text-transform: uppercase;
+  
   }
   
 
@@ -267,6 +273,7 @@ body {
     padding-right: 1rem;
     color: inherit;
     text-decoration: none;
+    line-height: 30px;
     transition: color 0.1s ease-in;
     font-size: 16px;
     z-index: 5;
