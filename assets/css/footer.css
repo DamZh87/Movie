@@ -1,8 +1,15 @@
 /* footer */
 
 
-/* СТРОКА 22 АДАПТАЦИЯ .footer__all */
-/* СТРОКА 62 flex wrap */
+
+
+.footer{
+    height: 5rem;
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+}
+
 
 .footer__all {
     display: flex;

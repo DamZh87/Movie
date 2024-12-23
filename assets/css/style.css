@@ -288,6 +288,7 @@ body {
 
 .header__menu-user{
     display: flex;
+    align-items: baseline;
 }
 
 .header__menu-user ul {
@@ -357,6 +358,7 @@ body {
     color: hwb(0 50% 50%);
     font-family: inherit;
     display: flex;
+    
 }
 
 @media screen and (max-width:800px) {
@@ -371,7 +373,20 @@ body {
 }
 @media screen and (max-width:800px) {
     .movie_genre {
+        /* overflow-wrap: anywhere; */
         margin-left: 0;
+        overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+        -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
     }
 }
 
@@ -764,6 +779,14 @@ text-align: left;
     color: white;
 }
 
+@media screen and (max-width:800px) {
+    .best {
+        gap: 1.5rem;
+        padding: 1rem 0;
+        
+    }
+}
+
 
 .week__block {
     display: grid;
@@ -801,7 +824,8 @@ text-align: left;
         display: flex;
     justify-content: space-evenly;
     max-width: 100%;
-    height: 20vh;
+    object-fit: cover;
+    height: 15vh;
     }
 }
 

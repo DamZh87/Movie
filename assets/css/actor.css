@@ -93,9 +93,15 @@ body{
     padding-right: 0;
   }
 
+
+  body, 
+  html{
+    height: 100vh;
+  }
+
 main{
-    height: 100%;
-   
+    
+   background-position: center;
     background-image: url(../img/actor/back.jpg);
 }
 
@@ -136,7 +142,11 @@ h3{
     font-family: inherit;
     text-align: justify;
     padding-right: 1rem;
-
+}
+@media screen and (max-width:800px) {
+    .biography{
+        width: 80vw;
+    }
 }
 
 .container_about-actor{
@@ -148,6 +158,12 @@ h3{
     z-index: 1;
     padding-top: 5rem;
     padding-bottom: 15rem;
+ }
+
+ @media screen and (max-width:800px) {
+    .container_about-actor{
+        flex-direction: column-reverse;
+     }
  }
  
  
