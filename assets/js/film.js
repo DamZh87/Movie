@@ -132,7 +132,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        spaceBetween: 30,
        loop: true,
        breakpoints: {
-        499: {
+        399: {
             slidesPerView: 2,
             spaceBetweenSlides: 30
         },

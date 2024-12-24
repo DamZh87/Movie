@@ -44,7 +44,7 @@ body {
     }
     @media screen and (max-width: 850px) {
         .header__menu {
-            display: none;
+            display: flex;
             }
     }
 
