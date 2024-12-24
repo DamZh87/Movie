@@ -31,13 +31,16 @@
                      <img class="logo_png" src="./assets/img/header/logo.png" alt="logo" /></div
                ></a>
                <div class="header__menu-item">
-                  <a href="./index.html">Главная</a>
-                  <a href="#short_review">О фильме</a>
+                  <nav data-opened="false" class="nav__h">
+                     <button class="burger__close">X</button>
+                     <a href="./index.html">Главная</a>
+                     <a href="#short_review">О фильме</a>
                      <a href="#actors">Актеры</a>
-                  <a href="#screen_shots">Скриншоты</a>
-                  <a href="#similar">Похожие</a>
-                  <a href="./news.html">Статьи о кино</a>
-                  <a href="./about.html">О нас</a>
+                     <a href="#screen_shots">Скриншоты</a>
+                     <a href="#similar">Похожие</a>
+                     <a href="./news.html">Статьи о кино</a>
+                     <a href="./about.html">О нас</a>
+                </nav>
                </div>
                <div class="header__menu-user">
                   <ul>
@@ -49,6 +52,7 @@
                      </li>
                   </ul>
                </div>
+               <button class="burger__open">&#8801;</button>
             </div>
 
             <div class="header__hero">
@@ -95,7 +99,7 @@
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscrene
+                        allowfullscreen
                      ></iframe>
 
                   </div>
@@ -186,5 +190,6 @@
       <script src="./assets/lib/swiper-element-bundle.min.js"></script>
       <script src="./assets/lib/hystmodal.min.js"></script>
       <script type="module" src="./assets/js/film.js"></script>
+      <script src="./assets/js/burger.js"></script>
    </body>
 </html>

@@ -19,12 +19,7 @@ export const options = {
          if (actor.biography) {   
          document.querySelector(".biography").textContent = actor.biography;
          document.querySelector(".actor-name").textContent = actor.name;
-         document
-            .querySelector(".actor_img")
-            .setAttribute(
-               "src",
-               `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
-            ); 
+         document.querySelector(".actor_img").setAttribute( "src", `https://image.tmdb.org/t/p/w500/${actor.profile_path}`  ); 
          }
          else {
             fetch(`https://api.themoviedb.org/3/person/${actor_id}?language=us-EN`, options)
@@ -32,12 +27,7 @@ export const options = {
             .then((actorEn) => { 
             document.querySelector(".biography").textContent = actorEn.biography;
             document.querySelector(".actor-name").textContent = actor.name;
-            document
-               .querySelector(".actor_img")
-               .setAttribute(
-                  "src",
-                  `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
-               ); 
+            document.querySelector(".actor_img").setAttribute(  "src",`https://image.tmdb.org/t/p/w500/${actor.profile_path}` ); 
          }
       )
       }
@@ -45,4 +35,7 @@ export const options = {
    })
 .catch((actor) => console.error(err));
  }
+
+
+ 
 //

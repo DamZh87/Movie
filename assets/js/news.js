@@ -36,6 +36,7 @@ function rendernewCard({
   titleEl.className = "news_card_title"
   descriptionEl.className = "news_card_desc"
   urlToImageEl.className = "news_card_img"
+  urlEl.className = "news__card-link"
 
   titleEl.textContent = title;
   descriptionEl.textContent = description;
