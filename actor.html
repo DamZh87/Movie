@@ -23,33 +23,55 @@
       <title>FrontDead About Movie</title>
    </head>
    <body>
-      <header class="header">
-         <div class="container">
+
+   <header class="header">
+
+        <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false"
+            space-between="20" centered-slides="false" autoplay-delay="50000" autoplay-disable-on-interaction="true">
+        </swiper-container>
+
+        <div class="container">
             <div class="header__menu">
-               <a href="./index.html"
-                  ><div class="header__menu-logo">
-                     <img
-                        class="logo_png"
-                        src="./assets/img/header/logo.png"
-                        alt="logo"
-                     /></div
-               ></a>
-               
-               <!-- <div class="header__menu-item">
-                  <a href="./index.html">Главная</a>
-                  <a href="./news.html">Статьи о кино</a>
-                  <a href="./about.html">О нас</a>
-               </div> -->
-               
+                <a href="./index.html">
+                    <div class="header__menu-logo"><img class="logo_png" src="./assets/img/header/logo.png" alt="logo">
+                    </div>
+                </a>
+                <div class="header__menu-item">
+                    <nav data-opened="false" class="nav__h">
+                        <button class="burger__close">X</button>
+                        <a href="./index.html">Главная</a>
+                        <a href="./about.html">О нас</a>
+                    </nav>
+                </div>
+                <div class="header__menu-user">
+                    <ul>
+                        <li class="search__btn"><svg width="23px" height="23px" viewBox="0 0 1024 1024" class="icon"
+                                version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#fff">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z"
+                                        fill="#fff"></path>
+                                </g>
 
-            <div class="header__hero">
-             
+                            </svg> 
+                        </li>
 
- 
-
+                    </ul>
+                            <button class="burger__open">&#8801;</button>
+                    <!-- SEARCHING FORM -->
+                    <div class="search-container-hide">
+                        <a href="#" class="search-button-close">X</a>
+                        <form action="/search" method="get">
+                            <input type="text" placeholder="Поиск..." class="search-input" id="find">
+                            <div id="find_cont"></div>
+                        </form>
+                    </div>
+                </div>
             </div>
-         </div>
-      </header>
+        </div>
+    </header>
 
       <main class="main">
          <div class="container">
@@ -60,6 +82,7 @@
                <p class="biography"></p>
             </div>
             <div class="actor_img_container">
+             
                <div class="header__hero-name"><p class="actor-name"></p></div>
                <img class="actor_img" src="" alt="" />
             </div>
@@ -94,5 +117,7 @@
          </footer>
   
       <script type="module" src="./assets/js/actor.js"></script>
+      <script src="./assets/js/burger.js"></script>
+      <script src="./assets/js/search.js"></script>
    </body>
 </html>

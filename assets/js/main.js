@@ -37,20 +37,6 @@ const swiperJRParams = {
 
   //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
 
-// burger
-const navBurger = document.querySelector('.nav__h');
-const closeBurger = document.querySelector('.burger__close');
-const openBurger = document.querySelector('.burger__open');
-
- openBurger.addEventListener('click', ()=>{
-     navBurger.setAttribute('data-opened', 'true')
- })
-
-
-closeBurger.addEventListener('click', ()=>{
-    navBurger.setAttribute('data-opened', 'false')
-})
-
 
 // ПОЛУЧЕНИЕ СПИСКА ПОПУЛЯРНЫХ ФИЛЬМОВ ДЛЯ ХЭДЕРА И РЕНДЕР
 fetch(`https://api.themoviedb.org/3/movie/popular?include_adult=false&language=ru-RU&page=1`, options)
@@ -443,20 +429,7 @@ function getTopList(list) {
        });
    };
 }
-// SEARCH FORM
-const searchBtn = document.querySelector(".search__btn");
-const searchForm = document.querySelector(".search-container-hide");
-const searchClose = document.querySelector(".search-button-close");
-if (searchBtn && searchForm && searchClose) {
-   searchBtn.addEventListener("click", () => {
-       searchForm.classList.remove("search-container-hide");
-       searchForm.classList.add("search-container-show");
-   });
-   searchClose.addEventListener("click", () => {
-       searchForm.classList.remove("search-container-show");
-       searchForm.classList.add("search-container-hide");
-   });
-} else {}
+
 // SEARCH CODE
 const searchEl = document.querySelector("#find_cont");
 
@@ -473,6 +446,7 @@ function renderSearch({
    return sItem;
 }
 const input = document.querySelector("#find");
+
 input.addEventListener("input", updateValue);
 
 function updateValue(e) {
