@@ -235,7 +235,7 @@ body {
 
 @media screen and (max-width: 750px) {
   .header__hero {
-    max-width: 80vw;
+    max-width: 85vw;
   }
 }
 
@@ -676,6 +676,7 @@ h3 {
   .week__block {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    padding: 0;
   }
 }
 
@@ -690,7 +691,7 @@ h3 {
     justify-content: space-evenly;
     max-width: 100%;
     object-fit: cover;
-    height: 15vh;
+    height: 20vh;
   }
 }
 
@@ -701,6 +702,7 @@ h3 {
 
 .week__top {
   color: gray;
+  margin-bottom: .5rem;
   border: 1px gray solid;
   border-radius: 5px;
   max-width: fit-content;
@@ -708,7 +710,7 @@ h3 {
 }
 @media screen and (max-width: 850px) {
   .week__top {
-    font-size: 0.7rem;
+    font-size: .8rem;
     margin-bottom: 0.5rem;
   }
 }
@@ -724,7 +726,7 @@ h3 {
 
 @media screen and (max-width: 850px) {
   .week__poster {
-    width: 25vw;
+    width: 30vw;
     aspect-ratio: 3/4;
   }
 }
@@ -743,7 +745,7 @@ h3 {
 }
 @media screen and (max-width: 850px) {
   .week__movie-name {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-top: 0.8rem;
   }
 }

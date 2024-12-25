@@ -356,8 +356,8 @@ h3 {
 }
 @media screen and (max-width:850px) {
   .swiper-slide img {
-    width: 33%;
-    height: 33%;
+    width: 50%;
+    height: 50%;
     
   }
 }
