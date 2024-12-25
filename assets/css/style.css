@@ -688,7 +688,7 @@ h3 {
 @media screen and (max-width: 600px) {
   .week__card {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     max-width: 100%;
     object-fit: cover;
     height: 20vh;
@@ -710,7 +710,7 @@ h3 {
 }
 @media screen and (max-width: 850px) {
   .week__top {
-    font-size: .8rem;
+    font-size: .9rem;
     margin-bottom: 0.5rem;
   }
 }
@@ -726,13 +726,18 @@ h3 {
 
 @media screen and (max-width: 850px) {
   .week__poster {
-    width: 30vw;
+    width: 35vw;
     aspect-ratio: 3/4;
   }
 }
 
 .week__info {
   position: relative;
+}
+@media screen and (max-width:850px) {
+  .week__info {
+    width: 35vw;
+  }
 }
 
 .week__movie-name {
@@ -745,7 +750,7 @@ h3 {
 }
 @media screen and (max-width: 850px) {
   .week__movie-name {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-top: 0.8rem;
   }
 }
@@ -768,9 +773,8 @@ h3 {
   display: flex;
   font-family: inherit;
   bottom: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   align-items: center;
-
   color: rgb(255, 255, 255, 0.692);
 }
 

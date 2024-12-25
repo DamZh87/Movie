@@ -81,7 +81,7 @@
       align-items: stretch;
       font-size: 1rem;
       width: 100%;
-      max-width: 220px;
+      max-width: 240px;
       height: 100%;
       border-radius: 7px;
       margin-top: 50px;
@@ -102,4 +102,5 @@
     height: 100vh;
     backdrop-filter: blur(30px);
     text-transform: uppercase;
+    color: lightgray;
   }

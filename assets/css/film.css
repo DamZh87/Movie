@@ -177,6 +177,7 @@ body {
 .header__hero {
   position: absolute;
   display: flex;
+  width: 85vw;
   z-index: 5;
   color: white;
   bottom: 0;
@@ -356,8 +357,8 @@ h3 {
 }
 @media screen and (max-width:850px) {
   .swiper-slide img {
-    width: 50%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
     
   }
 }
