@@ -137,6 +137,10 @@ body {
   padding-right: 0;
 }
 
+.header__menu-user{
+  display: flex;
+}
+
 .header__menu-user ul {
   display: flex;
   align-items: center;
@@ -349,6 +353,13 @@ h3 {
   width: 25%;
   height: 25%;
   object-fit: cover;
+}
+@media screen and (max-width:850px) {
+  .swiper-slide img {
+    width: 33%;
+    height: 33%;
+    
+  }
 }
 
 .swiper__actor-container {
