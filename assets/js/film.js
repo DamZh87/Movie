@@ -44,12 +44,12 @@ const swiperSimilarParams = {
 
 fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).then((filmById) => filmById.json()).then((filmById) => {
    let mainFilmInfo = filmById;
-   filmById.genres.forEach(({
+   filmById.genres.slice(0, 3).forEach(({
        name
    }) => {
        document.querySelector(".hero-genre").textContent += ` ${name}  `;
    });
-   document.querySelector(".hero-year").textContent = mainFilmInfo.release_date.slice(0, 4);
+   document.querySelector(".hero-year").textContent += mainFilmInfo.release_date.slice(0, 4);
    document.querySelector(".hero-name").textContent = mainFilmInfo.title;
    document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
    let storyEl = document.querySelector(".story__line");

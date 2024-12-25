@@ -96,13 +96,13 @@ function getMovieList(list) {
 
                 slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
                 movieNameEl.textContent = title;
-                movieYearEl.textContent = release_date.slice(0, 4);
-                movieGenreEl.textContent = 'Жанр: '
+                movieYearEl.textContent = 'Год: ' + release_date.slice(0, 4);
+                movieGenreEl.textContent = 'Жанр: ';
 
                 fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
                 .then((genreRes) => genreRes.json())
                 .then((genreRes) => {
-                    let genreList = genreRes.genres
+                    let genreList = genreRes.genres.slice(0, 4)
                     const resultGenres = genreList.filter(i => genre_ids.includes(i.id));
                         resultGenres.forEach(({name}) => {
                         movieGenreEl.textContent += `${name}  `   
