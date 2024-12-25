@@ -48,8 +48,8 @@ body {
   overflow: hidden;
   max-width: 80vw;
   margin: 0 auto;
-  position: relative;
-  z-index: 20;
+  /* position: relative;
+  z-index: 2; */
 }
 
 @media screen and (max-width:850px) {
@@ -72,7 +72,6 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   width: 30rem;
   height: auto;
-
   text-align: center;
 }
 
@@ -181,7 +180,7 @@ body {
   padding: 1rem 0 0.5px 0;
   top: 0;
   width: 80vw;
-  z-index: 3;
+  z-index: 5;
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -299,20 +298,8 @@ body {
 }
 @media screen and (max-width: 800px) {
   .movie_genre {
-    /* overflow-wrap: anywhere; */
     margin-left: 0;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-
-    -ms-word-break: break-all;
-    /* This is the dangerous one in WebKit, as it breaks things wherever */
-    word-break: break-all;
-    /* Instead use this non-standard one: */
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    
   }
 }
 
@@ -458,6 +445,8 @@ h3 {
   font-family: inherit;
   color: white;
   margin: 3.5rem 0 1.5rem 0;
+  position: relative;
+  z-index: 3;
 }
 
 .movie_name,
@@ -676,6 +665,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
+  position: relative;
+  z-index: 2;
   padding: 1rem;
   justify-content: center;
   align-items: center;
@@ -691,6 +682,8 @@ h3 {
 
 .week__block {
   display: grid;
+  position: relative;
+  z-index: 3;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
   padding: 1rem;
@@ -784,8 +777,12 @@ h3 {
 }
 @media screen and (max-width: 850px) {
   .week__movie-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-top: 0.8rem;
+    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   }
 }
 
