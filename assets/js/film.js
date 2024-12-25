@@ -42,10 +42,6 @@ const swiperSimilarParams = {
   //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
 
 
-
-
-
-
 fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).then((filmById) => filmById.json()).then((filmById) => {
    let mainFilmInfo = filmById;
    filmById.genres.forEach(({
@@ -116,7 +112,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options).
        spaceBetween: 30,
        loop: true,
        breakpoints: {
-        399: {
+        299: {
             slidesPerView: 2,
             spaceBetweenSlides: 30
         },
