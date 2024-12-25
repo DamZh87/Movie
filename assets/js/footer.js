@@ -15,7 +15,6 @@ export function getWeather() {
     .catch((err) => console.error(err));
 } 
 
-//
 
 //КУРС ВАЛЮТ
 export function getCurrency() {
@@ -30,7 +29,6 @@ fetch(
     })
     .catch((err) => console.error(err));
 }
-//
 
 //ТЕКСТ ФУТЕРА
 export function footer() {
@@ -39,4 +37,3 @@ let currentYear = new Date().getFullYear();
 document.getElementById("copyright").innerHTML =
    " &copy; " + currentYear + " FrontDead";
 }
-//

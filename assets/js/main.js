@@ -327,8 +327,7 @@ function renderJustRealeased({
      }) => {
          
         swiperNovieGenre.innerText += `${name}  `  
-        console.log(`${name}  `);
-         
+                
      });
 
 })

@@ -17,3 +17,7 @@ if (searchBtn && searchForm && searchClose) {
        searchForm.classList.add("search-container-hide");
    });
 } else {}
+
+
+
+
