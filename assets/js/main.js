@@ -519,6 +519,26 @@ var swiper = new Swiper(".randomSwiper", {
        prevEl: ".swiper-button-prev",
    },
 });
+
+
+
+
+
+
+
+ if (new Date() >= new Date(2025, 0, 13)) {
+ document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo_norm.png');
+ } else {
+    document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo.png');
+
+
+} 
+    
+
+
+
+
+
 // footer
 footer()
    // ПОГОДА ))
