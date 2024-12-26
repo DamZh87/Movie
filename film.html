@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="./assets/css/burger.css">
   <link rel="stylesheet" href="./assets/css/search.css">
+  <link rel="stylesheet" href="./assets/lib/glightbox/glightbox.min.css">
   <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
   <title>FrontDead About Movie</title>
 </head>
@@ -67,7 +68,7 @@
           <p class="hero-name"></p>
         </div>
         <div class="header__hero-genre">
-          <p class="hero-year">Год:</p>
+          <p class="hero-year">Год: </p>
           <p class="hero-genre">Жанр: </p>
         </div>
         <div class="header__hero-descr">
@@ -108,10 +109,27 @@
       <!-- SCREENSHOTS BLOCK -->
       <h3 id="screen_shots">Кадры из фильма</h3>
       <div class="screenshots__block">
-        <img src="https://picsum.photos/id/22/360/240" alt="screenshot" />
+
+
+        <a href="./assets/img/1.jpg" class="glightbox">
+          <img src="./assets/img/1.jpg" alt="image">
+        </a>
+        <a href="./assets/img/2.jpg" class="glightbox">
+         <img src="./assets/img/2.jpg" alt="image">
+        </a>
+        <a href="./assets/img/3.jpg" class="glightbox">
+          <img src="./assets/img/3.jpg" alt="image">
+        </a>
+        <a href="./assets/img/4.jpg" class="glightbox">
+          <img src="./assets/img/4.jpg" alt="image">
+        </a>
+
+        <!-- <img src="https://picsum.photos/id/22/360/240" alt="screenshot" />
         <img src="https://picsum.photos/id/15/360/240" alt="screenshot" />
         <img src="https://picsum.photos/id/182/360/240" alt="screenshot" />
-        <img src="https://picsum.photos/id/58/360/240" alt="screenshot" />
+        <img src="https://picsum.photos/id/58/360/240" alt="screenshot" /> -->
+
+
       </div>
       <!-- БЛОК ПОХОЖИЕ ФИЛЬМЫ -->
       <h3 id="similar">Похожие</h3>
@@ -145,6 +163,7 @@
   <script type="module" src="./assets/js/film.js"></script>
   <script src="./assets/js/burger.js"></script>
   <script src="./assets/js/search.js"></script>
+  <script src="./assets/lib/glightbox/glightbox.min.js"></script>
 </body>
 
 </html>

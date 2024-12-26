@@ -2,8 +2,8 @@
 
 .search-container-show {
     position: absolute;
-    top: 2rem;
-    right: 7rem;
+    top: 3.5rem;
+    right: 1rem;
     background-color: rgba(0, 0, 0, 0.699);
     padding: 2rem;
     border-radius: 10px;
@@ -11,8 +11,18 @@
     width: 30rem;
     height: auto;
     text-align: center;
+    animation: showBlock .7s linear forwards;
   }
-  
+
+  @keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+    
   @media screen and (max-width: 850px) {
     .search-container-show {
       top: 2rem;

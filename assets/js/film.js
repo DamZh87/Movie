@@ -180,7 +180,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 		var swiper = new Swiper(".swiperActors", {
 
 			spaceBetween: 30,
-			loop: true,
 			breakpoints: {
 				299: {
 					slidesPerView: 2,
@@ -326,6 +325,21 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			},
 		});
 	});
+
+
+	
+
+	const glightbox2 = GLightbox({
+		navigation:  true,
+		openEffect: 'bounce', // Define that we want the bounce animation on open
+		closeEffect: 'zoom',
+  cssEfects: {
+    // register our new animation
+    bounce: { in: 'bounceIn', out: 'bounceOut' }
+  }
+	});
+	
+	
 // footer
 footer()
 // ПОГОДА ))
