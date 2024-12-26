@@ -52,6 +52,80 @@ body {
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 50%);
 }
 
+.glightbox img {
+  position: relative;
+  transition: all 0.3s ease-in-out; 
+  z-index: 0;
+  transform: translateY(0);
+}
+
+.glightbox img::after {
+  content: '';
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1000; 
+  transition: background-color 0.3s ease-in-out;
+}
+
+.glightbox img:hover {
+  overflow: hidden;
+  /* scale: 1.02;  */
+  transform: translateY(-5px);
+}
+
+.glightbox img:hover::after {
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+
+
+
+.gbounceIn {
+  animation: bounceIn 1.3s ease;
+}
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 .container {
   overflow: hidden;
   max-width: 80vw;
@@ -139,6 +213,7 @@ body {
 
 .header__menu-user{
   display: flex;
+  align-items: baseline;
 }
 
 .header__menu-user ul {
