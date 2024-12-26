@@ -180,7 +180,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 		var swiper = new Swiper(".swiperActors", {
 
 			spaceBetween: 30,
-			loop: true,
 			breakpoints: {
 				299: {
 					slidesPerView: 2,
