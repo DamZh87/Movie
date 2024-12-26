@@ -406,6 +406,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+  position: relative;
+  z-index: 5;
 }
 @media screen and (max-width: 850px) {
   .screenshots__block {
