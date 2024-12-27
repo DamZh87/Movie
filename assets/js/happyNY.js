@@ -9,7 +9,7 @@ export function happyNY() {
             startD2 = new Date(curYear, 0, 1),
             endD2 = new Date(curYear, 0, 13, 23, 59, 59  )
    
-    if ((date >= startD1 && date <= endD1)  || (date >= startD2 && date <= endD2 )) {
+    if (date >= startD1 && date <= endD1 ) {
      document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo.png');
     } else {
         document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo_norm.png');
