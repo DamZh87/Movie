@@ -7,21 +7,18 @@ export function happyNY() {
             endD1 = new Date(curYear, 11, 31, 23, 59, 59  ), 
     
             startD2 = new Date(curYear, 0, 1),
-            endD2 = new Date(curYear, 0, 13, 23, 59, 59  ),
+            endD2 = new Date(curYear, 0, 13, 23, 59, 59  );
 
-            const snowWlake = document.querySelector('snowblock');
+            
 
+            
    
     if ((date >= startD1 && date <= endD1)  || (date >= startD2 && date <= endD2)) {
      document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo.png');
+     document.querySelector('.snowblock').setAttribute('style', 'display:block');
     } else {
         document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo_norm.png');
-        snowWlake.setAttribute('style', 'display:none');
+        document.querySelector('.snowblock').setAttribute('style', 'display:none');
     } 
     }
 
-    // if (new Date() >= new Date(2025, 0, 13)) {
-    //     document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo_norm.png');
-    //     } else {
-    //        document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo.png');
-    //    } 
