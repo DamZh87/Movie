@@ -15,7 +15,6 @@
     const withOutBurger2 = e.composedPath().includes(openBurger);
   
     if (!withOutBurger && !withOutBurger2) {
-      
       navBurger.removeAttribute('data-opened', 'true');
       navBurger.setAttribute('data-opened', 'false');
     }

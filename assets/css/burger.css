@@ -6,7 +6,7 @@
     display: flex;
     font-family: inherit;
   }
-  
+
   .nav__s {
     position: relative;
     margin-left: 3.5rem;
@@ -85,13 +85,11 @@
       height: 100%;
       border-radius: 7px;
       margin-top: 50px;
-      /* background-color: rgba(26, 24, 24, 0.363); */
       background-color: rgba(0, 0, 0, 0.72);
       top: 0;
       right: -100px;
       color: white;
       padding: 1rem;
-  
       transform: translateX(100%);
       transition: transform 0.44s ease-in-out;
     }
@@ -103,4 +101,8 @@
     backdrop-filter: blur(30px);
     text-transform: uppercase;
     color: lightgray;
+  }
+
+  .nav__h a:first-child{
+    color:green;
   }
