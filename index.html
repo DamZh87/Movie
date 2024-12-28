@@ -17,11 +17,13 @@
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="./assets/css/burger.css">
   <link rel="stylesheet" href="./assets/css/search.css">
+  <link rel="stylesheet" href="./assets/css/snowflake.css">
   <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
   <title>FrontDead Movie project</title>
 </head>
 
 <body>
+  <div class="snowblock"></div>
   <header class="header">
     <swiper-container class="mySwiper swiper-two" pagination="true" pagination-clickable="true" navigation="false" space-between="20" centered-slides="false" autoplay-delay="60000" autoplay-disable-on-interaction="true">
     </swiper-container>
@@ -29,12 +31,12 @@
       <div class="header__menu">
         <a href="./index.html">
           <div class="header__menu-logo">
-            <img class="logo_png" src="" alt="logo">
+            <img class="logo_png" src="./assets/img/header/logo.png" alt="logo">
           </div>
         </a>
         <div class="header__menu-item">
           <nav data-opened="false" class="nav__h">
-            <button class="burger__close">X</button>
+            <button class="burger__close"><img src="./assets/img/close-square.svg" alt="" srcset=""></button>
             <a href="./index.html">Главная</a>
             <a href="#just_released">Новые</a>
             <a href="#top">Лучшие</a>
@@ -58,7 +60,7 @@
           <button class="burger__open">&#8801;</button>
           <!-- SEARCHING FORM -->
           <div class="search-container-hide">
-            <a href="#" class="search-button-close">X</a>
+            <a href="#" class="search-button-close"><img src="./assets/img/close-square.svg" alt="" srcset=""></a>
             <input type="text" placeholder="Поиск фильма..." class="search-input" id="find">
             <div id="find_cont">
             </div>

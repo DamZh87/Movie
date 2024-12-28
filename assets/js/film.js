@@ -327,7 +327,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 	});
 
 
-<<<<<<< HEAD
 	
 
 	const glightbox2 = GLightbox({
@@ -338,28 +337,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
     // register our new animation
     bounce: { in: 'bounceIn', out: 'bounceOut' }
   }
-=======
-	const glightbox = GLightbox({
-		touchNavigation: true,
-		loop: true,
-		autoplayVideos: true,
-		openEffect: 'zoom',
-		closeEffect: 'fade',
-		cssEfects: {
-		fade: { in: 'fadeIn', out: 'fadeOut' },
-		zoom: { in: 'zoomIn', out: 'zoomOut' }
-		}
-	});
-
-	const glightbox2 = GLightbox({
-		
-		openEffect: 'zoom',
-		closeEffect: 'fade',
-		cssEfects: {
-		fade: { in: 'fadeIn', out: 'fadeOut' },
-		zoom: { in: 'zoomIn', out: 'zoomOut' }
-		}
->>>>>>> 64ac129f8f0e76eed67e6136791fc4353be8dcc3
 	});
 	
 	
