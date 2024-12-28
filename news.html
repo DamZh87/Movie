@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./assets/css/hystmodal.min.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/burger.css">
   <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
   <title>FrontDead Movie project</title>
 </head>
@@ -31,7 +32,18 @@
           </div>
         </a>
         <div class="header__menu-item">
-          <a href="./index.html">Главная</a>
+          <nav data-opened="false" class="nav__h">
+            <button class="burger__close">X</button>
+            <a href="./index.html">Главная</a>
+          </nav>
+        </div>
+        <div class="header__menu-user">
+          <ul>
+            <li class="search__btn">
+   
+            </li>
+          </ul>
+          <button class="burger__open">&#8801;</button>
         </div>
       </div>
     </div>
