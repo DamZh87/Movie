@@ -8,8 +8,8 @@ import {
 } from './movieAPI.js';
 
 
-const urlActor = new URL("actor.html", window.location.origin);
-const urlFilm = new URL("film.html", window.location.origin);
+const urlActor = new URL("Movie/actor.html", window.location.origin);
+const urlFilm = new URL("Movie/film.html", window.location.origin);
 const movie_id = new URLSearchParams(window.location.search).get("id");
 
 
