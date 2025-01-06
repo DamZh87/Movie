@@ -437,6 +437,11 @@ h3 {
   align-items: flex-start;
   padding-top: 1rem;
 }
+@media screen and (max-width: 850px) {
+  .random__movie-info {
+    flex-direction: column;
+  }
+}
 
 .random__hero-name {
   font-size: 32px;
@@ -450,18 +455,21 @@ h3 {
 .random__rating_2,
 .random__rating_3 {
   display: flex;
-  /* font-family: inherit; */
-  /* font-weight: normal; */
-  font-size: 0.9rem;
+  font-size: .9rem;
   align-items: center;
+  line-height: 22px;
   margin-left: 0.4rem;
   z-index: 3;
-  color: rgb(255, 255, 255, 0.692);
 }
 
 .random__movie-rating::before {
   content: url(../img/main/swiper/star.svg);
   margin-right: 0.2rem;
+}
+@media screen and (max-width:850px) {
+  .random__movie-rating::before {
+    display: none;
+  }
 }
 
 .random__rating_1::before,
@@ -472,19 +480,25 @@ h3 {
 }
 
 .random__year {
-  font-size: 14px;
+  font-size: .9rem;
   line-height: 22px;
-  color: hwb(0 50% 50%);
   margin-left: 1rem;
-  /* font-family: "Inter", sans-serif; */
+}
+@media screen and (max-width:850px) {
+  .random__year {
+   margin-left: .4rem;
+  }
 }
 
 .random__genre {
-  font-size: 14px;
+  font-size: .9rem;
   line-height: 22px;
   margin-left: 1rem;
-  color: hwb(0 50% 50%);
-  /* font-family: "Inter", sans-serif; */
+}
+@media screen and (max-width:850px) {
+  .random__genre {
+    margin-left: .4rem;
+  }
 }
 
 .desc_container {
