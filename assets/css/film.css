@@ -80,10 +80,6 @@ body {
 .glightbox img:hover::after {
   background-color: rgba(0, 0, 0, 0.5); 
 }
-
-
-
-
 .gbounceIn {
   animation: bounceIn 1.3s ease;
 }
@@ -268,6 +264,10 @@ body {
   font-family: inherit;
 }
 
+.hero-name{
+  margin-bottom: 0.5rem;
+}
+
 .header__hero-genre {
   font-size: 14px;
   line-height: 22px;
@@ -342,39 +342,6 @@ body {
   bottom: 15%;
 }
 
-.header__hero-buttons-download {
-  color: white;
-  text-decoration: none;
-  background-color: black;
-  padding: 0.8rem 1.5rem;
-  padding-left: 2.5rem;
-  border: #fff 1px solid;
-  font-size: 14px;
-  border-radius: 10px;
-  position: relative;
-}
-.header__hero-buttons-share {
-  color: white;
-  text-decoration: none;
-  background-color: black;
-  padding: 0.8rem 1.5rem;
-  padding-left: 2.5rem;
-  border: #fff 1px solid;
-  font-size: 14px;
-  border-radius: 10px;
-  position: relative;
-}
-.header__hero-buttons-like {
-  color: white;
-  text-decoration: none;
-  background-color: black;
-  padding: 0.8rem 1.5rem;
-  padding-left: 2.5rem;
-  border: #fff 1px solid;
-  font-size: 14px;
-  border-radius: 10px;
-  position: relative;
-}
 
 main {
   height: 1vh;

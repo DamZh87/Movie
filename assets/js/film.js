@@ -7,9 +7,8 @@ import {
 	options
 } from './movieAPI.js';
 
-// const test = new URLSearchParams(window.location.search);
-// const movie_id = test.get("id");
 
+const url = new URL("Movie/actor.html", window.location.origin);
 const movie_id = new URLSearchParams(window.location.search).get("id");
 
 
@@ -44,7 +43,9 @@ const swiperSimilarParams = {
 };
 Object.assign(swiperSimilar1, swiperSimilarParams);
 swiperSimilar1.initialize();
+
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
+
 fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 	.then((filmById) => filmById.json())
 	.then((filmById) => {
@@ -55,6 +56,9 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			document.querySelector(".hero-genre").textContent += ` ${name}  `;
 		});
 		document.querySelector(".hero-year").textContent += mainFilmInfo.release_date.slice(0, 4);
+		
+		
+		document.querySelector(".hero-rating").textContent += mainFilmInfo.vote_average.toString().slice(0, 3);
 		document.querySelector(".hero-name").textContent = mainFilmInfo.title;
 		document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
 		let storyEl = document.querySelector(".story__line");
@@ -97,9 +101,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperActorContainerEl.appendChild(swiperHeroNameEl);
 			swiperActorNameEl.addEventListener("click", () => {
 				const actorId = swiperActorNameEl.getAttribute("data-actor");
-				// location.href = "actor.html";
-				// localStorage.setItem("actorId", actorId);
-				const url = new URL("actor.html", window.location.origin);
+				
                     url.searchParams.set("actorId", actorId);
                     location.href = url;
 			});
@@ -188,13 +190,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 		}
 
 
-		// const paramsSearch = new URL("http://127.0.0.1:5500/film.html").searchParams;
-
-		// const name = paramsSearch.get("data-id");
-		// console.log(`name: ${movie_id}`);
-		
-		
-
 
         // ACTORS SWIPER
 		var swiper = new Swiper(".swiperActors", {
@@ -272,8 +267,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 					}) => {
 
 						swiperNovieGenre.innerText += `${name}  `
-						// console.log(`${name}  `);
-
+						
 					});
 
 				})

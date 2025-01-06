@@ -2,6 +2,8 @@ import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 import {happyNY} from './happyNY.js';
 
+const url = new URL("Movie/film.html", window.location.origin);
+new Snow ();
 happyNY();
 
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
@@ -66,6 +68,7 @@ function getMovieList(list) {
     overview = "",
     id = "",
     genre_ids = "",
+    vote_average = "",
     }) 
  {
     const swiperSlide = document.createElement("swiper-slide"),
@@ -76,6 +79,7 @@ function getMovieList(list) {
           headerHeroGenreEl = document.createElement("div"),
           movieYearEl = document.createElement("p"),
           movieGenreEl = document.createElement("p"),
+          ratingTopEl = document.createElement("p"),
           headerHeroDescrEl = document.createElement("div"),
           movieDescriptEl = document.createElement("p"),
           buttonsContainerEl = document.createElement("div"),
@@ -90,6 +94,7 @@ function getMovieList(list) {
             headerHeroGenreEl.className = "header__hero-genre";
             movieYearEl.className = "movie_year";
             movieGenreEl.className = "movie_genre";
+            ratingTopEl.className = "movie_rating",
             headerHeroDescrEl.className = "header__hero-descr";
             movieDescriptEl.className = "movie_descript";
             buttonsContainerEl.className = "buttons-container";
@@ -101,11 +106,12 @@ function getMovieList(list) {
                 movieNameEl.textContent = title;
                 movieYearEl.textContent = 'Год: ' + release_date.slice(0, 4);
                 movieGenreEl.textContent = 'Жанр: ';
+                ratingTopEl.textContent = "Рейтинг:  " + vote_average.toString().slice(0, 3);
 
                 fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
                 .then((genreRes) => genreRes.json())
                 .then((genreRes) => {
-                    let genreList = genreRes.genres.slice(0, 4)
+                    let genreList = genreRes.genres.slice(1, 10)
                     const resultGenres = genreList.filter(i => genre_ids.includes(i.id));
                         resultGenres.forEach(({name}) => {
                         movieGenreEl.textContent += `${name}  `   
@@ -122,6 +128,7 @@ function getMovieList(list) {
                     headerHeroEl.appendChild(headerHeroGenreEl);
                     headerHeroGenreEl.appendChild(movieYearEl);
                     headerHeroGenreEl.appendChild(movieGenreEl);
+                    headerHeroGenreEl.appendChild(ratingTopEl)
                     headerHeroEl.appendChild(headerHeroDescrEl);
                     headerHeroDescrEl.appendChild(movieDescriptEl);
                     headerHeroNameEl.appendChild(movieNameEl);
@@ -138,10 +145,8 @@ function getMovieList(list) {
 
                 movieNameEl.addEventListener("click", () => {
                     const filmId1 = movieNameEl.getAttribute("data-id");
-                    const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId1);
                     location.href = url; 
-                    
                 });
                 
                 
@@ -174,23 +179,20 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
   .then((randomFilmRes) => randomFilmRes.json())
   .then((randomFilmRes) => {
    let randomFilm = randomFilmRes;
-   randomFilm.genres.forEach(({name}) => {
+   randomFilm.genres.slice(0, 3).forEach(({name}) => {
    document.querySelector(".random__genre").textContent += ` ${name}  `;
    });
 
    document.querySelector(".random__block").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${randomFilm.backdrop_path})`;
    document.querySelector(".random__hero-name").textContent = randomFilm.title;
    document.querySelector(".random__descript").textContent = randomFilm.overview;
-   document.querySelector(".random__year").textContent = randomFilm.release_date.slice(0, 4);
-   document.querySelector(".random__year").textContent = randomFilm.release_date.slice(0, 4);
-   document.querySelector(".random__movie-rating").textContent = randomFilm.vote_average.toString().slice(0, 3);
+   document.querySelector(".random__year").textContent += randomFilm.release_date.slice(0, 4);
+   
+   document.querySelector(".random__movie-rating").textContent += randomFilm.vote_average.toString().slice(0, 3);
    document.querySelector(".random__hero-name").setAttribute("data-rand-id", randomFilm.id);
 
    document.querySelector(".random__hero-name").addEventListener("click", () => {
        const filmId = document.querySelector(".random__hero-name").getAttribute("data-rand-id");
-    //    location.href = "film.html";
-    //    localStorage.setItem("filmId", filmId);
-                    const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url; 
    });
@@ -230,13 +232,11 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
    document.querySelector(".random__movie-name_1").setAttribute("data-rand-id", randomFilm1.id);
    document.querySelector(".random__movie-name_1").addEventListener("click", () => {
        const filmId = document.querySelector(".random__movie-name_1").getAttribute("data-rand-id");
-       const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
    });
    document.querySelector(".swiper-slide_1").addEventListener("click", () => {
        const filmId = document.querySelector(".random__movie-name_1").getAttribute("data-rand-id");
-       const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
    });
@@ -257,14 +257,12 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
        document.querySelector(".random__movie-name_2").setAttribute("data-rand-id", randomFilm2.id);
        document.querySelector(".random__movie-name_2").addEventListener("click", () => {
            const filmId = document.querySelector(".random__movie-name_2").getAttribute("data-rand-id");
-           const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
        });
    });
    document.querySelector(".swiper-slide_2").addEventListener("click", () => {
        const filmId = document.querySelector(".random__movie-name_2").getAttribute("data-rand-id");
-       const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
    });
@@ -286,13 +284,11 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
        document.querySelector(".random__movie-name_3").setAttribute("data-rand-id", randomFilm3.id);
        document.querySelector(".random__movie-name_3").addEventListener("click", () => {
            const filmId = document.querySelector(".random__movie-name_3").getAttribute("data-rand-id");
-           const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
        });
        document.querySelector(".swiper-slide_3").addEventListener("click", () => {
            const filmId = document.querySelector(".random__movie-name_3").getAttribute("data-rand-id");
-           const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
        });
@@ -365,7 +361,6 @@ function renderJustRealeased({
    swiperSlideJustReleasedEl.appendChild(img_JREl);
    swiperMovieNameEl.addEventListener("click", () => {
        const filmId = swiperMovieNameEl.getAttribute("data-id");
-       const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
    });
@@ -411,13 +406,11 @@ function renderTopCard({
    infoTopEl.appendChild(ratingTop);
    titleTopEl.addEventListener("click", () => {
        const filmId = titleTopEl.getAttribute("data-id-top");
-       const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
    });
    posterPathTopEl.addEventListener("click", () => {
        const filmId = titleTopEl.getAttribute("data-id-top");
-       const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
    });
@@ -487,7 +480,6 @@ function updateValue(e) {
            searchEl.appendChild(sItem);
            sItem.addEventListener("click", () => {
                const filmId = sItem.getAttribute("data-id");
-               const url = new URL("film.html", window.location.origin);
                     url.searchParams.set("id", filmId);
                     location.href = url;
            });

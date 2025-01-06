@@ -193,6 +193,7 @@ swiper-slide::before {
 }
 .random__genre, .random__genre_2, .random__genre_3, .random__genre_1 {
   font-family: inherit;
+  font-weight: 300;
   z-index: 3;
   color: rgba(255, 255, 255, 0.69);
   padding-right: 1rem;

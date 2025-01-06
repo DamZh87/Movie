@@ -25,7 +25,6 @@ body {
   display: block;
   position: absolute;
   top: 0;
-  /* z-index: 2; */
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 1) 5%,
@@ -40,7 +39,6 @@ body {
   display: block;
   position: absolute;
   top: 0;
-  /* z-index: 2; */
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 70%);
 }
 
@@ -48,9 +46,7 @@ body {
   overflow: hidden;
   max-width: 80vw;
   margin: 0 auto;
-  /* position: relative;
-  z-index: 2; */
-}
+ }
 
 @media screen and (max-width:850px) {
   .trailer{
@@ -182,6 +178,18 @@ body {
   color: hwb(0 50% 50%);
   font-family: inherit;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.movie_year{
+  display: flex;
+  align-items: normal;
+}
+
+.movie_genre{
+  display: flex;
+  align-items: normal;
 }
 
 @media screen and (max-width: 800px) {
@@ -191,14 +199,15 @@ body {
   }
 }
 
-.movie_genre {
-  margin-left: 1rem;
+.movie_rating{
+    display: flex;
+    align-items: normal;
 }
-@media screen and (max-width: 800px) {
-  .movie_genre {
+
+@media screen and (max-width:800px) {
+  .movie_rating{
     margin-left: 0;
-    
-  }
+    }
 }
 
 .header__hero-descr {
@@ -332,11 +341,6 @@ body {
   position: relative;
 }
 
-/* main {
-  height: 100%;
-  background-color: black;
-} */
-
 h3 {
   font-size: 25px;
   font-weight: 600;
@@ -351,6 +355,7 @@ h3 {
 .swiper_movie-name {
   cursor: pointer;
   transition: color 0.3s, transform 0.3s;
+  margin-bottom: .5rem;
 }
 
 @media screen and (max-width: 750px) {
@@ -438,7 +443,6 @@ h3 {
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  /* color: white; */
 }
 
 .random__movie-rating,
@@ -446,7 +450,8 @@ h3 {
 .random__rating_2,
 .random__rating_3 {
   display: flex;
-  font-family: inherit;
+  /* font-family: inherit; */
+  /* font-weight: normal; */
   font-size: 0.9rem;
   align-items: center;
   margin-left: 0.4rem;
@@ -471,7 +476,7 @@ h3 {
   line-height: 22px;
   color: hwb(0 50% 50%);
   margin-left: 1rem;
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
 }
 
 .random__genre {
@@ -479,7 +484,7 @@ h3 {
   line-height: 22px;
   margin-left: 1rem;
   color: hwb(0 50% 50%);
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
 }
 
 .desc_container {
