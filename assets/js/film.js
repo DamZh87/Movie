@@ -6,7 +6,13 @@ import {
 import {
 	options
 } from './movieAPI.js';
-const movie_id = JSON.parse(localStorage.getItem("filmId"));
+
+// const test = new URLSearchParams(window.location.search);
+// const movie_id = test.get("id");
+
+const movie_id = new URLSearchParams(window.location.search).get("id");
+
+
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
 const swiperSimilar1 = document.querySelector('.swiperSimilar');
 const swiperSimilarParams = {
@@ -91,8 +97,11 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperActorContainerEl.appendChild(swiperHeroNameEl);
 			swiperActorNameEl.addEventListener("click", () => {
 				const actorId = swiperActorNameEl.getAttribute("data-actor");
-				location.href = "actor.html";
-				localStorage.setItem("actorId", actorId);
+				// location.href = "actor.html";
+				// localStorage.setItem("actorId", actorId);
+				const url = new URL("actor.html", window.location.origin);
+                    url.searchParams.set("actorId", actorId);
+                    location.href = url;
 			});
 			return actorsSlideEl;
 		}
@@ -107,6 +116,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 					}
 				}).catch((err) => console.error(err));
 		});
+
 		// SEARCH CODE
 		const searchEl = document.querySelector("#find_cont");
 
@@ -170,11 +180,21 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 				});
 				sItem.addEventListener("click", () => {
 					const filmId = sItem.getAttribute("data-id");
-					location.href = "film.html";
-					localStorage.setItem("filmId", filmId);
+					const url = new URL("film.html", window.location.origin);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
 				});
 			});
 		}
+
+
+		// const paramsSearch = new URL("http://127.0.0.1:5500/film.html").searchParams;
+
+		// const name = paramsSearch.get("data-id");
+		// console.log(`name: ${movie_id}`);
+		
+		
+
 
         // ACTORS SWIPER
 		var swiper = new Swiper(".swiperActors", {
@@ -252,7 +272,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 					}) => {
 
 						swiperNovieGenre.innerText += `${name}  `
-						console.log(`${name}  `);
+						// console.log(`${name}  `);
 
 					});
 
@@ -276,8 +296,9 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperSlideSimilarEl.appendChild(img_SimEl);
 			swiperMovieNameEl.addEventListener("click", () => {
 				const filmId = swiperMovieNameEl.getAttribute("data-id");
-				location.href = "film.html";
-				localStorage.setItem("filmId", filmId);
+				const url = new URL("film.html", window.location.origin);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
 			});
 			return swiperSlideSimilarEl;
 		}

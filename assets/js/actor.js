@@ -1,6 +1,7 @@
 import {	getWeather,	getCurrency, footer} from './footer.js';
 import {	getActor, options} from './movieAPI.js';
 // SEARCH CODE
+
 const search_actorEl = document.querySelector("#find_cont");
 
 function renderSearch({
