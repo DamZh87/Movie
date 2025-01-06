@@ -80,7 +80,10 @@ function getMovieList(list) {
           headerHeroGenreEl = document.createElement("div"),
           movieYearEl = document.createElement("p"),
           movieGenreEl = document.createElement("p"),
-          ratingTopEl = document.createElement("p"),
+
+          ratingTopEl = document.createElement("div"),
+        //   ratingTopEl = document.createElement("p"),
+        
           headerHeroDescrEl = document.createElement("div"),
           movieDescriptEl = document.createElement("p"),
           buttonsContainerEl = document.createElement("div"),
@@ -95,7 +98,10 @@ function getMovieList(list) {
             headerHeroGenreEl.className = "header__hero-genre";
             movieYearEl.className = "movie_year";
             movieGenreEl.className = "movie_genre";
-            ratingTopEl.className = "movie_rating",
+
+             ratingTopEl.className = "rating",
+            // ratingTopEl.className = "movie_rating",
+
             headerHeroDescrEl.className = "header__hero-descr";
             movieDescriptEl.className = "movie_descript";
             buttonsContainerEl.className = "buttons-container";
@@ -112,7 +118,11 @@ function getMovieList(list) {
                 movieNameEl.textContent = title;
                 movieYearEl.textContent = 'Год: ' + release_date.slice(0, 4);
                 movieGenreEl.textContent = 'Жанр: ';
-                ratingTopEl.textContent = "Рейтинг:  " + vote_average.toString().slice(0, 3);
+                // ratingTopEl.textContent = "Рейтинг:  " + vote_average.toString().slice(0, 3);
+
+                ratingTopEl.textContent = vote_average.toString().slice(0, 3);
+                            
+                ratingTopEl.style.setProperty('--value', vote_average.toString().slice(0, 3));
 
                 fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
                 .then((genreRes) => genreRes.json())
@@ -132,9 +142,12 @@ function getMovieList(list) {
                     swiperSlide.appendChild(headerHeroEl);
                     headerHeroEl.appendChild(headerHeroNameEl);
                     headerHeroEl.appendChild(headerHeroGenreEl);
+
+                    headerHeroGenreEl.appendChild(ratingTopEl)
+
                     headerHeroGenreEl.appendChild(movieYearEl);
                     headerHeroGenreEl.appendChild(movieGenreEl);
-                    headerHeroGenreEl.appendChild(ratingTopEl)
+                   
                     headerHeroEl.appendChild(headerHeroDescrEl);
                     headerHeroDescrEl.appendChild(movieDescriptEl);
                     headerHeroNameEl.appendChild(movieNameEl);
