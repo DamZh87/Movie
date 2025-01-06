@@ -8,7 +8,8 @@ import {
 } from './movieAPI.js';
 
 
-const url = new URL("Movie/actor.html", window.location.origin);
+const urlActor = new URL("Movie/actor.html", window.location.origin);
+const urlFilm = new URL("Movie/film.html", window.location.origin);
 const movie_id = new URLSearchParams(window.location.search).get("id");
 
 
@@ -102,7 +103,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperActorNameEl.addEventListener("click", () => {
 				const actorId = swiperActorNameEl.getAttribute("data-actor");
 				
-                    url.searchParams.set("actorId", actorId);
+                    urlActor.searchParams.set("actorId", actorId);
                     location.href = url;
 			});
 			return actorsSlideEl;
@@ -182,9 +183,9 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 				});
 				sItem.addEventListener("click", () => {
 					const filmId = sItem.getAttribute("data-id");
-					const url = new URL("film.html", window.location.origin);
-                    url.searchParams.set("id", filmId);
-                    location.href = url;
+					// const url = new URL("film.html", window.location.origin);
+                    urlFilm.searchParams.set("id", filmId);
+                    location.href = urlFilm;
 				});
 			});
 		}
@@ -290,9 +291,9 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperSlideSimilarEl.appendChild(img_SimEl);
 			swiperMovieNameEl.addEventListener("click", () => {
 				const filmId = swiperMovieNameEl.getAttribute("data-id");
-				const url = new URL("film.html", window.location.origin);
-                    url.searchParams.set("id", filmId);
-                    location.href = url;
+				// const url = new URL("film.html", window.location.origin);
+                    urlFilm.searchParams.set("id", filmId);
+                    location.href = urlFilm;
 			});
 			return swiperSlideSimilarEl;
 		}
