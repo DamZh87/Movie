@@ -93,11 +93,11 @@ swiper-slide::before {
  background-size: cover;
  position: relative;
 }
-@media screen and (max-width:800px) {
+/* @media screen and (max-width:800px) {
   .header_swiper{
     background-position: top;
    }
-}
+} */
 
 .header_swiper::after{
  content: '';
@@ -155,7 +155,7 @@ swiper-slide::before {
   position: absolute;
   font-family: inherit;
   font-size: .9rem;
-  bottom: 70px;
+  bottom: 35px;
   margin-left: 0.6rem;
   text-align: left;
   left: 0;

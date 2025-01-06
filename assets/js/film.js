@@ -8,8 +8,8 @@ import {
 } from './movieAPI.js';
 
 
-const urlActor = new URL("Movie/actor.html", window.location.origin);
-const urlFilm = new URL("Movie/film.html", window.location.origin);
+const urlActor = new URL("actor.html", window.location.origin);
+const urlFilm = new URL("film.html", window.location.origin);
 const movie_id = new URLSearchParams(window.location.search).get("id");
 
 
@@ -61,7 +61,15 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 		
 		document.querySelector(".hero-rating").textContent += mainFilmInfo.vote_average.toString().slice(0, 3);
 		document.querySelector(".hero-name").textContent = mainFilmInfo.title;
-		document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
+
+		if( window.innerWidth > 800 ){
+			document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;;
+	   } else {
+		document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.poster_path})`;
+	   }
+
+
+		// document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
 		let storyEl = document.querySelector(".story__line");
 		storyEl.textContent = mainFilmInfo.overview + " " + storyEl.textContent;
 		fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits?language=ru-RU`, options).then((FilmActors) => FilmActors.json()).then((FilmActors) => {

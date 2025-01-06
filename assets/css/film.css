@@ -211,6 +211,12 @@ body {
   display: flex;
   align-items: baseline;
 }
+@media screen and (max-width:850px) {
+  .header__menu-user{
+    display: flex;
+    align-items: baseline;
+  }
+}
 
 .header__menu-user ul {
   display: flex;
@@ -227,7 +233,7 @@ body {
   &:hover {
     scale: 1.05;
   }
-}
+} */
 
 .user__avatar {
   background-color: #ac7474;

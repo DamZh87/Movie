@@ -2,8 +2,8 @@ import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 import {happyNY} from './happyNY.js';
 
-const url = new URL("Movie/film.html", window.location.origin);
-new Snow ();
+const url = new URL("film.html", window.location.origin);
+// new Snow ();
 happyNY();
 
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
@@ -63,6 +63,7 @@ function getMovieList(list) {
  
  function renderMovieswiperSlide({
     backdrop_path = "",
+    poster_path = "",
     title = "",
     release_date = "",
     overview = "",
@@ -102,10 +103,10 @@ function getMovieList(list) {
             headerHeroButtonsContinueEl.className = "header__hero-buttons-continue";
             headerHeroButtonsWatchswiperHeaderEl.className = "header__hero-buttons-watchlist";
 
-            if( window.innerWidth >= 800 ){
+            if( window.innerWidth > 800 ){
                 slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
            } else {
-            slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${poster_path})`;
+            slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${poster_path})`;
            }
                 
                 movieNameEl.textContent = title;
@@ -221,7 +222,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
 
 fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes1) => randomFilmRes1.json()).then((randomFilmRes1) => {
    let randomFilm1 = randomFilmRes1;
-   randomFilm1.genres.forEach(({name}) => {
+   randomFilm1.genres.slice(0, 2).forEach(({name}) => {
        document.querySelector(".random__genre_1").textContent += ` ${name}  `;
    });
 
@@ -247,7 +248,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
    });
    fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes2) => randomFilmRes2.json()).then((randomFilmRes2) => {
        let randomFilm2 = randomFilmRes2;
-       randomFilm2.genres.forEach(({name}) => {
+       randomFilm2.genres.slice(0, 2).forEach(({name}) => {
            document.querySelector(".random__genre_2").textContent += ` ${name}  `;
        });
        if (randomFilm2.poster_path) {
@@ -273,7 +274,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
    });
    fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes3) => randomFilmRes3.json()).then((randomFilmRes3) => {
        let randomFilm3 = randomFilmRes3;
-       randomFilm3.genres.forEach(({name}) => {
+       randomFilm3.genres.slice(0, 2).forEach(({name}) => {
            document.querySelector(".random__genre_3").textContent += ` ${name}  `;
        });
        
