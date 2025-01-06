@@ -102,7 +102,12 @@ function getMovieList(list) {
             headerHeroButtonsContinueEl.className = "header__hero-buttons-continue";
             headerHeroButtonsWatchswiperHeaderEl.className = "header__hero-buttons-watchlist";
 
+            if( window.innerWidth >= 800 ){
                 slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
+           } else {
+            slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${poster_path})`;
+           }
+                
                 movieNameEl.textContent = title;
                 movieYearEl.textContent = 'Год: ' + release_date.slice(0, 4);
                 movieGenreEl.textContent = 'Жанр: ';
