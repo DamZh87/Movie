@@ -104,7 +104,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 				const actorId = swiperActorNameEl.getAttribute("data-actor");
 				
                     urlActor.searchParams.set("actorId", actorId);
-                    location.href = url;
+                    location.href = urlActor;
 			});
 			return actorsSlideEl;
 		}
