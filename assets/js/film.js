@@ -6,7 +6,13 @@ import {
 import {
 	options
 } from './movieAPI.js';
-const movie_id = JSON.parse(localStorage.getItem("filmId"));
+
+
+const urlActor = new URL("Movie/actor.html", window.location.origin);
+const urlFilm = new URL("Movie/film.html", window.location.origin);
+const movie_id = new URLSearchParams(window.location.search).get("id");
+
+
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
 const swiperSimilar1 = document.querySelector('.swiperSimilar');
 const swiperSimilarParams = {
@@ -38,7 +44,9 @@ const swiperSimilarParams = {
 };
 Object.assign(swiperSimilar1, swiperSimilarParams);
 swiperSimilar1.initialize();
+
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА ПОХОЖИЕ ФИЛЬМЫ
+
 fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 	.then((filmById) => filmById.json())
 	.then((filmById) => {
@@ -49,8 +57,19 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			document.querySelector(".hero-genre").textContent += ` ${name}  `;
 		});
 		document.querySelector(".hero-year").textContent += mainFilmInfo.release_date.slice(0, 4);
+		
+		
+		document.querySelector(".hero-rating").textContent += mainFilmInfo.vote_average.toString().slice(0, 3);
 		document.querySelector(".hero-name").textContent = mainFilmInfo.title;
-		document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
+
+		if( window.innerWidth > 800 ){
+			document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;;
+	   } else {
+		document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.poster_path})`;
+	   }
+
+
+		// document.querySelector(".header").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${mainFilmInfo.backdrop_path})`;
 		let storyEl = document.querySelector(".story__line");
 		storyEl.textContent = mainFilmInfo.overview + " " + storyEl.textContent;
 		fetch(`https://api.themoviedb.org/3/movie/${movie_id}/credits?language=ru-RU`, options).then((FilmActors) => FilmActors.json()).then((FilmActors) => {
@@ -91,8 +110,9 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperActorContainerEl.appendChild(swiperHeroNameEl);
 			swiperActorNameEl.addEventListener("click", () => {
 				const actorId = swiperActorNameEl.getAttribute("data-actor");
-				location.href = "actor.html";
-				localStorage.setItem("actorId", actorId);
+				
+                    urlActor.searchParams.set("actorId", actorId);
+                    location.href = urlActor;
 			});
 			return actorsSlideEl;
 		}
@@ -107,6 +127,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 					}
 				}).catch((err) => console.error(err));
 		});
+
 		// SEARCH CODE
 		const searchEl = document.querySelector("#find_cont");
 
@@ -170,11 +191,14 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 				});
 				sItem.addEventListener("click", () => {
 					const filmId = sItem.getAttribute("data-id");
-					location.href = "film.html";
-					localStorage.setItem("filmId", filmId);
+					// const url = new URL("film.html", window.location.origin);
+                    urlFilm.searchParams.set("id", filmId);
+                    location.href = urlFilm;
 				});
 			});
 		}
+
+
 
         // ACTORS SWIPER
 		var swiper = new Swiper(".swiperActors", {
@@ -252,8 +276,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 					}) => {
 
 						swiperNovieGenre.innerText += `${name}  `
-						console.log(`${name}  `);
-
+						
 					});
 
 				})
@@ -276,8 +299,9 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 			swiperSlideSimilarEl.appendChild(img_SimEl);
 			swiperMovieNameEl.addEventListener("click", () => {
 				const filmId = swiperMovieNameEl.getAttribute("data-id");
-				location.href = "film.html";
-				localStorage.setItem("filmId", filmId);
+				// const url = new URL("film.html", window.location.origin);
+                    urlFilm.searchParams.set("id", filmId);
+                    location.href = urlFilm;
 			});
 			return swiperSlideSimilarEl;
 		}

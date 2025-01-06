@@ -1,7 +1,11 @@
 import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 import {happyNY} from './happyNY.js';
+
+const url = new URL("Movie/film.html", window.location.origin);
+new Snow ();
 happyNY();
+
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
 const swiperJR = document.querySelector('.swiper-JR');
 const swiperJRParams = {
@@ -59,11 +63,13 @@ function getMovieList(list) {
  
  function renderMovieswiperSlide({
     backdrop_path = "",
+    poster_path = "",
     title = "",
     release_date = "",
     overview = "",
     id = "",
     genre_ids = "",
+    vote_average = "",
     }) 
  {
     const swiperSlide = document.createElement("swiper-slide"),
@@ -74,6 +80,10 @@ function getMovieList(list) {
           headerHeroGenreEl = document.createElement("div"),
           movieYearEl = document.createElement("p"),
           movieGenreEl = document.createElement("p"),
+
+          ratingTopEl = document.createElement("div"),
+        //   ratingTopEl = document.createElement("p"),
+        
           headerHeroDescrEl = document.createElement("div"),
           movieDescriptEl = document.createElement("p"),
           buttonsContainerEl = document.createElement("div"),
@@ -88,6 +98,10 @@ function getMovieList(list) {
             headerHeroGenreEl.className = "header__hero-genre";
             movieYearEl.className = "movie_year";
             movieGenreEl.className = "movie_genre";
+
+             ratingTopEl.className = "rating",
+            // ratingTopEl.className = "movie_rating",
+
             headerHeroDescrEl.className = "header__hero-descr";
             movieDescriptEl.className = "movie_descript";
             buttonsContainerEl.className = "buttons-container";
@@ -95,15 +109,25 @@ function getMovieList(list) {
             headerHeroButtonsContinueEl.className = "header__hero-buttons-continue";
             headerHeroButtonsWatchswiperHeaderEl.className = "header__hero-buttons-watchlist";
 
+            if( window.innerWidth > 800 ){
                 slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
+           } else {
+            slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${poster_path})`;
+           }
+                
                 movieNameEl.textContent = title;
                 movieYearEl.textContent = 'Год: ' + release_date.slice(0, 4);
                 movieGenreEl.textContent = 'Жанр: ';
+                // ratingTopEl.textContent = "Рейтинг:  " + vote_average.toString().slice(0, 3);
+
+                ratingTopEl.textContent = vote_average.toString().slice(0, 3);
+                            
+                ratingTopEl.style.setProperty('--value', vote_average.toString().slice(0, 3));
 
                 fetch('https://api.themoviedb.org/3/genre/movie/list?language=ru', options)
                 .then((genreRes) => genreRes.json())
                 .then((genreRes) => {
-                    let genreList = genreRes.genres.slice(0, 4)
+                    let genreList = genreRes.genres.slice(1, 10)
                     const resultGenres = genreList.filter(i => genre_ids.includes(i.id));
                         resultGenres.forEach(({name}) => {
                         movieGenreEl.textContent += `${name}  `   
@@ -118,8 +142,12 @@ function getMovieList(list) {
                     swiperSlide.appendChild(headerHeroEl);
                     headerHeroEl.appendChild(headerHeroNameEl);
                     headerHeroEl.appendChild(headerHeroGenreEl);
+
+                    headerHeroGenreEl.appendChild(ratingTopEl)
+
                     headerHeroGenreEl.appendChild(movieYearEl);
                     headerHeroGenreEl.appendChild(movieGenreEl);
+                   
                     headerHeroEl.appendChild(headerHeroDescrEl);
                     headerHeroDescrEl.appendChild(movieDescriptEl);
                     headerHeroNameEl.appendChild(movieNameEl);
@@ -128,13 +156,21 @@ function getMovieList(list) {
                     headerHeroButtonsEl.appendChild(headerHeroButtonsContinueEl);
                     swiperSlide.appendChild(slideEl);
 
+                // movieNameEl.addEventListener("click", () => {
+                //     const filmId1 = movieNameEl.getAttribute("data-id");
+                //     location.href = "film.html";
+                //     localStorage.setItem("filmId", filmId1);
+                // });
+
                 movieNameEl.addEventListener("click", () => {
                     const filmId1 = movieNameEl.getAttribute("data-id");
-                    location.href = "film.html";
-                    localStorage.setItem("filmId", filmId1);
+                    url.searchParams.set("id", filmId1);
+                    location.href = url; 
                 });
+                
+                
 
-    // ПОЛУЧЕНИЕСПИСКА ТРЕЙЛЕРА ПО id ФИЛЬМА И ВЫВОД
+                // ПОЛУЧЕНИЕСПИСКА ТРЕЙЛЕРА ПО id ФИЛЬМА И ВЫВОД
     headerHeroButtonsContinueEl.addEventListener("click", () => {
         const movie_id = movieNameEl.getAttribute("data-id");
         fetch(` https://api.themoviedb.org/3/movie/${movie_id}/videos?language=ru-RU`, options) // Трейлер
@@ -162,22 +198,22 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
   .then((randomFilmRes) => randomFilmRes.json())
   .then((randomFilmRes) => {
    let randomFilm = randomFilmRes;
-   randomFilm.genres.forEach(({name}) => {
+   randomFilm.genres.slice(0, 3).forEach(({name}) => {
    document.querySelector(".random__genre").textContent += ` ${name}  `;
    });
 
    document.querySelector(".random__block").style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${randomFilm.backdrop_path})`;
    document.querySelector(".random__hero-name").textContent = randomFilm.title;
    document.querySelector(".random__descript").textContent = randomFilm.overview;
-   document.querySelector(".random__year").textContent = randomFilm.release_date.slice(0, 4);
-   document.querySelector(".random__year").textContent = randomFilm.release_date.slice(0, 4);
-   document.querySelector(".random__movie-rating").textContent = randomFilm.vote_average.toString().slice(0, 3);
+   document.querySelector(".random__year").textContent += randomFilm.release_date.slice(0, 4);
+   
+   document.querySelector(".random__movie-rating").textContent += randomFilm.vote_average.toString().slice(0, 3);
    document.querySelector(".random__hero-name").setAttribute("data-rand-id", randomFilm.id);
 
    document.querySelector(".random__hero-name").addEventListener("click", () => {
        const filmId = document.querySelector(".random__hero-name").getAttribute("data-rand-id");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url; 
    });
 
    document.querySelector(".random_film_trailer_btn").addEventListener("click", () => {
@@ -199,7 +235,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
 
 fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes1) => randomFilmRes1.json()).then((randomFilmRes1) => {
    let randomFilm1 = randomFilmRes1;
-   randomFilm1.genres.forEach(({name}) => {
+   randomFilm1.genres.slice(0, 2).forEach(({name}) => {
        document.querySelector(".random__genre_1").textContent += ` ${name}  `;
    });
 
@@ -215,17 +251,17 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
    document.querySelector(".random__movie-name_1").setAttribute("data-rand-id", randomFilm1.id);
    document.querySelector(".random__movie-name_1").addEventListener("click", () => {
        const filmId = document.querySelector(".random__movie-name_1").getAttribute("data-rand-id");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
    });
    document.querySelector(".swiper-slide_1").addEventListener("click", () => {
        const filmId = document.querySelector(".random__movie-name_1").getAttribute("data-rand-id");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
    });
    fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes2) => randomFilmRes2.json()).then((randomFilmRes2) => {
        let randomFilm2 = randomFilmRes2;
-       randomFilm2.genres.forEach(({name}) => {
+       randomFilm2.genres.slice(0, 2).forEach(({name}) => {
            document.querySelector(".random__genre_2").textContent += ` ${name}  `;
        });
        if (randomFilm2.poster_path) {
@@ -240,18 +276,18 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
        document.querySelector(".random__movie-name_2").setAttribute("data-rand-id", randomFilm2.id);
        document.querySelector(".random__movie-name_2").addEventListener("click", () => {
            const filmId = document.querySelector(".random__movie-name_2").getAttribute("data-rand-id");
-           location.href = "film.html";
-           localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
        });
    });
    document.querySelector(".swiper-slide_2").addEventListener("click", () => {
        const filmId = document.querySelector(".random__movie-name_2").getAttribute("data-rand-id");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
    });
    fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes3) => randomFilmRes3.json()).then((randomFilmRes3) => {
        let randomFilm3 = randomFilmRes3;
-       randomFilm3.genres.forEach(({name}) => {
+       randomFilm3.genres.slice(0, 2).forEach(({name}) => {
            document.querySelector(".random__genre_3").textContent += ` ${name}  `;
        });
        
@@ -267,13 +303,13 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
        document.querySelector(".random__movie-name_3").setAttribute("data-rand-id", randomFilm3.id);
        document.querySelector(".random__movie-name_3").addEventListener("click", () => {
            const filmId = document.querySelector(".random__movie-name_3").getAttribute("data-rand-id");
-           location.href = "film.html";
-           localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
        });
        document.querySelector(".swiper-slide_3").addEventListener("click", () => {
            const filmId = document.querySelector(".random__movie-name_3").getAttribute("data-rand-id");
-           location.href = "film.html";
-           localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
        });
    })
 });
@@ -344,8 +380,8 @@ function renderJustRealeased({
    swiperSlideJustReleasedEl.appendChild(img_JREl);
    swiperMovieNameEl.addEventListener("click", () => {
        const filmId = swiperMovieNameEl.getAttribute("data-id");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
    });
    return swiperSlideJustReleasedEl;
 }
@@ -389,13 +425,13 @@ function renderTopCard({
    infoTopEl.appendChild(ratingTop);
    titleTopEl.addEventListener("click", () => {
        const filmId = titleTopEl.getAttribute("data-id-top");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
    });
    posterPathTopEl.addEventListener("click", () => {
        const filmId = titleTopEl.getAttribute("data-id-top");
-       location.href = "film.html";
-       localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
    });
    return cardTop;
 }
@@ -463,8 +499,8 @@ function updateValue(e) {
            searchEl.appendChild(sItem);
            sItem.addEventListener("click", () => {
                const filmId = sItem.getAttribute("data-id");
-               location.href = "film.html";
-               localStorage.setItem("filmId", filmId);
+                    url.searchParams.set("id", filmId);
+                    location.href = url;
            });
        });
    }

@@ -80,10 +80,6 @@ body {
 .glightbox img:hover::after {
   background-color: rgba(0, 0, 0, 0.5); 
 }
-
-
-
-
 .gbounceIn {
   animation: bounceIn 1.3s ease;
 }
@@ -215,6 +211,12 @@ body {
   display: flex;
   align-items: baseline;
 }
+@media screen and (max-width:850px) {
+  .header__menu-user{
+    display: flex;
+    align-items: baseline;
+  }
+}
 
 .header__menu-user ul {
   display: flex;
@@ -231,7 +233,7 @@ body {
   &:hover {
     scale: 1.05;
   }
-}
+} */
 
 .user__avatar {
   background-color: #ac7474;
@@ -266,6 +268,10 @@ body {
   font-size: 32px;
   font-weight: 600;
   font-family: inherit;
+}
+
+.hero-name{
+  margin-bottom: 0.5rem;
 }
 
 .header__hero-genre {
@@ -342,39 +348,6 @@ body {
   bottom: 15%;
 }
 
-.header__hero-buttons-download {
-  color: white;
-  text-decoration: none;
-  background-color: black;
-  padding: 0.8rem 1.5rem;
-  padding-left: 2.5rem;
-  border: #fff 1px solid;
-  font-size: 14px;
-  border-radius: 10px;
-  position: relative;
-}
-.header__hero-buttons-share {
-  color: white;
-  text-decoration: none;
-  background-color: black;
-  padding: 0.8rem 1.5rem;
-  padding-left: 2.5rem;
-  border: #fff 1px solid;
-  font-size: 14px;
-  border-radius: 10px;
-  position: relative;
-}
-.header__hero-buttons-like {
-  color: white;
-  text-decoration: none;
-  background-color: black;
-  padding: 0.8rem 1.5rem;
-  padding-left: 2.5rem;
-  border: #fff 1px solid;
-  font-size: 14px;
-  border-radius: 10px;
-  position: relative;
-}
 
 main {
   height: 1vh;

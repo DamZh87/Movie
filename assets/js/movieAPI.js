@@ -1,4 +1,5 @@
-const actor_id = JSON.parse(localStorage.getItem("actorId"));
+
+const actor_id = new URLSearchParams(window.location.search).get("actorId");
 
 export const options = {
     method: "GET",

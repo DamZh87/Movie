@@ -25,7 +25,6 @@ body {
   display: block;
   position: absolute;
   top: 0;
-  /* z-index: 2; */
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 1) 5%,
@@ -40,7 +39,6 @@ body {
   display: block;
   position: absolute;
   top: 0;
-  /* z-index: 2; */
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 70%);
 }
 
@@ -48,9 +46,7 @@ body {
   overflow: hidden;
   max-width: 80vw;
   margin: 0 auto;
-  /* position: relative;
-  z-index: 2; */
-}
+ }
 
 @media screen and (max-width:850px) {
   .trailer{
@@ -182,6 +178,18 @@ body {
   color: hwb(0 50% 50%);
   font-family: inherit;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.movie_year{
+  display: flex;
+  align-items: normal;
+}
+
+.movie_genre{
+  display: flex;
+  align-items: normal;
 }
 
 @media screen and (max-width: 800px) {
@@ -191,14 +199,15 @@ body {
   }
 }
 
-.movie_genre {
-  margin-left: 1rem;
+.movie_rating{
+    display: flex;
+    align-items: normal;
 }
-@media screen and (max-width: 800px) {
-  .movie_genre {
+
+@media screen and (max-width:800px) {
+  .movie_rating{
     margin-left: 0;
-    
-  }
+    }
 }
 
 .header__hero-descr {
@@ -332,11 +341,6 @@ body {
   position: relative;
 }
 
-/* main {
-  height: 100%;
-  background-color: black;
-} */
-
 h3 {
   font-size: 25px;
   font-weight: 600;
@@ -351,6 +355,7 @@ h3 {
 .swiper_movie-name {
   cursor: pointer;
   transition: color 0.3s, transform 0.3s;
+  margin-bottom: .5rem;
 }
 
 @media screen and (max-width: 750px) {
@@ -432,13 +437,17 @@ h3 {
   align-items: flex-start;
   padding-top: 1rem;
 }
+@media screen and (max-width: 850px) {
+  .random__movie-info {
+    flex-direction: column;
+  }
+}
 
 .random__hero-name {
   font-size: 32px;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  /* color: white; */
 }
 
 .random__movie-rating,
@@ -446,17 +455,21 @@ h3 {
 .random__rating_2,
 .random__rating_3 {
   display: flex;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-size: .9rem;
   align-items: center;
+  line-height: 22px;
   margin-left: 0.4rem;
   z-index: 3;
-  color: rgb(255, 255, 255, 0.692);
 }
 
 .random__movie-rating::before {
   content: url(../img/main/swiper/star.svg);
   margin-right: 0.2rem;
+}
+@media screen and (max-width:850px) {
+  .random__movie-rating::before {
+    display: none;
+  }
 }
 
 .random__rating_1::before,
@@ -467,19 +480,25 @@ h3 {
 }
 
 .random__year {
-  font-size: 14px;
+  font-size: .9rem;
   line-height: 22px;
-  color: hwb(0 50% 50%);
   margin-left: 1rem;
-  font-family: "Inter", sans-serif;
+}
+@media screen and (max-width:850px) {
+  .random__year {
+   margin-left: .4rem;
+  }
 }
 
 .random__genre {
-  font-size: 14px;
+  font-size: .9rem;
   line-height: 22px;
   margin-left: 1rem;
-  color: hwb(0 50% 50%);
-  font-family: "Inter", sans-serif;
+}
+@media screen and (max-width:850px) {
+  .random__genre {
+    margin-left: .4rem;
+  }
 }
 
 .desc_container {
@@ -766,3 +785,7 @@ h3 {
   font-size: x-large;
   text-align: center;
 }
+
+
+
+
