@@ -142,7 +142,7 @@ body {
   background-size: cover;
   position: relative;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 750px) {
   .header {
     background-position: top;
   }
