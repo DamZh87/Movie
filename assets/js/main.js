@@ -471,14 +471,19 @@ const searchEl = document.querySelector("#find_cont");
 
 function renderSearch({
    title = "",
-   id = " "
+   id = " ",
+   poster_path = " "
 }) {
    const sItem = document.createElement("div");
    const sResultEl = document.createElement("p");
+   const sResultImg = document.createElement("img");
    sResultEl.className = "s_result";
+   sResultImg.className = "s_result-img";
    sResultEl.innerText = title;
    sItem.appendChild(sResultEl);
    sItem.setAttribute("data-id", id);
+   sResultEl.appendChild(sResultImg);
+   sResultImg.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
    return sItem;
 }
 const input = document.querySelector("#find");

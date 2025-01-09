@@ -107,10 +107,19 @@
   .s_result {
     padding-top: 1rem;
     cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 2rem;
   
     &:hover {
       color: #b8b8b8;
     }
+  }
+
+  .s_result-img{
+    height: 5rem;
+    width: 4rem;
   }
 
   .search-button-close svg{
