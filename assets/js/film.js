@@ -133,16 +133,30 @@ fetch(`https://api.themoviedb.org/3/movie/${movie_id}?language=ru-RU`, options)
 
 		function renderSearch({
 			title = "",
-			id = " "
-		}) {
-			const sItem = document.createElement("div");
-			const sResultEl = document.createElement("p");
-			sResultEl.className = "s_result";
+			id = " ",
+			poster_path = " ",
+			release_date = " ",
+		 }) {
+			const sItem = document.createElement("div"),
+				  sResultEl = document.createElement("div"),
+				  sResultTitleYear = document.createElement("div"),
+				  sResultImg = document.createElement("img"),
+				  sResultYear = document.createElement("p");
+			
+			sResultEl.className = "s_result-title";
+			sResultImg.className = "s_result-img";
+			sItem.className = "s_result";
+			sResultYear.className = "s_result-year";
 			sResultEl.innerText = title;
-			sItem.appendChild(sResultEl);
+			sResultYear.textContent = "Год: " + release_date.slice(0, 4);
+			sItem.appendChild(sResultTitleYear);
 			sItem.setAttribute("data-id", id);
+			sItem.appendChild(sResultImg);
+			sResultTitleYear.appendChild(sResultEl)
+			sResultTitleYear.appendChild(sResultYear);
+			sResultImg.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
 			return sItem;
-		}
+		 }
 		const input = document.querySelector("#find");
 		input.addEventListener("input", updateValue);
 

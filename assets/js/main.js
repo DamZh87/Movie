@@ -470,22 +470,31 @@ function getTopList(list) {
 const searchEl = document.querySelector("#find_cont");
 
 function renderSearch({
-   title = "",
-   id = " ",
-   poster_path = " "
-}) {
-   const sItem = document.createElement("div");
-   const sResultEl = document.createElement("p");
-   const sResultImg = document.createElement("img");
-   sResultEl.className = "s_result";
-   sResultImg.className = "s_result-img";
-   sResultEl.innerText = title;
-   sItem.appendChild(sResultEl);
-   sItem.setAttribute("data-id", id);
-   sResultEl.appendChild(sResultImg);
-   sResultImg.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
-   return sItem;
-}
+    title = "",
+    id = " ",
+    poster_path = " ",
+    release_date = " ",
+ }) {
+    const sItem = document.createElement("div"),
+          sResultEl = document.createElement("div"),
+          sResultTitleYear = document.createElement("div"),
+          sResultImg = document.createElement("img"),
+          sResultYear = document.createElement("p");
+    
+    sResultEl.className = "s_result-title";
+    sResultImg.className = "s_result-img";
+    sItem.className = "s_result";
+    sResultYear.className = "s_result-year";
+    sResultEl.innerText = title;
+    sResultYear.textContent = "Год: " + release_date.slice(0, 4);
+    sItem.appendChild(sResultTitleYear);
+    sItem.setAttribute("data-id", id);
+    sItem.appendChild(sResultImg);
+    sResultTitleYear.appendChild(sResultEl)
+    sResultTitleYear.appendChild(sResultYear);
+    sResultImg.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
+    return sItem;
+ }
 const input = document.querySelector("#find");
 
 input.addEventListener("input", updateValue);
