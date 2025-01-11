@@ -235,7 +235,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
 
 fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes1) => randomFilmRes1.json()).then((randomFilmRes1) => {
    let randomFilm1 = randomFilmRes1;
-   randomFilm1.genres.slice(0, 2).forEach(({name}) => {
+   randomFilm1.genres.slice(0, 1).forEach(({name}) => {
        document.querySelector(".random__genre_1").textContent += ` ${name}  `;
    });
 
@@ -261,7 +261,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
    });
    fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes2) => randomFilmRes2.json()).then((randomFilmRes2) => {
        let randomFilm2 = randomFilmRes2;
-       randomFilm2.genres.slice(0, 2).forEach(({name}) => {
+       randomFilm2.genres.slice(0, 1).forEach(({name}) => {
            document.querySelector(".random__genre_2").textContent += ` ${name}  `;
        });
        if (randomFilm2.poster_path) {
@@ -287,7 +287,7 @@ fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&so
    });
    fetch(`https://api.themoviedb.org/3/movie/${getRandomFilmId()}?language=ru-RU&sort_by=popularity.asc`, options).then((randomFilmRes3) => randomFilmRes3.json()).then((randomFilmRes3) => {
        let randomFilm3 = randomFilmRes3;
-       randomFilm3.genres.slice(0, 2).forEach(({name}) => {
+       randomFilm3.genres.slice(0, 1).forEach(({name}) => {
            document.querySelector(".random__genre_3").textContent += ` ${name}  `;
        });
        
@@ -359,7 +359,7 @@ function renderJustRealeased({
      let genreList1 = genreRes1.genres
       const resultGenres = genreList1.filter(i => genre_ids.includes(i.id));
 
-      resultGenres.slice(0 , 2).forEach(({
+      resultGenres.slice(0 , 1).forEach(({
          name
      }) => {
          
