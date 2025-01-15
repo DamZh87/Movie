@@ -1,4 +1,4 @@
-!(function (l, s)1 {
+!(function (l, s) {
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = s())
     : "function" == typeof define && define.amd
