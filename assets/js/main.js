@@ -3,8 +3,8 @@ import {options} from './movieAPI.js';
 import {happyNY} from './happyNY.js';
 
 const url = new URL("Movie/film.html", window.location.origin);
-new Snow ();
-happyNY();
+// new Snow ();
+// happyNY();
 
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
 const swiperJR = document.querySelector('.swiper-JR');
@@ -105,12 +105,14 @@ function getMovieList(list) {
             headerHeroButtonsContinueEl.className = "header__hero-buttons-continue";
             headerHeroButtonsWatchswiperHeaderEl.className = "header__hero-buttons-watchlist";
 
+            window.addEventListener('resize', (e) => {
                 if( window.innerWidth > 800 ){
                     slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
                } else {
                 slideEl.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${poster_path})`;
                }
-                        
+                
+            });           
                 
                 movieNameEl.textContent = title;
                 movieYearEl.textContent = 'Год: ' + release_date.slice(0, 4);
