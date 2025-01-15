@@ -4,7 +4,7 @@ import {happyNY} from './happyNY.js';
 
 const url = new URL("Movie/film.html", window.location.origin);
 // new Snow ();
-// happyNY();
+happyNY();
 
 //ИНИЦИАЛИЗАЦИЯ СВАЙПЕРА НЕДАВНО ВЫШЕДШИЕ
 const swiperJR = document.querySelector('.swiper-JR');

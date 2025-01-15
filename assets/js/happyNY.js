@@ -15,10 +15,10 @@ export function happyNY() {
    
     if ((date >= startD1 && date <= endD1)  || (date >= startD2 && date <= endD2)) {
      document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo.png');
-     document.querySelector('.snowblock').setAttribute('style', 'display:block');
+    //  document.querySelector('.snowblock').setAttribute('style', 'display:block');
     } else {
         document.querySelector('.logo_png').setAttribute('src', './assets/img/header/logo_norm.png');
-        document.querySelector('.snowblock').setAttribute('style', 'display:none');
+        // document.querySelector('.snowblock').setAttribute('style', 'display:none');
     } 
     }
 
