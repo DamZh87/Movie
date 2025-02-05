@@ -2,7 +2,7 @@ import {getWeather, getCurrency, footer} from './footer.js';
 import {options} from './movieAPI.js';
 // import {happyNY} from './happyNY.js';
 
-const url = new URL("film.html", window.location.origin);
+const url = new URL("Movie/film.html", window.location.origin);
 // new Snow ();
 // happyNY();
 
