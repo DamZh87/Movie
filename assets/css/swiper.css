@@ -34,8 +34,8 @@ swiper-slide {
  position: absolute;
  font-family: inherit;
  font-size: .9rem;
- bottom: 3.5rem;
- margin-left: .5rem;
+ bottom: 3.8rem;
+ /* margin-left: .5rem; */
  text-align: left;
  left: 0;
  z-index: 3;
@@ -48,7 +48,7 @@ swiper-slide {
  font-family: inherit;
  font-size: .9rem;
  align-items: center;
- margin-left: .4rem;
+ /* margin-left: .4rem; */
  z-index: 3;
  color: rgb(255, 255, 255, 0.692);
 }
