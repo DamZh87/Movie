@@ -101,16 +101,35 @@
   
   #find_cont {
     text-align: left;
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
   }
   
   .s_result {
     padding-top: 1rem;
     cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 2rem;
   
     &:hover {
       color: #b8b8b8;
     }
+  }
+
+  .s_result-img{
+    height: 5rem;
+    width: 4rem;
+  }
+
+  .s_result-title{
+margin-bottom: .5rem;
+  }
+
+  .s_result-year{
+    font-size: .8rem;
+    color: lightgray;
+    
   }
 
   .search-button-close svg{
